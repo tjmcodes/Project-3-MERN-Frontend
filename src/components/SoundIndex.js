@@ -1,14 +1,14 @@
 
 import React from 'react'
 
-function PokemonIndex() {
-  const [pokemon, setPokemon] = React.useState([])
+function SoundIndex() {
+  const [sounds, setSounds] = React.useState([])
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/pokemon')
+      const res = await fetch('/api/all-sounds')
       const json = await res.json()
-      setPokemon(json)
+      setSounds(json)
     }
     getData()
   }, [])
@@ -17,11 +17,11 @@ function PokemonIndex() {
     <div className="section">
       <h1 className="title">Pokemon Index</h1>
       <div className="container">
-        {pokemon.map(pokemon => <h2 key={pokemon._id}>{pokemon.name}</h2>)}
+        {sounds.map(sound => <h2 key={sound._id}>{sound.fileName}</h2>)}
       </div>
     </div>
   )
 }
 
-export default PokemonIndex
+export default SoundIndex
 
