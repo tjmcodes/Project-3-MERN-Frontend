@@ -13,6 +13,13 @@ export default function Register() {
     passwordConfirmation: "",
     email: "",
   })
+  // ! Errors function
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+    passwordConfirmation: "",
+    email: "",
+  })
 
   function handleChange(e) {
     // ! name: field you've typed in, e.g. the email input
@@ -22,13 +29,18 @@ export default function Register() {
       ...formData, // ! This is whatever the form data was before, all it's fields.
       [name]: value, 
     })
+
+    setErrors({
+      ...errors,
+      [name]: '',
+    })
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
 
     try {
-      const { data } = await axios.post('/api/register', formData)
+      await axios.post('/api/register', formData)
       // ! Navigate to the /login page. 
       navigate('/login')
 
@@ -53,6 +65,7 @@ export default function Register() {
               value={formData.username}
               onChange={handleChange}
             />
+            {errors.username && <small className="has-text-danger">{errors.username}</small>}
           </div>
         </div>
         <div className="field">
@@ -65,6 +78,7 @@ export default function Register() {
               value={formData.email}
               onChange={handleChange}
             />
+            {errors.email && <small className="has-text-danger">{errors.email}</small>}
           </div>
         </div>
         <div className="field">
@@ -77,6 +91,7 @@ export default function Register() {
               value={formData.password}
               onChange={handleChange}
             />
+            {errors.password && <small className="has-text-danger">{errors.password}</small>}
           </div>
         </div>
         <div className="field">
@@ -89,6 +104,7 @@ export default function Register() {
               value={formData.passwordConfirmation}
               onChange={handleChange}
             />
+            {errors.passwordConfirmation && <small className="has-text-danger">{errors.passwordConfirmation}</small>}
           </div>
         </div>
         <button className="button">Submit</button>

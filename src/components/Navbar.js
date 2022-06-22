@@ -8,7 +8,7 @@ const NavBar = () => {
         <div className="navbar-item">
           <div className="buttons">
             <Link to="/all-sounds" className="button is-dark">
-              <strong>Sounds</strong>
+              <strong>All Sound</strong>
             </Link>
             <Link to="/register" className="button is-light">
               Register
@@ -18,9 +18,6 @@ const NavBar = () => {
             </Link>
             <Link to='/sounds/new-sounds' className="button is-primary">
               New Sounds
-            </Link>
-            <Link to='/sounds/sound-list' className="button is-primary">
-              All Sounds
             </Link>
           </div>
         </div>
