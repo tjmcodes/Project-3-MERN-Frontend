@@ -2,7 +2,7 @@
 
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
-// import { isCreator, getLoggedInUserId } from '../lib/auth'
+import { isCreator, getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
 
 
