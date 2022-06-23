@@ -19,7 +19,7 @@ function App() {
         <Route path="/register" element={<Register /> } />
         {/*<Route path="/all-sounds" element={<AllSounds /> } />*/}
         <Route path="/all-sounds" element={<SoundList /> } />
-        <Route path="/all-sounds/sound" element={<SoundShow /> } />
+        <Route path="/all-sounds/:sound" element={<SoundShow /> } />
       </Routes>
     </Router>
   )
