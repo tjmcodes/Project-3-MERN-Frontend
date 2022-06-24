@@ -3,7 +3,7 @@ import Login from './components/Login.js'
 import Register from './components/Register.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SoundList from './components/SoundList.js'
-import Navbar from './components/Navbar'
+import NavBar from './components/NavBar.js'
 import SoundShow from './components/SoundShow.js'
 import Home from './components/Home.js'
 
@@ -12,7 +12,7 @@ import Home from './components/Home.js'
 function App() {
   return (
     <Router>
-    <Navbar />
+    <NavBar />
       <Routes>
         <Route path="/" element={< Home />} />
         <Route path="/login" element={<Login />} />
