@@ -51,7 +51,7 @@ function ShowSound() {
     <section className="section">
       <div className="container">
         {sound ? (
-          <div>
+          <div key={sound.fileName}>
             <h2 className="title has-text-centered">{sound.fileName}</h2>
             <hr />
             <div className="columns">
@@ -70,7 +70,7 @@ function ShowSound() {
                   ☠️ Delete Sound
                 </button>}
               </div>
-                <div className="column is-half">
+                <div key={sound._id} className="column is-half">
                   <h4 className="title is-4">
                     <span role="img" aria-label="plate">
                     </span>{" "}
@@ -81,19 +81,24 @@ function ShowSound() {
                   </h4>
                
                 <hr />
+                <div key={sound.category} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
                   Category
                 </h4>
                 <p>{sound.category}</p>
+                </div>
+
                 <hr />
+
+                <div key={sound.hashtag} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
                   Hashtag
-                </h4> {sound.hashtag.map(tag => {
-                  return <article key={tag._id} className="hashtag">
+                </h4> {sound.hashtag.map((tag, index) => {
+                  return <article key={index} className="hashtag">
                     <div className="content">
                         <p className="subtitle">
                           #{tag}
@@ -101,11 +106,13 @@ function ShowSound() {
                     </div>  
                   </article>
               })}
+              </div>
                 <p>{sound.user.username}</p>
                 {
                   // Show our comments (lots of bulma)
                 }
                 <br />
+                <div key={sound.comments} className="column is-half">
                 {sound.comments && sound.comments.map(comment => {
                   return <article key={comment._id} className="media">
                     <div className="media-content">
@@ -121,11 +128,13 @@ function ShowSound() {
                     </div>
                   </article>
                 })}
+                </div>
 
                 {
                   //? Little form to POST a comment (again lots of bulma)
                 }
                 {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+                <div key={sound.username} className="column is-half">
                 {getLoggedInUserId() && <article className="media"> 
                   <div className="media-content">
                     <div className="field">
@@ -151,6 +160,7 @@ function ShowSound() {
                     </div>
                   </div>
                 </article>}
+                </div>
               </div>
             </div>
           </div>
