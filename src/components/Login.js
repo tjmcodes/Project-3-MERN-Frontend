@@ -26,7 +26,7 @@ export default function Login() {
       const { data } = await axios.post('/api/login', formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
-      navigate('/api/all-sounds')
+      navigate('/all-sounds')
     } catch (err) {
       console.log(err.response.data)
     }

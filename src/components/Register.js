@@ -42,7 +42,7 @@ export default function Register() {
     try {
       await axios.post('/api/register', formData)
       // ! Navigate to the /login page. 
-      navigate('/api/login')
+      navigate('/login')
 
     } catch (err) {
       // ! Print out the response from the backend if there's an error
