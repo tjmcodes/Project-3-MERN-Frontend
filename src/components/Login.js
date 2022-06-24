@@ -11,16 +11,16 @@ export default function Login() {
     email: "",
   })
 
-  function handleChange(e) {
-    const { name, value } = e.target
+  function handleChange(event) {
+    const { name, value } = event.target
     setFormData({
       ...formData,
       [name]: value,
     })
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  async function handleSubmit(event) {
+    event.preventDefault()
 
     try {
       const { data } = await axios.post('/api/login', formData)

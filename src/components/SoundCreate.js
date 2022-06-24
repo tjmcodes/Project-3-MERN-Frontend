@@ -40,11 +40,11 @@ const App = () => {
   }, [])
 
   // ! Function which updates the formData with the caption the user wants to upload.
-  function handleChange(e) {
-    updateInputValue(e.target.value)
+  function handleChange(event) {
+    updateInputValue(event.target.value)
     updateFormData({
       ...formData,
-      caption: e.target.value
+      caption: event.target.value
     })
   }
 

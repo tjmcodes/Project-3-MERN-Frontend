@@ -25,8 +25,8 @@ function ShowSound() {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, // Second argument is any headers or options.
       })
       navigate('/api/all-sounds')
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -43,8 +43,8 @@ function ShowSound() {
         }
       )
       setSound(data)
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
     }
   }
   return (

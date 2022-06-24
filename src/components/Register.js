@@ -21,10 +21,10 @@ export default function Register() {
     email: "",
   })
 
-  function handleChange(e) {
+  function handleChange(event) {
     // ! name: field you've typed in, e.g. the email input
     // ! value: the text that's in that field
-    const { name, value } = e.target
+    const { name, value } = event.target
     setFormData({
       ...formData, // ! This is whatever the form data was before, all it's fields.
       [name]: value, 
@@ -36,8 +36,8 @@ export default function Register() {
     })
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  async function handleSubmit(event) {
+    event.preventDefault()
 
     try {
       await axios.post('/api/register', formData)
