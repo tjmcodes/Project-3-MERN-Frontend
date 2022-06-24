@@ -1,4 +1,3 @@
-// this code is from Nick's code: image-upload-example
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
