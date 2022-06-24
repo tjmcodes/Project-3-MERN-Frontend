@@ -3,22 +3,32 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import 'bulma'
+import Select from 'react-select'
+import categoryType from '../data/categoryType.js'
+import hashtagfy from 'hashtagfy2'
+
 
 const App = () => {
-  const [imageDisplay, updateImageDisplay] = useState([])
+  const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
   const [inputValue, updateInputValue] = useState('')
+
+  const hashtag2 = hashtagfy('', { capitalize: false })
+  
   const [formData, updateFormData] = useState({
     caption: '',
-    url: 'https://i.imgur.com/xnUtYOd.jpg'
+    url: 'https://i.imgur.com/xnUtYOd.jpg',
+    categoryType: '',
+    hashtag: hashtag2
+
   })
 
   // ! Function to fetch all images in our API
-  async function fetchImages() {
+  async function fetchSound() {
     try {
-      const { data } = await axios.get('/api/imageUpload')
+      const { data } = await axios.get('/api/all-sounds')
       // ! reversing the data so that the newest images will appear first
-      updateImageDisplay(data.reverse())
+      updateSoundDisplay(data.reverse())
     } catch (err) {
       console.log(err)
     }
@@ -26,7 +36,7 @@ const App = () => {
   // fetchImages()
 
   useEffect(() => {
-    fetchImages()
+    fetchSound()
   }, [])
 
   // ! Function which updates the formData with the caption the user wants to upload.
@@ -64,10 +74,10 @@ const App = () => {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      const { data } = await axios.post('/api/imageUpload', formData)
+      const { data } = await axios.post('/api/all-sounds', formData)
       console.log(data)
       updateButton(!button)
-      fetchImages()
+      fetchSound()
     } catch (err) {
       console.log(err)
     }
@@ -80,37 +90,55 @@ const App = () => {
       {button === true ?
         <div className="container">
           <button className="button" onClick={() => updateButton(!button)}>Back</button>
-          <button className="button" onClick={handleUpload}>Click to upload an image</button>
+          <button className="button" onClick={handleUpload}>Click to upload your sound</button>
           <textarea
-            className="textarea is-primary"
+            className="textarea"
             placeholder='Your caption'
             onChange={handleChange}
             value={inputValue} />
+            
+          <div className="media"> 
+            
+            <Select
+              defaultValue={[]}
+              name="colors"
+              options={categoryType}
+              placeholder='Select category'
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(categoryType) => updateSoundDisplay({ ...formData, categoryType })}
+              value={formData.categoryType}
+            />
+            
+          </div>
+          <input
+                className="input"
+                type="text"
+                value={formData.hashtag}
+                onChange={handleChange}
+                name={hashtag2}
+              />
+
           <button className="button" onClick={handleSubmit}>Submit and return</button>
         </div>
         :
         <div>
-          <button className="button" onClick={() => updateButton(!button)}>Click here to post a image</button>
-          {imageDisplay.map(image => {
-            return <div key={image._id} className="column is-one-third-desktop is-half-tablet is-half-mobile">
+          <button className="button" onClick={() => updateButton(!button)}>Click here to post your sound</button>
+          {soundDisplay.map(sound => {
+            return <div key={sound._id} className="column is-one-third-desktop is-half-tablet is-half-mobile">
               <div className="card">
-                <div className="card-content">
-                  <div className="card-image">
-                    <figure className="image is-4by3">
-                      <img src={image.url} />
-                    </figure>
-                  </div>
+                
                   <div className="media">
                     <div className="media-content">
                       <p className="title is-4">
-                        {image.caption}
+                        {sound.caption}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-            </div>
+
           })}
         </div>
       }

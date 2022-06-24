@@ -56,12 +56,12 @@ function ShowSound() {
             <hr />
             <div className="columns">
               <div className="column is-half">
-                <figure className="image">
+                <figure className="audioFile">
                   {/* audio src needs to be the URL from cloudinary*/}
-                  <audio src={sound.audioFile}></audio> 
+                
                 </figure>
                 {/* // ? Only show the button if the sound was made by the user. */}
-                {/* Here we're calling it to check if the pokemon user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
+                {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
                 {isCreator(sound.user._id) && <button 
                   className="button is-danger"
@@ -70,25 +70,37 @@ function ShowSound() {
                   ☠️ Delete Sound
                 </button>}
               </div>
-              <div className="column is-half">
+                <div className="column is-half">
+                  <h4 className="title is-4">
+                    <span role="img" aria-label="plate">
+                    </span>{" "}
+                    Sound File
+                    <audio key={sound.audioFile} controls className="media">
+                      <source src={sound.audioFile} type="audio/wav"></source>  
+                    </audio>
+                  </h4>
+               
+                <hr />
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
-                  category
+                  Category
                 </h4>
                 <p>{sound.category}</p>
                 <hr />
-
-                <hr />
                 <h4 className="title is-4">
-                  <span role="img" aria-label="globe">
+                  <span role="img" aria-label="plate">
                   </span>{" "}
-                  sizeInBytes
-                </h4>
-                {/* <hr /> */}
-                <p>{sound.sizeInBytes}</p>
-                <hr />
-
+                  Hashtag
+                </h4> {sound.hashtag.map(tag => {
+                  return <article key={tag._id} className="hashtag">
+                    <div className="content">
+                        <p className="subtitle">
+                          #{tag}
+                        </p>
+                    </div>  
+                  </article>
+              })}
                 <p>{sound.user.username}</p>
                 {
                   // Show our comments (lots of bulma)

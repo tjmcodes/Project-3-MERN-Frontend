@@ -6,6 +6,7 @@ import SoundList from './components/SoundList.js'
 import Navbar from './components/Navbar'
 import SoundShow from './components/SoundShow.js'
 import Home from './components/Home.js'
+import SoundCreate from './components/SoundCreate.js'
 
 
 
@@ -20,6 +21,7 @@ function App() {
         {/*<Route path="/all-sounds" element={<AllSounds /> } />*/}
         <Route path="/all-sounds" element={<SoundList /> } />
         <Route path="/all-sounds/:soundId" element={<SoundShow /> } />
+        <Route path="/all-sounds/new-sounds" element={<SoundCreate /> } />
       </Routes>
     </Router>
   )

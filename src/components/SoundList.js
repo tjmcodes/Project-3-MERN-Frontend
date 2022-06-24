@@ -22,10 +22,29 @@ const SoundList = () => {
                 <div className="card-content">
                   <div className="media">
                     <div className="media-content">
-                      <p className="title is-4">{sound.fileName}</p>
-                      <p className="subtitle is-6">{'User Posted: ' + sound.user.username}</p>
-                      <p className="subtitle is-6">{'Category: ' + sound.category}</p>
-                      <p className="subtitle is-6">{'Hashtags: ' + sound.hashtag}</p>
+                      <h4 className="title is-4">
+                        <span role="img" aria-label="plate">
+                        </span>{" "}
+                        Sound File
+                        <audio key={sound.audioFile} controls className="media">
+                          <source src={sound.audioFile} type="audio/wav"></source>  
+                        </audio>
+                      </h4>
+                      <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
+                      <h5 className="subtitle is-5">Category: {sound.category}</h5>
+                      <h5 className="subtitle is-5">
+                  <span role="img" aria-label="plate">
+                  </span>{" "}
+                  Hashtags: {/* can we do a similar thing here with the show delete button if OP is true? We base this on if hashtags are present?  */}
+                </h5> {sound.hashtag.map(tag => {
+                  return <article key={tag._id} className="hashtag">
+                    <div className="content">
+                        <p className="subtitle">
+                          #{tag}
+                        </p>
+                    </div>  
+                  </article>
+              })}
                     </div>
                   </div>
                 </div>
@@ -33,6 +52,7 @@ const SoundList = () => {
                   <figure className="image is-4by3">
                     <img src={sound.user.image} alt={sound.user.username} />
                   </figure>
+                  <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
                 </div>
               </div>
             </Link>
