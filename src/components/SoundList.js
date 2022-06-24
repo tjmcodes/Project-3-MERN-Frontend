@@ -36,8 +36,8 @@ const SoundList = () => {
                   <span role="img" aria-label="plate">
                   </span>{" "}
                   Hashtags: {/* can we do a similar thing here with the show delete button if OP is true? We base this on if hashtags are present?  */}
-                </h5> {sound.hashtag.map(tag => {
-                  return <article key={tag._id} className="hashtag">
+                </h5> {sound.hashtag.map((tag, index) => {
+                  return <article key={index} className="hashtag">
                     <div className="content">
                         <p className="subtitle">
                           #{tag}
@@ -48,7 +48,7 @@ const SoundList = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card-image">
+                <div key={sound.user.image} className="card-image">
                   <figure className="image is-4by3">
                     <img src={sound.user.image} alt={sound.user.username} />
                   </figure>
