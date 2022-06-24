@@ -75,6 +75,10 @@ const App = () => {
     event.preventDefault()
     try {
       const { data } = await axios.post('/api/all-sounds', formData)
+      // const hashArray = formData.hashtag
+      // const hashobjects = hashArray.map((str, index) => ({ hashtag: hashtag str, id: index + 1 }));
+      // const { hashdata } = await axios.post('/api/hashtags', hashobjects)
+      // console.log(hashdata)
       console.log(data)
       updateButton(!button)
       fetchSound()
