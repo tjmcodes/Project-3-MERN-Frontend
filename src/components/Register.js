@@ -47,6 +47,7 @@ export default function Register() {
     } catch (err) {
       // ! Print out the response from the backend if there's an error
       console.log(err.response.data)
+      setErrors(err.response.data.errors)
     }
   }
 
