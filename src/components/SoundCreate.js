@@ -7,25 +7,28 @@ import Select from 'react-select'
 import categoryType from '../data/categoryType.js'
 import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 
 
-const App = () => {
+function SoundCreate() {
 
 
   const navigate = useNavigate()
 
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
-  const [inputValue, updateInputValue] = useState('')
+  // const [inputValue, updateInputValue] = useState('')
 
-  const hashtag2 = hashtagfy('', { capitalize: false })
+  // const hashtag2 = hashtagfy('', { capitalize: false })
   
   const [formData, setFormData] = useState({
+    fileName: '',
     caption: '',
-    url: 'https://i.imgur.com/xnUtYOd.jpg',
-    categoryType: [],
     hashtag: [],
+    category: '',
+    subCategory: '',
+    url: '',
 
   })
 
@@ -39,7 +42,7 @@ const App = () => {
       console.log(err)
     }
   }
-  // fetchImages()
+  
 
   useEffect(() => {
     fetchSound()
@@ -47,10 +50,10 @@ const App = () => {
 
   // ! Function which updates the formData with the caption the user wants to upload.
   function handleChange(event) {
-    updateInputValue(event.target.value)
-    setFormData({
-      ...formData,
-      caption: event.target.value
+    // updateInputValue(event.target.value)
+    setFormData({ 
+      ...formData, 
+      [event.target.name]: event.target.value,
     })
   }
 
@@ -83,24 +86,31 @@ const App = () => {
 
     // const newFormData = {
     //   ...formData,
-    //   types: formData.types.map(type => type.value),
+    //   fileName: '',
+    // caption: '',
+    // hashtag: [],
+    // category: '',
+    // subCategory: '',
+    // url: '',
+      
     // }
     // const hashArray = formData.hashtag
       // const hashobjects = hashArray.map((str, index) => ({ hashtag: hashtag str, id: index + 1 }));
       // const { hashdata } = await axios.post('/api/hashtags', hashobjects)
       // console.log(hashdata)
-
+    console.log(formData)
     try {
-      const { data } = await axios.post('/api/all-sounds/new-sounds', formData, {
+      const { data } = await axios.post('/api/all-sounds', formData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       
-      console.log(data)
+      console.log(data._id)
       updateButton(!button)
-      fetchSound()
+      navigate(`/all-sounds/${data._id}`)
+      // fetchSound()
       
     } catch (err) {
-      console.log(err)
+      console.log(err.response.data)
     }
   }
 
@@ -116,13 +126,15 @@ const App = () => {
             className="textarea"
             placeholder='Describe your sound here...'
             onChange={handleChange}
-            value={inputValue} />
+            value={formData.caption}
+            name="caption" 
+            />
             
           <div className="media"> 
             
             <Select
               defaultValue={[]}
-              name="colors"
+              name="category"
               placeholder='Select category'
               options={categoryType}
               className="basic-multi-select"
@@ -153,11 +165,45 @@ const App = () => {
               <div className="card">
                 
                   <div className="media">
+                  <Link to={`/all-sounds/${sound._id}`}>
+              <div className="card">
+                <div className="card-content">
+                  <div className="media">
                     <div className="media-content">
-                      <p className="title is-4">
-                        {sound.caption}
-                      </p>
+                      <h4 className="title is-4">
+                        <span role="img" aria-label="plate">
+                        </span>{" "}
+                        <audio key={sound.url} controls className="media">
+                          <source src={sound.url} type="audio/wav"></source>  
+                        </audio>
+                      </h4>
+                      <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
+                      <h5 className="subtitle is-5">Category: {sound.category}</h5>
+                      <h5 className="subtitle is-5">Sub-category: {sound.subCategory}</h5>
+                      <h5 className="subtitle is-5">
+                  <span role="img" aria-label="plate">
+                  </span>{" "}
+                  Hashtags: {/* can we do a similar thing here with the show delete button if OP is true? We base this on if hashtags are present?  */}
+                </h5> {sound.hashtag.map((tag, index) => {
+                  return <article key={index} className="hashtag">
+                    <div className="content">
+                        <p className="subtitle">
+                          #{tag}
+                        </p>
+                    </div>  
+                  </article>
+              })}
                     </div>
+                  </div>
+                </div>
+                <div key={sound.user.image} className="card-image">
+                  <figure className="image is-4by3">
+                    <img src={sound.user.image} alt={sound.user.username} />
+                  </figure>
+                  <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
+                </div>
+              </div>
+            </Link>
                   </div>
                 </div>
               </div>
@@ -171,4 +217,4 @@ const App = () => {
 }
 
 
-export default App
+export default SoundCreate

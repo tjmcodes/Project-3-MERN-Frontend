@@ -29,8 +29,8 @@ function HashtagSearchResult() {
                         <span role="img" aria-label="plate">
                         </span>{" "}
                         Sound File
-                        <audio key={sound.audioFile} controls className="media">
-                          <source src={sound.audioFile} type="audio/wav"></source>  
+                        <audio key={sound.url} controls className="media">
+                          <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                       </h4>
                       <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>

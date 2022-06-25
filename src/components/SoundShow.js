@@ -27,12 +27,14 @@ function ShowSound() {
       navigate('/all-sounds')
     } catch (err) {
       console.log(err)
+      console.log(sound)
     }
   }
 
-  console.log(sound)
 
   async function handleComment() {
+
+    console.log(sound._id)
     try {
       const { data } = await axios.post(
         `/api/all-sounds/${sound._id}/comments`, // First argument is the URL
@@ -43,8 +45,11 @@ function ShowSound() {
         }
       )
       setSound(data)
+      navigate(`/pokemon/${data._id}`)
+      console.log(data)
     } catch (err) {
       console.log(err)
+      console.log(sound)
     }
   }
   return (
@@ -75,8 +80,8 @@ function ShowSound() {
                     <span role="img" aria-label="plate">
                     </span>{" "}
                     Sound File
-                    <audio key={sound.audioFile} controls className="media">
-                      <source src={sound.audioFile} type="audio/wav"></source>  
+                    <audio key={sound.url} controls className="media">
+                      <source src={sound.url} type="audio/wav"></source>  
                     </audio>
                   </h4>
                

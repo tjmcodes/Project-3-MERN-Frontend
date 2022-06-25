@@ -13,7 +13,7 @@ export default function Register() {
     passwordConfirmation: "",
     email: "",
   })
-  // ! Errors function
+  // ! Errors fin state
   const [errors, setErrors] = useState({
     username: "",
     password: "",

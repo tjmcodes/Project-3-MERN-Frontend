@@ -27,13 +27,14 @@ const SoundList = () => {
                       <h4 className="title is-4">
                         <span role="img" aria-label="plate">
                         </span>{" "}
-                        Sound File
-                        <audio key={sound.audioFile} controls className="media">
-                          <source src={sound.audioFile} type="audio/wav"></source>  
+                      
+                        <audio key={sound.url} controls className="media">
+                          <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                       </h4>
                       <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
                       <h5 className="subtitle is-5">Category: {sound.category}</h5>
+                      <h5 className="subtitle is-5">Sub-category: {sound.subCategory}</h5>
                       <h5 className="subtitle is-5">
                   <span role="img" aria-label="plate">
                   </span>{" "}
