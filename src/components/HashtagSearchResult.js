@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import SearchBar from './searchBar'
-
-const SoundList = () => {
-  const [soundData, updateSoundData] = useState([])
-
-  useEffect(() => {
-    axios.get('/api/all-sounds')
-      .then(axiosResp => {
-        updateSoundData(axiosResp.data)
-      })
-  }, [])
-
-  return <section className="section">
-    <div className="container">
-      <SearchBar />
-      <div className="columns is-multiline is-mobile">
-        {soundData.map((sound, index) => {
+import React from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import {Link} from "react-router-dom"
+function HashtagSearchResult() {
+ 
+  const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
+  const { hashtag } = useParams()
+  
+  console.log(hashtag)
+  
+  React.useEffect(() => {
+  fetch(`/api/all-soundsbyhashtag?hashtag=${hashtag}`)
+      .then(resp => resp.json())
+      .then(data => setallMatchingSounds(data))
+}, [])
+  return (
+    allMatchingSounds ?
+  <>
+  <p>Posts matching #{hashtag}</p>
+  <div className="columns is-multiline is-mobile">
+        {allMatchingSounds.map((sound, index) => {
           return <div key={index} className="column is-one-third-desktop is-half-tablet is-half-mobile">
             <Link to={`/all-sounds/${sound._id}`}>
               <div className="card">
@@ -61,8 +62,8 @@ const SoundList = () => {
           </div>
         })}
       </div>
-    </div>
-  </section>
+  </> : <></>
+  )
 }
 
-export default SoundList
+export default HashtagSearchResult

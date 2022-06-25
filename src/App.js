@@ -7,6 +7,7 @@ import NavBar from './components/NavBar.js'
 import SoundShow from './components/SoundShow.js'
 import Home from './components/Home.js'
 import SoundCreate from './components/SoundCreate.js'
+import HashtagSearchResult from './components/HashtagSearchResult.js'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/all-sounds" element={<SoundList /> } />
         <Route path="/all-sounds/:soundId" element={<SoundShow /> } />
         <Route path="/all-sounds/new-sounds" element={<SoundCreate /> } />
+        <Route path="/hashtagsearchresults/:hashtag" element={<HashtagSearchResult /> } />
       </Routes>
     </Router>
   )

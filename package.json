@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.18.5",
     "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "axios": "^0.27.2",
+    "babel-loader": "^8.2.5",
     "bulma": "^0.9.4",
+    "dot-env": "^0.0.1",
     "eslint": "^8.7.0",
     "eslint-plugin-jsx": "^0.1.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "hashtagfy2": "^1.0.3",
+    "html-webpack-plugin": "^5.5.0",
     "http-proxy-middleware": "^2.0.6",
     "node.js": "^0.0.1-security",
     "react": "^17.0.2",
@@ -18,7 +24,10 @@
     "react-router-dom": "^6.3.0",
     "react-select": "^5.3.2",
     "sass": "^1.49.0",
-    "select": "^1.1.2"
+    "select": "^1.1.2",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
