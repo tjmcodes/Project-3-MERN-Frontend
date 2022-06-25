@@ -6,5 +6,5 @@ export default [
   { value: 'materials', label: 'Materials' },
   { value: 'ambience', label: 'Ambience' },
   { value: 'electric', label: 'Electric' },
-  { value: 'whistle', label: 'Whistle' },
+  { value: 'weather', label: 'Weather' },
 ]
