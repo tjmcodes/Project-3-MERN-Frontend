@@ -1,3 +1,4 @@
+// this code is from Nick's code: image-upload-example
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -5,20 +6,26 @@ import 'bulma'
 import Select from 'react-select'
 import categoryType from '../data/categoryType.js'
 import hashtagfy from 'hashtagfy2'
+import { useNavigate } from "react-router-dom"
+
 
 
 const App = () => {
+
+
+  const navigate = useNavigate()
+
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
   const [inputValue, updateInputValue] = useState('')
 
   const hashtag2 = hashtagfy('', { capitalize: false })
   
-  const [formData, updateFormData] = useState({
+  const [formData, setFormData] = useState({
     caption: '',
     url: 'https://i.imgur.com/xnUtYOd.jpg',
-    categoryType: '',
-    hashtag: hashtag2
+    categoryType: [],
+    hashtag: [],
 
   })
 
@@ -41,7 +48,7 @@ const App = () => {
   // ! Function which updates the formData with the caption the user wants to upload.
   function handleChange(event) {
     updateInputValue(event.target.value)
-    updateFormData({
+    setFormData({
       ...formData,
       caption: event.target.value
     })
@@ -60,7 +67,7 @@ const App = () => {
         if (result.event !== 'success') {
           return
         }
-        updateFormData({
+        setFormData({
           ...formData,
           url: result.info.secure_url
         })
@@ -72,11 +79,23 @@ const App = () => {
   // ! Will call the fetchImage function & take user back to images
   async function handleSubmit(event) {
     event.preventDefault()
+    const token = localStorage.getItem('token')
+
+    // const newFormData = {
+    //   ...formData,
+    //   types: formData.types.map(type => type.value),
+    // }
+
+
     try {
-      const { data } = await axios.post('/api/all-sounds', formData)
+      const { data } = await axios.post('/api/all-sounds/new-sounds', formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      
       console.log(data)
       updateButton(!button)
       fetchSound()
+      
     } catch (err) {
       console.log(err)
     }
@@ -92,7 +111,7 @@ const App = () => {
           <button className="button" onClick={handleUpload}>Click to upload your sound</button>
           <textarea
             className="textarea"
-            placeholder='Your caption'
+            placeholder='Describe your sound here...'
             onChange={handleChange}
             value={inputValue} />
             
@@ -101,23 +120,26 @@ const App = () => {
             <Select
               defaultValue={[]}
               name="colors"
-              options={categoryType}
               placeholder='Select category'
+              options={categoryType}
               className="basic-multi-select"
               classNamePrefix="select"
-              onChange={(categoryType) => updateSoundDisplay({ ...formData, categoryType })}
+              onChange={(categoryType) => setFormData({ ...formData, categoryType })}
               value={formData.categoryType}
             />
-            
-          </div>
-          <input
+
+              <input
                 className="input"
                 type="text"
-                value={formData.hashtag}
+                value={inputValue}
                 onChange={handleChange}
-                name={hashtag2}
+                name={formData.hashtag}
               />
 
+            
+          </div>
+          
+          
           <button className="button" onClick={handleSubmit}>Submit and return</button>
         </div>
         :
