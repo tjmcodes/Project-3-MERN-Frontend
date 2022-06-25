@@ -130,14 +130,14 @@ const App = () => {
               onChange={(categoryType) => setFormData({ ...formData, categoryType })}
               value={formData.categoryType}
             />
-
+{/* 
               <input
                 className="input"
                 type="text"
                 value={inputValue}
                 onChange={handleChange}
                 name={formData.hashtag}
-              />
+              /> */}
 
             
           </div>

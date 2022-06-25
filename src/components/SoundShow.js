@@ -24,7 +24,7 @@ function ShowSound() {
         // With Delete and Get you can't post information, so there are only two arguments
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, // Second argument is any headers or options.
       })
-      navigate('/api/all-sounds')
+      navigate('/all-sounds')
     } catch (err) {
       console.log(err)
     }
