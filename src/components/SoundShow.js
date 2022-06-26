@@ -20,7 +20,7 @@ function ShowSound() {
 
   async function handleDelete() {
     try {
-      await axios.delete(`/api/all-sounds/${sound._id}`, { // First argument is the URL
+      await axios.delete(`/api/all-sounds/${soundId}`, { // First argument is the URL
         // With Delete and Get you can't post information, so there are only two arguments
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, // Second argument is any headers or options.
       })
@@ -37,7 +37,7 @@ function ShowSound() {
     console.log(sound._id)
     try {
       const { data } = await axios.post(
-        `/api/all-sounds/${sound._id}/comments`, // First argument is the URL
+        `/api/all-sounds/${soundId}/comments`, // First argument is the URL
         // Below we are going to take the text inside of the comentContent and stick it in the content.
         { content: commentContent }, // IMPORTANT: When posting in axios the second argument is an object the thing you are posting. 
         {
@@ -45,7 +45,7 @@ function ShowSound() {
         }
       )
       setSound(data)
-      navigate(`/pokemon/${data._id}`)
+      navigate(`/all-sounds/${soundId}`)
       console.log(data)
     } catch (err) {
       console.log(err)
