@@ -3,22 +3,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import 'bulma'
-import Select from 'react-select'
-import categoryType from '../data/categoryType.js'
+
+
 import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
+import SubCategories from '../data/SubCategories.js'
 
 
 
 function SoundCreate() {
 
-
   const navigate = useNavigate()
 
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
-  // const [inputValue, updateInputValue] = useState('')
 
   // const hashtag2 = hashtagfy('', { capitalize: false })
   
@@ -29,14 +28,14 @@ function SoundCreate() {
     category: '',
     subCategory: '',
     url: '',
-
+  
   })
 
-  // ! Function to fetch all images in our API
+  // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
       const { data } = await axios.get('/api/all-sounds')
-      // ! reversing the data so that the newest images will appear first
+      // ! reversing the data so that the newest posts will appear first
       updateSoundDisplay(data.reverse())
     } catch (err) {
       console.log(err)
@@ -50,14 +49,13 @@ function SoundCreate() {
 
   // ! Function which updates the formData with the caption the user wants to upload.
   function handleChange(event) {
-    // updateInputValue(event.target.value)
     setFormData({ 
       ...formData, 
       [event.target.name]: event.target.value,
     })
   }
 
-  // ! Cloudinary image upload! This is will also update the formData with the url string for the photo
+  // ! Cloudinary upload! This is will also update the formData with the url string for the sound
   // ! to be uploaded
   function handleUpload() {
     window.cloudinary.createUploadWidget(
@@ -78,20 +76,10 @@ function SoundCreate() {
     ).open()
   }
 
-  // ! Function that submits our formData to our API.
-  // ! Will call the fetchImage function & take user back to images
+  // ! Function that submits our formData to our API and redirects users back to page with newly posted sound.
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-
-    // const newFormData = {
-    //   ...formData,
-    //   fileName: '',
-    // caption: '',
-    // hashtag: [],
-    // category: '',
-    // subCategory: '',
-    // url: '',
       
     // }
     // const hashArray = formData.hashtag
@@ -107,12 +95,14 @@ function SoundCreate() {
       console.log(data._id)
       updateButton(!button)
       navigate(`/all-sounds/${data._id}`)
-      // fetchSound()
+      fetchSound()
       
     } catch (err) {
       console.log(err.response.data)
     }
   }
+  
+  
 
   // ! using a tenary statement to either display the images or image upload  
   return <>
@@ -122,38 +112,44 @@ function SoundCreate() {
         <div className="container">
           <button className="button" onClick={() => updateButton(!button)}>Back</button>
           <button className="button" onClick={handleUpload}>Click to upload your sound</button>
+          
+          <div className="field">
+          <label className="label">Name of the track</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              name='fileName'
+              // ! Adding these 2 fields means your component is 'controlled'. This is good practice!
+              onChange={handleChange}
+              value={formData.fileName}
+            />
+          </div>
+          </div>
+
+          
           <textarea
             className="textarea"
             placeholder='Describe your sound here...'
+            name="caption" 
             onChange={handleChange}
             value={formData.caption}
-            name="caption" 
             />
             
-          <div className="media"> 
+          <SubCategories
+          onChange={(subCategory) => setFormData({ ...formData, subCategory })}
+          value={formData.subCategory}
+          />
             
-            <Select
-              defaultValue={[]}
-              name="category"
-              placeholder='Select category'
-              options={categoryType}
-              className="basic-multi-select"
-              classNamePrefix="select"
-              onChange={(categoryType) => setFormData({ ...formData, categoryType })}
-              value={formData.categoryType}
-            />
-{/* 
-              <input
-                className="input"
-                type="text"
-                value={inputValue}
-                onChange={handleChange}
-                name={formData.hashtag}
-              /> */}
-
-            
-          </div>
-          
+          <input
+            className="input"
+            type="text"
+            name="hashtag"
+            placeholder='hashtag'
+            onChange={handleChange}
+            value={formData.hashtag}
+          />  
+    
           
           <button className="button" onClick={handleSubmit}>Submit and return</button>
         </div>
@@ -171,8 +167,7 @@ function SoundCreate() {
                   <div className="media">
                     <div className="media-content">
                       <h4 className="title is-4">
-                        <span role="img" aria-label="plate">
-                        </span>{" "}
+        
                         <audio key={sound.url} controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
