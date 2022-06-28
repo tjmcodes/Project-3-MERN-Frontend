@@ -13,6 +13,3 @@ function Home() {
 }
 
 export default Home
-
-
-// git flow test
