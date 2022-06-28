@@ -11,6 +11,7 @@ import SubCategories from '../data/SubCategories.js'
 function SoundCreate() {
 
   const navigate = useNavigate()
+  
 
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
@@ -26,6 +27,12 @@ function SoundCreate() {
     url: '',
   
   })
+
+  /** "selected" here is state variable which will hold the
+  * value of currently selected dropdown.
+  */
+  const [selected, setSelected] = React.useState( 
+  { subCategory: '', category: '' } );
 
   // gets all sounds that have been created / posted
   async function fetchSound() {
@@ -51,6 +58,8 @@ function SoundCreate() {
     })
   }
 
+  //any functions that you can get (find option in bucket) --> uploadWidget (check documentation)
+
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
@@ -74,7 +83,12 @@ function SoundCreate() {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-      
+     
+    // gets all forms first, and then ...selected will overwrite existing
+    const newFormData = {
+      ...formData,
+      ...selected
+    }
     // }
     // const hashArray = formData.hashtag
       // const hashobjects = hashArray.map((str, index) => ({ hashtag: hashtag str, id: index + 1 }));
@@ -82,7 +96,7 @@ function SoundCreate() {
       // console.log(hashdata)
     console.log(formData)
     try {
-      const { data } = await axios.post('/api/all-sounds', formData, {
+      const { data } = await axios.post('/api/all-sounds', newFormData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       
@@ -128,9 +142,11 @@ function SoundCreate() {
             value={formData.caption}
             />
             
-          <SubCategories
-          onChange={(subCategory) => setFormData({ ...formData, subCategory })}
-          value={formData.subCategory}
+          <SubCategories 
+            selected = {selected} 
+            setSelected = {setSelected}
+            onChange={(subCategory) => setFormData({ ...formData, subCategory })}
+            value={formData.subCategory}
           />
             
           <input

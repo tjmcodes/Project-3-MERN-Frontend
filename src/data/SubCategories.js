@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
 
-const SubCategories = () => {
-/** "selected" here is state variable which will hold the
-* value of currently selected dropdown.
-*/
-const [selected, setSelected] = React.useState("");
+const SubCategories = ({ selected, setSelected }) => {
+
 
 /** Function that will set different values to state variable
 * based on which dropdown is selected
 */
 
-const [formData, setFormData] = useState({
-  category: '',
-  subCategory: '',
-})
-
 const changeSelectOptionHandler = (event) => {
-  setFormData({
-    ...formData
-    [event.target.name] = event.target.value,
-  })
-	setSelected(event.target.value);
+	setSelected({ category: event.target.value, subCategory: '' });
 };
+const changeSecondSelectOptionHandler = (event) => {
+	setSelected({ ...selected, subCategory: event.target.value });
+};
+
+console.log(selected.category)
+console.log(selected.subCategory)
 
 /** Different arrays for different dropdowns */
 const nature = [
@@ -88,21 +82,21 @@ let type = null;
 let options = null;
 
 /** Setting Type variable according to dropdown */
-if (selected === "Nature") {
+if (selected.category === "Nature") {
 	type = nature;
-} else if (selected === "Human") {
+} else if (selected.category === "Human") {
 	type = human;
-} else if (selected === "Machines") {
+} else if (selected.category === "Machines") {
 	type = machines;
-} else if (selected === "Animals") {
+} else if (selected.category === "Animals") {
 	type = animals;
-} else if (selected === "Materials") {
+} else if (selected.category === "Materials") {
 	type = materials;
-} else if (selected === "Ambience") {
+} else if (selected.category === "Ambience") {
 	type = ambience;
-} else if (selected === "Electric") {
+} else if (selected.category === "Electric") {
 	type = electric;
-} else if (selected === "Weather") {
+} else if (selected.category === "Weather") {
 	type = weather;
 }
 
@@ -110,8 +104,10 @@ if (selected === "Nature") {
 * otherwise it will create a options iterable based on our array
 */
 if (type) {
-	options = type.map((el) => <option key={el}>{el}</option>);
+	options = type.map((element) => <option key={element}>{element}</option>);
 }
+console.log(options)
+
 return (
 	<div className="container">
 	<form>
@@ -133,8 +129,7 @@ return (
 		</select>
 		</div>
 		<div>
-		<select className='input'>
-			Choose sub-category
+		<select className='input' onChange={changeSecondSelectOptionHandler}>
         {
 			/** This is where we have used our options variable */
 			options
