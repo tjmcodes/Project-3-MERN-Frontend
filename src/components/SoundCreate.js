@@ -5,7 +5,7 @@ import axios from 'axios'
 import 'bulma'
 
 
-import hashtagfy from 'hashtagfy2'
+// import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'

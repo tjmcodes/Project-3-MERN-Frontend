@@ -52,6 +52,8 @@ export default function Register() {
   }
 
   console.log(formData)
+  
+
   return <div className="section">
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -111,5 +113,6 @@ export default function Register() {
         <button className="button">Submit</button>
       </form>
     </div>
+
   </div>
 }
