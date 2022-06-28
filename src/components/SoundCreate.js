@@ -1,10 +1,6 @@
-// this code is from Nick's code: image-upload-example
-
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import 'bulma'
-
-
 // import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
@@ -35,7 +31,7 @@ function SoundCreate() {
   async function fetchSound() {
     try {
       const { data } = await axios.get('/api/all-sounds')
-      // ! reversing the data so that the newest posts will appear first
+      // reversing the data so that the newest posts will appear first
       updateSoundDisplay(data.reverse())
     } catch (err) {
       console.log(err)
@@ -47,7 +43,7 @@ function SoundCreate() {
     fetchSound()
   }, [])
 
-  // ! Function which updates the formData with the caption the user wants to upload.
+  // Function which updates the formData with the caption the user wants to upload.
   function handleChange(event) {
     setFormData({ 
       ...formData, 
@@ -55,13 +51,11 @@ function SoundCreate() {
     })
   }
 
-  // ! Cloudinary upload! This is will also update the formData with the url string for the sound
-  // ! to be uploaded
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
-        uploadPreset: 'ejbxzzti', //!this will be your upload presets - this should be in your .env
+        cloudName: 'tjmcodes',
+        uploadPreset: 'ejbxzzti', 
         cropping: true
       },
       (err, result) => {
@@ -76,7 +70,7 @@ function SoundCreate() {
     ).open()
   }
 
-  // ! Function that submits our formData to our API and redirects users back to page with newly posted sound.
+  // Submits our formData to our API and redirects users back to page with newly posted sound.
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
@@ -104,7 +98,6 @@ function SoundCreate() {
   
   
 
-  // ! using a tenary statement to either display the images or image upload  
   return <>
     <div>
       <h1 className="title">CloudGram</h1>
@@ -120,7 +113,6 @@ function SoundCreate() {
               className="input"
               type="text"
               name='fileName'
-              // ! Adding these 2 fields means your component is 'controlled'. This is good practice!
               onChange={handleChange}
               value={formData.fileName}
             />

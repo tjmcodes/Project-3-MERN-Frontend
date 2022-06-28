@@ -6,7 +6,6 @@ import axios from 'axios'
 
 function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
-  // Using useState for comments
   const [commentContent, setCommentContent] = React.useState('')
   const { soundId } = useParams()
   const navigate = useNavigate()
@@ -20,9 +19,8 @@ function ShowSound() {
 
   async function handleDelete() {
     try {
-      await axios.delete(`/api/all-sounds/${soundId}`, { // First argument is the URL
-        // With Delete and Get you can't post information, so there are only two arguments
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, // Second argument is any headers or options.
+      await axios.delete(`/api/all-sounds/${soundId}`, { 
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
       })
       navigate('/all-sounds')
     } catch (err) {
@@ -38,11 +36,10 @@ function ShowSound() {
     try {
 
       const { data } = await axios.post(
-        `/api/all-sounds/${soundId}/comments`, // First argument is the URL
-        // Below we are going to take the text inside of the comentContent and stick it in the content.
-        { content: commentContent }, // IMPORTANT: When posting in axios the second argument is an object the thing you are posting. 
+        `/api/all-sounds/${soundId}/comments`, 
+        { content: commentContent },
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, // Third argument is any headers or options.
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
         }
       )
       setSound(data)
@@ -82,7 +79,6 @@ function ShowSound() {
                       <source src={sound.url} type="audio/wav"></source>  
                     </audio>
                   </h4>
-               
                 <hr />
                 <div key={sound.category} className="column is-half">
                 <h4 className="title is-4">
@@ -104,7 +100,6 @@ function ShowSound() {
                 </div>
 
                 <hr />
-               
                 <div key={sound.user._id} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
@@ -115,7 +110,6 @@ function ShowSound() {
                 </div>
 
                 <hr />
-             
                 <div key={sound.updatedAt} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
@@ -140,11 +134,11 @@ function ShowSound() {
                         </p>
                     </div>  
                   </article>
-               })}
+                })}
                 </div>
                 
                 {
-                  // Show our comments (lots of bulma)
+                  
                 }
                 <br />
                 <div className="container">
@@ -183,7 +177,6 @@ function ShowSound() {
                         <textarea
                           className="textarea"
                           placeholder="Make a comment.."
-                          // ! Set the comment's content to be what's in the input textarea.
                           onChange={(event) => setCommentContent(event.target.value)}
                         >
                         </textarea>
