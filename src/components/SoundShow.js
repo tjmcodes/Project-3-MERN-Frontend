@@ -9,7 +9,13 @@ function ShowSound() {
   const [commentContent, setCommentContent] = React.useState('')
   const { soundId } = useParams()
   const navigate = useNavigate()
-  console.log(getLoggedInUserId())
+  const [user, setUser] = React.useState('')
+  React.useEffect(() => {
+    const getuser = getLoggedInUserId()
+    setUser(getuser)
+  }, [])
+  
+  console.log(user)
   
   React.useEffect(() => {
     fetch(`/api/all-sounds/${soundId}`)
@@ -65,12 +71,18 @@ function ShowSound() {
                   {/* // ? Only show the button if the sound was made by the user. */}
                   {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                   {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                  {isCreator(sound._id) && <button
+                  {sound && (user === (sound.user._id)) ? <button
                     className="button is-danger"
-                    onClick={handleDelete}
-                  >
+                    onClick={handleDelete}>
                     ☠️ Delete Sound
-                  </button>}
+                  </button> : null}
+                  <div class="modal">
+                    <div class="modal-background"></div>
+                      <div class="modal-content">
+                        <p>this is a bulma modal</p>
+                      </div>
+                      <button class="modal-close is-large" aria-label="close"></button>
+                      </div>
                 </div>
                   <div key={sound._id} className="column is-half">
                     <h4 className="title is-4">
