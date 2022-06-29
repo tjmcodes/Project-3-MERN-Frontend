@@ -63,13 +63,17 @@ function SoundCreate() {
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: 'tjmcodes',
-        uploadPreset: 'ejbxzzti', 
-        cropping: true
+        cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
+        uploadPreset: 'user_sound', //!this will be your upload presets - this should be in your .env
+        folder: 'my_found_sounds',
+        cropping: true,
+        clientAllowedFormats: ['mp3', 'ogg', 'wav'],
+        maxFileSize: 1048576, 
       },
-      (err, result) => {
-        if (result.event !== 'success') {
-          return
+
+      (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log('Done! Here is the image info: ', result.info); 
         }
         setFormData({
           ...formData,
