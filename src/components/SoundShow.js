@@ -1,12 +1,14 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { isCreator, getLoggedInUserId } from '../lib/auth.js'
+import {  getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
 import NavBar from "./NavBar.js"
+import styles from "./soundShow.module.css"
 
 function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
   const [commentContent, setCommentContent] = React.useState('')
+  const [toggleDeleteConfirmation, setToggleDeleteConfirmation] = React.useState(false)
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
@@ -28,13 +30,21 @@ function ShowSound() {
       await axios.delete(`/api/all-sounds/${soundId}`, { 
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
       })
-      navigate('/all-sounds')
+      setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+
+      setTimeout(function() {
+        navigate('/all-sounds')
+      }, 4000);
+      
     } catch (err) {
       console.log(err)
       console.log(sound)
     }
   }
 
+function toggleModal() {
+  setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+}
   
 
   async function handleComment() {
@@ -71,19 +81,21 @@ function ShowSound() {
                   {/* // ? Only show the button if the sound was made by the user. */}
                   {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                   {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                  {sound && (user === (sound.user._id)) ? <button
-                    className="button is-danger"
-                    onClick={handleDelete}>
-                    ☠️ Delete Sound
-                  </button> : null}
-                  <div class="modal">
-                    <div class="modal-background"></div>
-                      <div class="modal-content">
-                        <p>this is a bulma modal</p>
-                      </div>
-                      <button class="modal-close is-large" aria-label="close"></button>
-                      </div>
-                </div>
+                  {sound && (user === (sound.user._id)) ? <button className="button is-danger" onClick={toggleModal}>
+                    Open JS example modal
+                    </button> : null}
+                  { toggleDeleteConfirmation &&  
+                  <div className={styles.modal}>
+                    <div className={styles.modalcontent}>
+                      <h2 className="is-size-2 has-text-centered">Are you sure you want to delete this sound?</h2>
+                      <p className="is-size-4 has-text-centered">This action cannot be undone</p>
+                    <div className="is-size-2 has-text-centered">
+                      <button onClick={handleDelete} className="button is-danger">Delete sound</button>
+                      <button onClick={toggleModal} className="button is-primary">Return to Sound</button>
+                    </div>
+                  </div>
+                  </div>}
+                  </div>
                   <div key={sound._id} className="column is-half">
                     <h4 className="title is-4">
                       <span role="img" aria-label="plate">
@@ -223,4 +235,3 @@ function ShowSound() {
 }
 
 export default ShowSound
-
