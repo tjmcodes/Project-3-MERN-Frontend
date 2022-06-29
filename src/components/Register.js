@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import logo from '../assets/OneWeb_Logo.png'
 
 function Register() {
   // ! Using react router to navigate
   const navigate = useNavigate()
   const [button, updateButton] = useState(false)
-
   // ! Put our form fields in state.
   const [formData, setFormData] = useState({
     username: "",
@@ -24,7 +24,6 @@ function Register() {
     email: "",
     image: "",
   })
-
   function handleChange(event) {
     // ! name: field you've typed in, e.g. the email input
     // ! value: the text that's in that field
@@ -33,13 +32,11 @@ function Register() {
       ...formData, // ! This is whatever the form data was before, all it's fields.
       [name]: value, 
     })
-
     setErrors({
       ...errors,
       [name]: '',
     })
   }
-
   // ! Cloudinary upload! This is will also update the formData with the url string for the sound
   // ! to be uploaded
   function handleUpload() {
@@ -65,16 +62,13 @@ function Register() {
       ).open()
     }
     console.log(setFormData.url)
-
   async function handleSubmit(event) {
     event.preventDefault()
-
     try {
       await axios.post('/api/register', formData)
       // ! Navigate to the /login page. 
       updateButton(!button)
       navigate('/login')
-
     } catch (err) {
       // ! Print out the response from the backend if there's an error
       console.log(err.response.data)
@@ -82,11 +76,13 @@ function Register() {
       setErrors(err.response.data.errors)
     }
   }
-
   console.log(formData)
-  return <div className="section">
-    <div className="container">
-      <form onSubmit={handleSubmit}>
+  return <div className="register-page">
+    <div className="column is-half is-offset-one-quarter" id="register">
+      <form onSubmit={handleSubmit} className="hero ip-5 is-rounded">
+      <div className=" logo mb-4 pb-2" >
+        <img src={logo} alt="logo" width="130px"  />
+      </div>
       <div className="field">
         <label className="label">Username</label>
         <div className="control">
@@ -140,13 +136,15 @@ function Register() {
           {errors.passwordConfirmation && <small className="has-text-danger">{errors.passwordConfirmation}</small>}
         </div>
       </div>
-      <div className="field">
-        <button className="button" onClick={handleUpload}>Click to upload profile picture </button>          
+      <div>
+        <button className="button is-info has-text-weight-bold" onClick={handleUpload}>Click to upload profile picture</button>          
       </div>
-      <button className="button" onClick={handleSubmit}>Submit</button>
+      <div>
+      <button className="button is-danger has-text-weight-bold mt-3 " onClick={handleSubmit}>Submit</button>
+      </div>
+      
       </form>
     </div>
   </div>
 }
-
 export default Register

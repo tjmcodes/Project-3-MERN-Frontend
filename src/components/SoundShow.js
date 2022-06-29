@@ -100,7 +100,7 @@ function ShowSound() {
                 </div>
 
                 <hr />
-                <div key={sound.user._id} className="column is-half">
+                <div key={sound.user.username} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
@@ -169,7 +169,7 @@ function ShowSound() {
                   //? Little form to POST a comment (again lots of bulma)
                 }
                 {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                <div key={sound.username} className="column is-half">
+                <div key={sound.user._id} className="column is-half">
                 {getLoggedInUserId() && <article className="media"> 
                   <div className="media-content">
                     <div className="field">

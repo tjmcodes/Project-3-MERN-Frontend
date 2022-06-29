@@ -66,15 +66,14 @@ function SoundCreate() {
         cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
         uploadPreset: 'user_sound', //!this will be your upload presets - this should be in your .env
         folder: 'my_found_sounds',
-        cropping: true,
         clientAllowedFormats: ['mp3', 'ogg', 'wav'],
         maxFileSize: 1048576, 
       },
 
-      (error, result) => { 
-        if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info); 
-        }
+      (err, result) => {
+        if (result.event !== 'success') {
+          return
+        } console.log(result)
         setFormData({
           ...formData,
           url: result.info.secure_url
@@ -179,7 +178,7 @@ function SoundCreate() {
                   <div className="media">
                     <div className="media-content">
                       <h4 className="title is-4">
-        
+                        <img src={sound.thumbnail_url}></img>
                         <audio key={sound.url} controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
