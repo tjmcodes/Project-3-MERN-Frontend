@@ -9,6 +9,7 @@ function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
   const [commentContent, setCommentContent] = React.useState('')
   const [toggleDeleteConfirmation, setToggleDeleteConfirmation] = React.useState(false)
+  const [deletedMessage, setdeletedMessage] =React.useState(false)
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
@@ -31,10 +32,11 @@ function ShowSound() {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
       })
       setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+      setdeletedMessage(!deletedMessage)
 
       setTimeout(function() {
         navigate('/all-sounds')
-      }, 4000);
+      }, 1500);
       
     } catch (err) {
       console.log(err)
@@ -82,7 +84,7 @@ function toggleModal() {
                   {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                   {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
                   {sound && (user === (sound.user._id)) ? <button className="button is-danger" onClick={toggleModal}>
-                    Open JS example modal
+                    Delete sound
                     </button> : null}
                   { toggleDeleteConfirmation &&  
                   <div className={styles.modal}>
@@ -90,10 +92,17 @@ function toggleModal() {
                       <h2 className="is-size-2 has-text-centered">Are you sure you want to delete this sound?</h2>
                       <p className="is-size-4 has-text-centered">This action cannot be undone</p>
                     <div className="is-size-2 has-text-centered">
-                      <button onClick={handleDelete} className="button is-danger">Delete sound</button>
-                      <button onClick={toggleModal} className="button is-primary">Return to Sound</button>
+                      <button onClick={handleDelete} className="button is-danger m-4">Delete sound</button>
+                      <button onClick={toggleModal} className="button is-primary m-4">Return to Sound</button>
                     </div>
                   </div>
+                  </div>}
+                  {deletedMessage && 
+                  <div className={styles.modal}>
+                    <div className={styles.modalcontent}>
+                      <h2 className="is-size-2 has-text-centered">Your sound has been deleted</h2>
+                      <p className="is-size-4 has-text-centered">redirecting you back to all sounds</p>
+                    </div>
                   </div>}
                   </div>
                   <div key={sound._id} className="column is-half">
