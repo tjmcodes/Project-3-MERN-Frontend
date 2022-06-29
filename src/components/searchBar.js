@@ -1,5 +1,4 @@
 import React from "react"
-import styles from "./searchBar.module.css"
 import { Link } from "react-router-dom"
 import axios from 'axios'
 function SearchBar() {
@@ -24,16 +23,16 @@ function SearchBar() {
 
 })}
 
-  return <div className={styles.SearchBarcomponant}>
+  return <div className="SearchBarcomponant">
   <div >
-    <input type="text" className={styles.searchbar} onChange={getHashtag} placeholder="Search by Hashtag"></input>
+    <input type="text" className="searchbar" onChange={getHashtag} placeholder="Search by Hashtag"></input>
   </div>  
-    <div className={styles.resultsContainer}>
+    <div className="resultsContainer">
       {hashtagdata ? hashtagdata.map((hash, index) => {
         return <div key={index}>
           <Link to={`/hashtagsearchresults/${hash.hashtag}`} state={hashtag.hashtag} style={{ textDecoration: "none" }}>
-            <div className={styles.name_container}>
-              <h3 className={styles.name}>{`#${hash.hashtag}`}</h3>
+            <div className="name_container">
+              <h3 className="name">{`#${hash.hashtag}`}</h3>
             </div>
           </Link>
         </div>
