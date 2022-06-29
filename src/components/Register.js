@@ -3,17 +3,20 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Register() {
+  // ! Using react router to navigate
   const navigate = useNavigate()
   const [button, updateButton] = useState(false)
 
+  // ! Put our form fields in state.
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     passwordConfirmation: "",
     email: "",
     image: "",
+    url: 'https://i.imgur.com/xnUtYOd.jpg'
   })
-  
+  // ! Errors in state
   const [errors, setErrors] = useState({
     username: "",
     password: "",
@@ -23,9 +26,11 @@ function Register() {
   })
 
   function handleChange(event) {
-        const { name, value } = event.target
+    // ! name: field you've typed in, e.g. the email input
+    // ! value: the text that's in that field
+    const { name, value } = event.target
     setFormData({
-      ...formData,
+      ...formData, // ! This is whatever the form data was before, all it's fields.
       [name]: value, 
     })
 
@@ -35,13 +40,18 @@ function Register() {
     })
   }
 
-  //  Cloudinary upload! This will also update the formData with the url string for the sound to be uploaded 
+  // ! Cloudinary upload! This is will also update the formData with the url string for the sound
+  // ! to be uploaded
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: 'tjmcodes', // your Cloudinary name in .env file
-        uploadPreset: 'ejbxzzti', // Upload preset code from Cloudinary - this goes in your .env
+        cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
+        uploadPreset: 'user_profile_pics', //!this will be your upload presets - this should be in your .env
+        folder: 'my_found_sounds_pics',
         cropping: true,
+        placeholderImage: true,
+        clientAllowedFormats: ['JPG', 'PNG', 'GIF', 'BMP', 'TIFF', 'ICO', 'PDF', 'EPS', 'PSD', 'SVG', 'WebP', 'JXR', 'WDP'],
+        maxFileSize: 1048576, 
       },
       (err, result) => {
         if (result.event !== 'success') {
@@ -52,19 +62,21 @@ function Register() {
           url: result.info.secure_url,
         })
       }
-    ).open()
-  }
+      ).open()
+    }
+    console.log(setFormData.url)
 
   async function handleSubmit(event) {
     event.preventDefault()
 
     try {
       await axios.post('/api/register', formData)
+      // ! Navigate to the /login page. 
       updateButton(!button)
       navigate('/login')
 
     } catch (err) {
-      // Console log responses from the backend to check for errors.
+      // ! Print out the response from the backend if there's an error
       console.log(err.response.data)
       console.log(formData.username)
       setErrors(err.response.data.errors)
@@ -74,7 +86,7 @@ function Register() {
   console.log(formData)
   return <div className="section">
     <div className="container">
-      {/* <form onSubmit={handleSubmit}> */}
+      <form onSubmit={handleSubmit}>
       <div className="field">
         <label className="label">Username</label>
         <div className="control">
@@ -82,7 +94,7 @@ function Register() {
             className="input"
             type="text"
             name={'username'} 
-            //  Adding these 2 fields below means your component is 'controlled'. This means they don't get out of sync with React.
+            // ! Adding these 2 fields means your component is 'controlled'. This is good practice!
             value={formData.username}
             onChange={handleChange}
           />
@@ -132,7 +144,7 @@ function Register() {
         <button className="button" onClick={handleUpload}>Click to upload profile picture </button>          
       </div>
       <button className="button" onClick={handleSubmit}>Submit</button>
-      {/* </form> */}
+      </form>
     </div>
   </div>
 }
