@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
-
+import Hashtag from '../data/Hashtag.js'
 
 
 function SoundCreate() {
@@ -35,6 +35,10 @@ function SoundCreate() {
   const [selected, setSelected] = React.useState( 
   { subCategory: '', category: '' } );
 
+  const [hashdata, sethashdata] = React.useState(
+    {hashtag: "abc"}
+  )
+
   // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
@@ -56,6 +60,7 @@ function SoundCreate() {
     setFormData({ 
       ...formData, 
       [event.target.name]: event.target.value,
+      //hashtag: event.target.value.split(",")
     })
   }
 
@@ -87,11 +92,13 @@ function SoundCreate() {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-     
     // gets all forms first, and then ...selected will overwrite existing
     const newFormData = {
       ...formData,
-      ...selected
+      ...selected,
+      ...hashdata,
+      // hashtag: event.target.value.split(","),
+      
     }
     // }
     // const hashArray = formData.hashtag
@@ -153,13 +160,11 @@ function SoundCreate() {
             onChange={(subCategory) => setFormData({ ...formData, subCategory })}
             value={formData.subCategory}
           />
-            
-          <input
-            className="input"
-            type="text"
-            name="hashtag"
-            placeholder='hashtag'
-            onChange={handleChange}
+          
+          <Hashtag
+            hashdata = {hashdata}
+            sethashdata = {sethashdata}
+            onChange={(hashtag) => setFormData({ ...formData,hashtag})}
             value={formData.hashtag}
           />  
     
@@ -180,7 +185,7 @@ function SoundCreate() {
                   <div className="media">
                     <div className="media-content">
                       <h4 className="title is-4">
-                        <img src={sound.thumbnail_url}></img>
+                        {/* <img src={sound.thumbnail_url}></img> */}
                         <audio key={sound.url} controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
