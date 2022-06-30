@@ -8,6 +8,27 @@
   padding: 0;
 }
 
+.card {
+
+
+}
+
+.profile {
+  .avatar {
+display: flex;
+  }
+
+  .username{
+
+  }
+
+  .avatar {
+
+    
+  }
+
+}
+
 section {
   margin: 0;
   background-color: $primary-color;            
@@ -79,23 +100,32 @@ section {
   z-index: 1;
 }
 
-.modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+// SoundShow -- Comments Section 
+
+.commentsContainer {
+  background-color: $background-color;
 }
 
-/* Modal Content/Box */
+.Comments-content {
+  background-color: $background-color;
+}
+ 
+.modal {
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+}
+
 .modalcontent {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto; 
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border: 0.5px solid #888;
+  width: 80%;
 }

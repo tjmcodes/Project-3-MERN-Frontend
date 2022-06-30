@@ -79,7 +79,7 @@ function toggleModal() {
 
           //card for showing sound posted:
           
-          <div key={sound} className="card">
+            <div key={sound} className="profile">
 
                 <hr />
                 <div key={sound.user.username} className="username">
@@ -94,9 +94,11 @@ function toggleModal() {
                 {/* Need to fix cloudinary avatar image call from their API*/}
                 <div key={sound.user.image} className="avatar">
                 <img src={sound.user.image} alt="avatar"></img>
-                {/* {console.log(sound.user.image)} */}
+                
+                {console.log(sound.user)}
                 </div>
           
+              <div key={sound} className="card">
                 <hr />
 
                 <div key={sound} className="sound-title">
@@ -162,8 +164,8 @@ function toggleModal() {
                         {/* <span role="img" aria-label="plate">
                         </span>{" "} */}
                       
-                         {/* <img source src={sound.image.toString()} alt="wavfile">
-                        </img>  */}
+                      <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img> 
                         {/* <video src={sound.url} controls className="media" type="video">
                         </video> */}
                         <audio controls className="media">
@@ -202,14 +204,12 @@ function toggleModal() {
                 </div>
 
                 <hr />
-
-                <div className="comments">
-                <h4 className="title is-4">
-                  <span role="img" aria-label="plate">
-                  </span>{" "}
-                  Comments
-                </h4> 
-                <div key={sound.comments} className="content">
+              </div>
+            </div>
+          </div>
+         <div className="commentsContainer">
+                <h4 className="title is-4">Comments</h4> 
+                <div key={sound.comments} className="Comments-content">
                 {sound.comments && sound.comments.map(comment => {
                   return <article key={comment.user.username} className="media">
                       <div className="media-content">
@@ -260,8 +260,6 @@ function toggleModal() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
           ) : (
             <p>...loading</p>
           )}

@@ -13,8 +13,8 @@ function Register() {
     password: "",
     passwordConfirmation: "",
     email: "",
-    image: "",
-    url: 'https://i.imgur.com/xnUtYOd.jpg'
+    image: "https://i.imgur.com/xnUtYOd.jpg",
+    // url: 'https://i.imgur.com/xnUtYOd.jpg'
   })
   // ! Errors in state
   const [errors, setErrors] = useState({
@@ -56,12 +56,14 @@ function Register() {
         }
         setFormData({
           ...formData,
-          url: result.info.secure_url,
+          image: result.info.url,
         })
+        console.log(result.info.url)
       }
       ).open()
     }
     console.log(setFormData.url)
+    
   async function handleSubmit(event) {
     event.preventDefault()
     try {
@@ -137,13 +139,15 @@ function Register() {
         </div>
       </div>
       <div>
-        <button className="button is-info has-text-weight-bold" onClick={handleUpload}>Click to upload profile picture</button>          
-      </div>
-      <div>
-      <button className="button is-danger has-text-weight-bold mt-3 " onClick={handleSubmit}>Submit</button>
+      <button type="submit" className="button is-danger has-text-weight-bold mt-3 " onClick={handleSubmit}>Submit</button>
       </div>
       
       </form>
+
+      <div>
+        <button className="button is-info has-text-weight-bold" onClick={handleUpload}>Click to upload profile picture</button>          
+      </div>
+      
     </div>
   </div>
 }
