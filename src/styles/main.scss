@@ -1,9 +1,6 @@
-$font-stack: Arial, ;
-$text-color: #000000;
-$background-color: #ffffff;
-$primary-color: #1114e6;
-$secondary-color: #ff005f;
-
+@import 'variables';
+// @import 'mixins';
+@import 'card';
 
 * {
   box-sizing: border-box;
@@ -11,9 +8,12 @@ $secondary-color: #ff005f;
   padding: 0;
 }
 
-body {
-  
+section {
+  margin: 0;
+  background-color: $primary-color;            
 }
+  
+
 
 .container {
   max-width:110;

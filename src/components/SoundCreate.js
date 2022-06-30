@@ -39,9 +39,9 @@ function SoundCreate() {
   // const [selectedUrls, setSelectedUrls] = React.useState( 
   // { url: '', image: '' } );
 
-  const [hashdata, sethashdata] = React.useState(
-    {hashtag: "abc"}
-  )
+  // const [hashdata, sethashdata] = React.useState(
+  //   {hashtag: "abc"}
+  // )
 
   // gets all sounds that have been created / posted
   async function fetchSound() {
@@ -102,7 +102,7 @@ function SoundCreate() {
       ...formData,
       ...selected,
       // ...selectedUrls
-      ...hashdata,
+      // ...hashdata,
       // hashtag: event.target.value.split(","),
       
     }
@@ -167,12 +167,12 @@ function SoundCreate() {
             value={formData.subCategory}
           />
           
-          <Hashtag
+          {/* <Hashtag
             hashdata = {hashdata}
             sethashdata = {sethashdata}
             onChange={(hashtag) => setFormData({ ...formData,hashtag})}
             value={formData.hashtag}
-          />  
+          />   */}
     
           
           <button className="button" onClick={handleSubmit}>Submit and return</button>
