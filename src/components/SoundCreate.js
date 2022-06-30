@@ -55,7 +55,7 @@ function SoundCreate() {
   function handleChange(event) {
     setFormData({ 
       ...formData, 
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.name === "hashtag" ? event.target.value.split(",") : event.target.value
     })
   }
 
