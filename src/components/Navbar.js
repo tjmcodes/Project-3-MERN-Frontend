@@ -7,18 +7,15 @@ const NavBar = () => {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
+            
             <Link to="/all-sounds" className="button is-dark">
               <strong>All Sound</strong>
             </Link>
-            <Link to="/register" className="button is-light">
-              Register
-            </Link>
-            <Link to="/login" className="button is-light">
-              Login
-            </Link>
+            
             <Link to='/all-sounds/new-sounds' className="button is-light">
-              New Sounds
+              Upload Your Sound
             </Link>
+
           </div>
         </div>
       </div>

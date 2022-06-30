@@ -1,4 +1,4 @@
-* {
+/* * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
@@ -9,9 +9,9 @@
   max-width: 110;
   padding: 0;
   margin: 0;
-}
+} */
 
-.my-video {
+/* .my-video {
   width: 100vw;
   height: 100vh;
   -o-object-fit: cover;
@@ -49,9 +49,9 @@
   margin: 5px 2%;
   padding-top: 15px;
   border-bottom: silver 0.5px solid;
-}
+} */
 
-.name {
+/* .name {
   font-weight: 300;
   font-size: 20px;
   color: black;
@@ -65,28 +65,6 @@
   margin-left: 5%;
   position: absolute;
   z-index: 1;
-}
+} */
 /*# sourceMappingURL=main.css.map */
-
-
-.modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modalcontent {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
 

@@ -28,6 +28,8 @@ const ProfileList = () => {
                       <span role="img" aria-label="plate">
                       </span>{" "}
                     
+                      <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img> 
                       <audio key={sound.url} controls className="media">
                         <source src={sound.url} type="audio/wav"></source>  
                       </audio>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SearchBar from './searchBar'
-import NavBar from './NavBar'
+import NavBar from './NavBar.js'
 
 
 const SoundList = () => {
@@ -32,8 +32,8 @@ const SoundList = () => {
                         <span role="img" aria-label="plate">
                         </span>{" "}
                       
-                         {/* <img source src={sound.image.toString()} alt="wavfile">
-                        </img>  */}
+                        <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img>  
                         {/* <video src={sound.url} controls className="media" type="video">
                         </video> */}
                         <audio controls className="media">

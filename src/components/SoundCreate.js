@@ -39,9 +39,9 @@ function SoundCreate() {
   // const [selectedUrls, setSelectedUrls] = React.useState( 
   // { url: '', image: '' } );
 
-  const [hashdata, sethashdata] = React.useState(
-    {hashtag: "abc"}
-  )
+  // const [hashdata, sethashdata] = React.useState(
+  //   {hashtag: "abc"}
+  // )
 
   // gets all sounds that have been created / posted
   async function fetchSound() {
@@ -86,8 +86,8 @@ function SoundCreate() {
         } console.log(result)
         setFormData({
           ...formData,
-          url: result.info.secure_url,
-          // image: result.info.thumbnail_url,
+          url: result.info.url,
+          
         })
       }
     ).open()
@@ -167,22 +167,13 @@ function SoundCreate() {
             value={formData.subCategory}
           />
           
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              name='fileName'
-              onChange={handleChange}
-              value={formData.fileName}
-            />
-          </div>
           {/* <Hashtag
             hashdata = {hashdata}
             sethashdata = {sethashdata}
             onChange={(hashtag) => setFormData({ ...formData,hashtag})}
             value={formData.hashtag}
-          />  
-     */}
+          />   */}
+    
           
           <button className="button" onClick={handleSubmit}>Submit and return</button>
         </div>
@@ -203,8 +194,8 @@ function SoundCreate() {
                         <span role="img" aria-label="plate">
                         </span>{" "}
                       
-                        {/* <img source src={sound.image.toString()} alt="wavfile">
-                        </img>  */}
+                        <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img> 
                         {/* <video src={sound.url} controls className="media" type="video">
                         </video> */}
                         <audio controls className="media">
