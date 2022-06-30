@@ -7,6 +7,9 @@ import NavBar from './components/NavBar.js'
 import SoundShow from './components/SoundShow.js'
 import SoundCreate from './components/SoundCreate.js'
 import HashtagSearchResult from './components/HashtagSearchResult.js'
+import ProfileList from './components/ProfileList.js'
+import SingleUserId from './components/SingleUserId.js'
+
 
 
 
@@ -17,6 +20,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register /> } />
+        <Route path="/all-users/profileList" element={<ProfileList/> } />
+        <Route path="/oneUser/:singleUserId" element={<SingleUserId/> } />
         {/*<Route path="/all-sounds" element={<AllSounds /> } />*/}
         <Route path="/all-sounds" element={<SoundList /> } />
         <Route path="/all-sounds/:soundId" element={<SoundShow /> } />
