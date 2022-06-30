@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SearchBar from './searchBar'
-import NavBar from './NavBar'
+import NavBar from './NavBar.js'
 
 
 const SoundList = () => {
