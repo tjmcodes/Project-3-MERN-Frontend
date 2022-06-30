@@ -24,6 +24,7 @@ function ShowSound() {
     fetch(`/api/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
+      
   }, [soundId])
 
   async function handleDelete() {
@@ -61,6 +62,7 @@ function toggleModal() {
         }
       )
       setSound(data)
+      console.log(sound)
       navigate(`/all-sounds/${data._id}`)
       // navigate(`/all-sounds/${soundId}`)
       console.log(data)
@@ -75,7 +77,7 @@ function toggleModal() {
     <section className="section">
       <div className="container">
         {sound ? (
-          <div key={sound.fileName}>
+          <div>
             <h2 className="title has-text-centered">{sound.fileName}</h2>
             <hr />
             <div className="columns">
@@ -104,7 +106,7 @@ function toggleModal() {
                       <p className="is-size-4 has-text-centered">redirecting you back to all sounds</p>
                     </div>
                   </div>}
-                <div key={sound.url} className="column is-half">
+                <div className="column is-half">
                 <h4 className="title is-4">
                         <span role="img" aria-label="plate">
                         </span>{" "}
@@ -120,7 +122,7 @@ function toggleModal() {
                       </h4>
                 <hr />
                 
-                <div key={sound.category} className="column is-half">
+                <div className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
@@ -140,7 +142,7 @@ function toggleModal() {
                 </div>
 
                 <hr />
-                <div key={sound.user.username} className="column is-half">
+                <div className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
@@ -183,8 +185,8 @@ function toggleModal() {
                   </span>{" "}
                   Comments
                 </h4> 
-                <div key={sound.comments} className="column is-half">
-                {sound.comments && sound.comments.map(comment => {
+                <div>
+                { sound.comments.map(comment => {
                   return <article key={comment._id} className="media">
                       <div className="media-content">
                         <div className="content">
@@ -199,7 +201,7 @@ function toggleModal() {
                       </div>
                     </article>
                   })}
-                  </div>
+                  </div> 
   
                   {
                     //? Little form to POST a comment (again lots of bulma)

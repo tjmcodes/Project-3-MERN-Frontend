@@ -102,7 +102,7 @@ function SoundCreate() {
       ...formData,
       ...selected,
       // ...selectedUrls
-      ...hashdata,
+      // ...hashdata,
       // hashtag: event.target.value.split(","),
       
     }
@@ -167,13 +167,22 @@ function SoundCreate() {
             value={formData.subCategory}
           />
           
-          <Hashtag
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              name='fileName'
+              onChange={handleChange}
+              value={formData.fileName}
+            />
+          </div>
+          {/* <Hashtag
             hashdata = {hashdata}
             sethashdata = {sethashdata}
             onChange={(hashtag) => setFormData({ ...formData,hashtag})}
             value={formData.hashtag}
           />  
-    
+     */}
           
           <button className="button" onClick={handleSubmit}>Submit and return</button>
         </div>
