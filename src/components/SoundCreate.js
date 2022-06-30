@@ -36,13 +36,6 @@ function SoundCreate() {
   const [selected, setSelected] = React.useState( 
   { subCategory: '', category: '' } );
   
-  // const [selectedUrls, setSelectedUrls] = React.useState( 
-  // { url: '', image: '' } );
-
-  // const [hashdata, sethashdata] = React.useState(
-  //   {hashtag: "abc"}
-  // )
-
   // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
@@ -63,8 +56,7 @@ function SoundCreate() {
   function handleChange(event) {
     setFormData({ 
       ...formData, 
-      [event.target.name]: event.target.value,
-      //hashtag: event.target.value.split(",")
+      [event.target.name]: event.target.name === "hashtag" ? event.target.value.split(",") : event.target.value
     })
   }
 
@@ -101,16 +93,10 @@ function SoundCreate() {
     const newFormData = {
       ...formData,
       ...selected,
-      // ...selectedUrls
-      // ...hashdata,
-      // hashtag: event.target.value.split(","),
+
       
     }
-    // }
-    // const hashArray = formData.hashtag
-      // const hashobjects = hashArray.map((str, index) => ({ hashtag: hashtag str, id: index + 1 }));
-      // const { hashdata } = await axios.post('/api/hashtags', hashobjects)
-      // console.log(hashdata)
+  
     console.log(formData)
     try {
       const { data } = await axios.post('/api/all-sounds', newFormData, {
@@ -167,12 +153,13 @@ function SoundCreate() {
             value={formData.subCategory}
           />
           
-          {/* <Hashtag
-            hashdata = {hashdata}
-            sethashdata = {sethashdata}
-            onChange={(hashtag) => setFormData({ ...formData,hashtag})}
-            value={formData.hashtag}
-          />   */}
+          <input
+              className="input"
+              type="text"
+              name='hashtag'
+              onChange={handleChange}
+              value={formData.hashtag}
+            />
     
           
           <button className="button" onClick={handleSubmit}>Submit and return</button>
