@@ -5,6 +5,7 @@ import 'bulma'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
+import NavBar from './NavBar.js'
 
 
 
@@ -123,6 +124,7 @@ function SoundCreate() {
 
   return <>
     <div>
+      <NavBar />
       <h1 className="title">CloudGram</h1>
       {button === true ?
         <div className="container">

@@ -2,7 +2,7 @@ import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { isCreator, getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
-
+import NavBar from "./NavBar.js"
 
 function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
@@ -52,6 +52,8 @@ function ShowSound() {
     }
   }
   return (
+    <div>
+      <NavBar />
     <section className="section">
       <div className="container">
         {sound ? (
@@ -156,61 +158,62 @@ function ShowSound() {
                 </h4> 
                 <div key={sound.comments} className="column is-half">
                 {sound.comments && sound.comments.map(comment => {
-                  return <article key={comment._id} className="media">
+                    return <article key={comment._id} className="media">
+                      <div className="media-content">
+                        <div className="content">
+                          <p className="subtitle">
+                            {comment.createdAt}
+                          </p>
+                          <p className="subtitle">
+                            {comment.user.username}
+                          </p>
+                          <p>{comment.content}</p>
+                        </div>
+                      </div>
+                    </article>
+                  })}
+                  </div>
+  
+                  {
+                    //? Little form to POST a comment (again lots of bulma)
+                  }
+                  {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+                  <div key={sound.user._id} className="column is-half">
+                  {getLoggedInUserId() && <article className="media">
                     <div className="media-content">
-                      <div className="content">
-                        <p className="subtitle">
-                          {comment.createdAt}
+                      <div className="field">
+                        <p className="control">
+                          <textarea
+                            className="textarea"
+                            placeholder="Make a comment.."
+                            onChange={(event) => setCommentContent(event.target.value)}
+                          >
+                          </textarea>
                         </p>
-                        <p className="subtitle">
-                          {comment.user.username}
+                      </div>
+                      <div className="field">
+                        <p className="control">
+                          <button
+                            className="button is-info"
+                            onClick={handleComment}
+                          >
+                            Submit
+                          </button>
                         </p>
-                        <p>{comment.content}</p>
                       </div>
                     </div>
-                  </article>
-                })}
-                </div>
-
-                {
-                  //? Little form to POST a comment (again lots of bulma)
-                }
-                {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                <div key={sound.user._id} className="column is-half">
-                {getLoggedInUserId() && <article className="media"> 
-                  <div className="media-content">
-                    <div className="field">
-                      <p className="control">
-                        <textarea
-                          className="textarea"
-                          placeholder="Make a comment.."
-                          onChange={(event) => setCommentContent(event.target.value)}
-                        >
-                        </textarea>
-                      </p>
-                    </div>
-                    <div className="field">
-                      <p className="control">
-                        <button
-                          className="button is-info"
-                          onClick={handleComment}
-                        >
-                          Submit
-                        </button>
-                      </p>
-                    </div>
+                  </article>}
                   </div>
-                </article>}
                 </div>
               </div>
             </div>
           </div>
+          ) : (
+            <p>...loading</p>
+          )}
         </div>
-        ) : (
-          <p>...loading</p>
-        )}
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

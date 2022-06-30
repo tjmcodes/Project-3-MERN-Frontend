@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SearchBar from './searchBar'
+import NavBar from './NavBar'
+
 
 const SoundList = () => {
   const [soundData, updateSoundData] = useState([])
@@ -13,7 +15,9 @@ const SoundList = () => {
       })
   }, [])
 
-  return <section className="section">
+  return <div>
+    <NavBar />
+  <section className="section">
     <div className="container">
       <SearchBar />
       <div className="columns is-multiline is-mobile">
@@ -52,22 +56,23 @@ const SoundList = () => {
                     </div>  
                   </article>
               })}
+                      </div>
                     </div>
                   </div>
+                  <div key={sound.user.image} className="card-image">
+                    <figure className="image is-4by3">
+                      <img src={sound.user.image} alt={sound.user.username} />
+                    </figure>
+                    <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
+                  </div>
                 </div>
-                <div key={sound.user.image} className="card-image">
-                  <figure className="image is-4by3">
-                    <img src={sound.user.image} alt={sound.user.username} />
-                  </figure>
-                  <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
-                </div>
-              </div>
-            </Link>
-          </div>
-        })}
+              </Link>
+            </div>
+          })}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 }
 
 export default SoundList
