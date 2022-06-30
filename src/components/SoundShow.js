@@ -1,15 +1,24 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { isCreator, getLoggedInUserId } from '../lib/auth.js'
+import {  getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
 import NavBar from "./NavBar.js"
+import styles from "./soundShow.module.css"
 
 function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
   const [commentContent, setCommentContent] = React.useState('')
+  const [toggleDeleteConfirmation, setToggleDeleteConfirmation] = React.useState(false)
+  const [deletedMessage, setdeletedMessage] =React.useState(false)
   const { soundId } = useParams()
   const navigate = useNavigate()
-  console.log(getLoggedInUserId())
+  const [user, setUser] = React.useState('')
+  React.useEffect(() => {
+    const getuser = getLoggedInUserId()
+    setUser(getuser)
+  }, [])
+  
+  console.log(user)
   
   React.useEffect(() => {
     fetch(`/api/all-sounds/${soundId}`)
@@ -22,13 +31,22 @@ function ShowSound() {
       await axios.delete(`/api/all-sounds/${soundId}`, { 
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
       })
-      navigate('/all-sounds')
+      setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+      setdeletedMessage(!deletedMessage)
+
+      setTimeout(function() {
+        navigate('/all-sounds')
+      }, 1500);
+      
     } catch (err) {
       console.log(err)
       console.log(sound)
     }
   }
 
+function toggleModal() {
+  setToggleDeleteConfirmation(!toggleDeleteConfirmation)
+}
   
 
   async function handleComment() {
@@ -65,14 +83,27 @@ function ShowSound() {
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                {isCreator(sound.user._id) && <button 
-                  className="button is-danger"
-                  onClick={handleDelete}
-                >
-                  ☠️ Delete Sound
-                </button>}
-              
-              </div>
+                {sound && (user === (sound.user._id)) ? <button className="button is-danger" onClick={toggleModal}>
+                    Delete sound
+                    </button> : null}
+                  { toggleDeleteConfirmation &&  
+                  <div className={styles.modal}>
+                    <div className={styles.modalcontent}>
+                      <h2 className="is-size-2 has-text-centered">Are you sure you want to delete this sound?</h2>
+                      <p className="is-size-4 has-text-centered">This action cannot be undone</p>
+                    <div className="is-size-2 has-text-centered">
+                      <button onClick={handleDelete} className="button is-danger m-4">Delete sound</button>
+                      <button onClick={toggleModal} className="button is-primary m-4">Return to Sound</button>
+                    </div>
+                  </div>
+                  </div>}
+                  {deletedMessage && 
+                  <div className={styles.modal}>
+                    <div className={styles.modalcontent}>
+                      <h2 className="is-size-2 has-text-centered">Your sound has been deleted</h2>
+                      <p className="is-size-4 has-text-centered">redirecting you back to all sounds</p>
+                    </div>
+                  </div>}
                 <div key={sound.url} className="column is-half">
                 <h4 className="title is-4">
                         <span role="img" aria-label="plate">
@@ -145,10 +176,6 @@ function ShowSound() {
                   </article>
                 })}
                 </div>
-                
-                {
-                  
-                }
                 <br />
                 <div className="container">
                 <h4 className="title is-4">
@@ -158,7 +185,7 @@ function ShowSound() {
                 </h4> 
                 <div key={sound.comments} className="column is-half">
                 {sound.comments && sound.comments.map(comment => {
-                    return <article key={comment._id} className="media">
+                  return <article key={comment._id} className="media">
                       <div className="media-content">
                         <div className="content">
                           <p className="subtitle">
@@ -208,14 +235,15 @@ function ShowSound() {
               </div>
             </div>
           </div>
+          </div>
           ) : (
             <p>...loading</p>
           )}
         </div>
+  
       </section>
     </div>
   )
 }
 
 export default ShowSound
-

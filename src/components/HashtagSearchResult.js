@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import {Link} from "react-router-dom"
-function HashtagSearchResult() {
+function HashtagSearchResult(sethashdata, hashdata) {
  
   const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
   const { hashtag } = useParams()

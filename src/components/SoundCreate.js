@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
-
+import Hashtag from '../data/Hashtag.js'
 
 
 function SoundCreate() {
@@ -39,6 +39,10 @@ function SoundCreate() {
   // const [selectedUrls, setSelectedUrls] = React.useState( 
   // { url: '', image: '' } );
 
+  const [hashdata, sethashdata] = React.useState(
+    {hashtag: "abc"}
+  )
+
   // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
@@ -60,6 +64,7 @@ function SoundCreate() {
     setFormData({ 
       ...formData, 
       [event.target.name]: event.target.value,
+      //hashtag: event.target.value.split(",")
     })
   }
 
@@ -92,12 +97,14 @@ function SoundCreate() {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-     
     // gets all forms first, and then ...selected will overwrite existing
     const newFormData = {
       ...formData,
       ...selected,
       // ...selectedUrls
+      ...hashdata,
+      // hashtag: event.target.value.split(","),
+      
     }
     // }
     // const hashArray = formData.hashtag
@@ -159,13 +166,11 @@ function SoundCreate() {
             onChange={(subCategory) => setFormData({ ...formData, subCategory })}
             value={formData.subCategory}
           />
-            
-          <input
-            className="input"
-            type="text"
-            name="hashtag"
-            placeholder='hashtag'
-            onChange={handleChange}
+          
+          <Hashtag
+            hashdata = {hashdata}
+            sethashdata = {sethashdata}
+            onChange={(hashtag) => setFormData({ ...formData,hashtag})}
             value={formData.hashtag}
           />  
     
