@@ -63,23 +63,30 @@ function ShowSound() {
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                {isCreator(sound._id) && <button 
+                {isCreator(sound.user._id) && <button 
                   className="button is-danger"
                   onClick={handleDelete}
                 >
                   ☠️ Delete Sound
                 </button>}
+              
               </div>
-                <div key={sound._id} className="column is-half">
-                  <h4 className="title is-4">
-                    <span role="img" aria-label="plate">
-                    </span>{" "}
-                    Sound File
-                    <audio key={sound.url} controls className="media">
-                      <source src={sound.url} type="audio/wav"></source>  
-                    </audio>
-                  </h4>
+                <div key={sound.url} className="column is-half">
+                <h4 className="title is-4">
+                        <span role="img" aria-label="plate">
+                        </span>{" "}
+                      
+                         {/* <img source src={sound.image.toString()} alt="wavfile">
+                        </img>  */}
+                        {/* <video src={sound.url} controls className="media" type="video">
+                        </video> */}
+                        <audio controls className="media">
+                          <source src={sound.url} type="audio/wav"></source>  
+                        </audio>
+                        
+                      </h4>
                 <hr />
+                
                 <div key={sound.category} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
@@ -90,7 +97,7 @@ function ShowSound() {
                 </div>
 
                 <hr />
-                <div key={sound.subCategory} className="column is-half">
+                <div className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}
@@ -110,7 +117,7 @@ function ShowSound() {
                 </div>
 
                 <hr />
-                <div key={sound.updatedAt} className="column is-half">
+                <div key={sound.createdAt} className="column is-half">
                 <h4 className="title is-4">
                   <span role="img" aria-label="plate">
                   </span>{" "}

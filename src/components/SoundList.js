@@ -28,7 +28,11 @@ const SoundList = () => {
                         <span role="img" aria-label="plate">
                         </span>{" "}
                       
-                        <audio key={sound.url} controls className="media">
+                         {/* <img source src={sound.image.toString()} alt="wavfile">
+                        </img>  */}
+                        {/* <video src={sound.url} controls className="media" type="video">
+                        </video> */}
+                        <audio controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                       </h4>

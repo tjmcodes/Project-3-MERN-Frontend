@@ -25,6 +25,7 @@ function SoundCreate() {
     category: '',
     subCategory: '',
     url: '',
+    image: '',
   
   })
 
@@ -33,6 +34,9 @@ function SoundCreate() {
   */
   const [selected, setSelected] = React.useState( 
   { subCategory: '', category: '' } );
+  
+  // const [selectedUrls, setSelectedUrls] = React.useState( 
+  // { url: '', image: '' } );
 
   // gets all sounds that have been created / posted
   async function fetchSound() {
@@ -64,7 +68,7 @@ function SoundCreate() {
     window.cloudinary.createUploadWidget(
       {
         cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
-        uploadPreset: 'user_sound', //!this will be your upload presets - this should be in your .env
+        uploadPreset: 'user_sound_preset', //!this will be your upload presets - this should be in your .env
         folder: 'my_found_sounds',
         clientAllowedFormats: ['mp3', 'ogg', 'wav'],
         maxFileSize: 1048576, 
@@ -76,7 +80,8 @@ function SoundCreate() {
         } console.log(result)
         setFormData({
           ...formData,
-          url: result.info.secure_url
+          url: result.info.secure_url,
+          // image: result.info.thumbnail_url,
         })
       }
     ).open()
@@ -90,7 +95,8 @@ function SoundCreate() {
     // gets all forms first, and then ...selected will overwrite existing
     const newFormData = {
       ...formData,
-      ...selected
+      ...selected,
+      // ...selectedUrls
     }
     // }
     // const hashArray = formData.hashtag
@@ -177,12 +183,22 @@ function SoundCreate() {
                 <div className="card-content">
                   <div className="media">
                     <div className="media-content">
-                      <h4 className="title is-4">
-                        <img src={sound.thumbnail_url}></img>
-                        <audio key={sound.url} controls className="media">
+                    <h4 className="title is-4">
+                        <span role="img" aria-label="plate">
+                        </span>{" "}
+                      
+                        {/* <img source src={sound.image.toString()} alt="wavfile">
+                        </img>  */}
+                        {/* <video src={sound.url} controls className="media" type="video">
+                        </video> */}
+                        <audio controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
+                          {console.log(sound.url)}
+                          {console.log(sound.image)}
+
                       </h4>
+                        
                       <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
                       <h5 className="subtitle is-5">Category: {sound.category}</h5>
                       <h5 className="subtitle is-5">Sub-category: {sound.subCategory}</h5>
