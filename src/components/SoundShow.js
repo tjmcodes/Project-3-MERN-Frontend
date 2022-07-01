@@ -71,8 +71,6 @@ function toggleModal() {
       )
       setSound(data)
       console.log(sound)
-      const textarea = document.getElementById("comment-text")
-      textarea.value = ""
       navigate(`/all-sounds/${data._id}`)
       // navigate(`/all-sounds/${soundId}`)
       console.log(data)
@@ -111,7 +109,6 @@ function toggleModal() {
                   </div>
                 </div>
                 
-                 
                 
 
                 
@@ -221,6 +218,8 @@ function toggleModal() {
                             
                           </p>
                         <div className="comment-box">
+
+                          <div className="user-text">
                           <p>{comment.content}</p>
                           
                           <br />  
@@ -229,6 +228,7 @@ function toggleModal() {
                           <br />
                           {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
                           </span>
+                          </div>
                           
                         </div>
                       </div>
@@ -244,8 +244,8 @@ function toggleModal() {
                   {getLoggedInUserId() && <article className="media">
                     <div className="media-content-comment-box">
                       <div className="field">
-                          <textarea
-                            id="comment-text"
+                          <textarea 
+                            maxLength={110}
                             className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}
