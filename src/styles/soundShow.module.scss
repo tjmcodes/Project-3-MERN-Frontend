@@ -1,5 +1,411 @@
 @import 'variables';
 
+@import 'variables';
+// @import 'mixins';
+@import 'card';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: $font-stack;
+  color: $text-color;
+}
+
+
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 0 10px; // change size of whole 'card'
+}
+
+.profile {
+  background-color: rgba(255, 0, 123, 0.414);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 100%;
+  order: 1;
+  text-transform: capitalize;
+  
+
+  .username {
+    display: flex;
+    justify-content: center;
+  }
+
+    .avatar {
+      display: flex;
+      flex-direction: row;
+      
+      
+    }
+
+    img {
+      width: 100px;
+      padding: 10px;
+      border-radius: 100px;
+    }
+
+      p {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+      }    
+}
+
+.hashtags {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  
+    margin: 0px;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    .hashtag {
+      align-items: flex-end;
+      text-transform: lowercase
+    }
+}
+
+// .card-avatar {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: flex-end;
+//   flex: 1 100%;
+
+//   div.card {
+//     flex: 1 100%;
+//     order: 1;
+
+//   }
+
+      
+// }
+
+
+
+.banner {
+  width: 83%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.783);
+  padding: 5px;
+  
+}
+
+.audiocontainer {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.tracktitle {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  font-size: xx-large;
+  text-transform: capitalize;
+}
+
+
+.categories {
+  h2.title.is-2 {
+    margin-bottom: 0px;
+  }
+  
+  span, p {
+    font-size: smaller;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+  }
+  
+  
+}
+
+
+.audioMedia {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  justify-content: center;
+  max-height: 100vh;
+
+}
+
+
+audio.media {
+  // display: block;
+  justify-content: center;
+  height: 52px;
+  padding: 0;
+  width: 100%;
+  background-color: #1114e6;
+}
+
+
+  
+
+.deletepost {
+  margin: 0px 80%; 
+ 
+    .buttondelete {
+      width: 100px;
+    background-color: $secondary-color;
+    color:white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+}
+
+
+// SoundShow -- Comments Section 
+
+
+.commentsContainer {
+  background-color: rgba(255, 0, 123, 0.414);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  max-width: 100vw;
+  border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
+  padding: 0px;
+  border-width: 1px;
+}
+
+h4 {
+  padding: 5px;
+  font-size: large;
+  text-decoration: underline;
+  text-transform: capitalize;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0px;
+}
+
+
+.commentsContent {
+  max-width: 100%;
+  background-color: rgba(0, 0, 255, 0.415);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  
+}
+
+.commentTextarea {
+  // display: flex;
+  height: 100px;
+  text-align: center;
+  // width:80%;
+  // margin: 0 10%;
+  
+}
+
+.commentMedia {
+  background-color: $background-color;
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  // width :70%;
+  // flex: 1, 100px;
+  margin: 10px 15%;
+  // border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
+
+  
+  .commentavatar {
+    background-color: rgba(255, 6, 89, 0.434);
+    display: flex; 
+    // flex: 1;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-around;
+    text-transform: capitalize;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  .username {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+    // .avatar {
+    //   display: flex;
+    //   flex-direction: row;
+      
+    // }
+  
+  .imgavatar {
+      max-width: 10vw;
+      padding: 10px;
+      border-radius: 100px;
+  }
+  
+    
+  
+    
+}
+.commentbox {
+  display: flex;
+  flex-direction: row;
+
+}
+.usertext {
+  display: flex;
+  flex-direction: column;
+  // border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
+  margin: 5px;  
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 5px;
+    
+    p {
+      padding: 0px;
+      // font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      align-self: flex-start;
+      margin-bottom: 25px;
+      
+    }
+
+    span {
+      font-size: 11px;
+    }
+  }
+
+  // p {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   padding: 5px 10px;
+  // }  
+
+
+
+.mediaContentCommentbox {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  
+  .buttonSubmitComment {
+ 
+    max-width: 100vw;
+    margin: 0px 10%;
+    background-color: $primary-color;
+    color:white;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+  }
+}
+  
+  
+
+
+.lastcommentbox {
+  // width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 10px;
+  
+
+  .commentTextarea {
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-around;
+      max-width: 100vw;
+      border-radius: 5px;
+  }
+  
+}
+
+
+
+.buttondelete {
+  // width: 80%;
+  display: flex;
+  align-content: flex-end;
+  margin: 0px 10%;
+  background-color: $secondary-color;
+  color:white;
+  padding: 10px;
+  border:none;
+}
+
+
+
+// Delete Modal styling
+.modal {
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modalcontent {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 0.5px solid #888;
+  width: 80%;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+
+  .card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+
+    img {
+      // width: 10px;
+      padding: 0px;
+      border-radius: 100px;
+    }
+
+      // p {
+      //   display: flex;
+      //   align-items: center;
+      //   padding: 5px 10px;
+      // }    
+}
+
+.container {
+  width: 100px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
 
 
 .modal {

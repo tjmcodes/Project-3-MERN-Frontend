@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import styles from '../styles/Login.module.scss'
 
 
 import shareVideo from '../assets/share.mp4'
@@ -47,7 +48,7 @@ export default function Login() {
           loop
           muted
           autoPlay
-          className="my-video"
+          className={styles.myVideo}
         />
       </div>
     
@@ -89,7 +90,7 @@ export default function Login() {
       </div>
 
   
-      <div className="my-google mt-2">
+      {/* <div className="my-google mt-2">
         <GoogleLogin 
           clientId = {`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
           render = {(renderProps) => (
@@ -103,7 +104,8 @@ export default function Login() {
             </button>
             )}
           />
-      </div>
+      </div> */}
+
       <div className="register mt-2">
         <h3 className=" has-text-light has-text-weight-bold">New user? <a href="register" className="has-text-weight-bold has-text-danger ">register here</a></h3>
       </div>
