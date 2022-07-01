@@ -1,0 +1,56 @@
+.section {
+  background-color: purple;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.sidebar {
+  background: orange;
+  flex: 15%;
+}
+
+.sidebarContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px black solid;
+  margin: 30px 5%;
+}
+
+.sidebarContent p {
+  font-size: 25px;
+  margin: 2.5vh 0;
+}
+
+.sidebarContent h3 {
+  font-size: 35px;
+}
+
+
+.gridContainer {
+  color: #777;
+  flex: 85%;
+  background-color: pink;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.soundPreviewContainer {
+  display: flex;
+  background-color: greenyellow;
+  width: 31%;
+  border: 1px black solid;
+  margin: 5px ;
+}

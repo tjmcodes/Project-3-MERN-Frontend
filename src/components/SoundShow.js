@@ -134,9 +134,7 @@ function toggleModal() {
                   </article>
                 })}
                 </div>
-                <hr /> 
-
-                               
+                <hr />
                 <div key={sound.category} className="category">
                 <h4 className="title is-4">
                   {/* <span role="img" aria-label="plate">
@@ -208,56 +206,43 @@ function toggleModal() {
               </div>
             </div>
           </div>
-         <div className="commentsContainer">
-                <h4 className="title is-4">Comments</h4> 
-                <div key={sound.comments} className="Comments-content">
-                {sound.comments && sound.comments.map(comment => {
-                  return <article key={comment.user.username} className="media">
-                      <div className="media-content">
-                        <div className="content">
-                          <p>
-                            {comment.createdAt}
-                          </p>
-                          <p className="subtitle">
-                            {comment.user.username}
-                            {/* {console.log(comment.user.username)} */}
-                          </p>
-                          <p>{comment.content}</p>
-                        </div>
-                      </div>
-                    </article>
-                  })}
-                  </div> 
-  
-                  {
-                    //? Little form to POST a comment (again lots of bulma)
-                  }
-                  {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                  <div key={sound.user._id} className="content">
+          <div className="commentsContainer">
+                <h4 className="title is-4 has-text-centered">Comments</h4>
+                {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+                <div key={sound.user._id} className="content">
                   {getLoggedInUserId() && <article className="media">
                     <div className="media-content">
                       <div className="field">
-                        <p className="control">
                           <textarea
-                            className="textarea"
+                            className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}
                           >
                           </textarea>
-                        </p>
                       </div>
                       <div className="field">
-                        <p className="control">
                           <button
-                            className="button is-info"
+                            className="buttonsubmitcomment"
                             onClick={handleComment}
                           >
                             Submit
                           </button>
-                        </p>
                       </div>
                     </div>
                   </article>}
+                  </div>
+                <div key={sound.comments} className="Comments-content">
+                {sound.comments && sound.comments.map((comment, index) => {
+                  return <article key={index} className="commentDiv">
+                      <div className="media-content">
+                        <div className="content">
+                          <p className="subtitle">{comment.user.username}</p>
+                          <p>{comment.content}</p>
+                          <p>{comment.createdAt}</p>
+                        </div>
+                      </div>
+                    </article>
+                  })}
                   </div>
                 </div>
               </div>

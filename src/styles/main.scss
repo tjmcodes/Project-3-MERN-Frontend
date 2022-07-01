@@ -110,7 +110,29 @@ section {
 .Comments-content {
   background-color: $background-color;
 }
- 
+
+.commentTextarea {
+  height: 50px;
+  text-align: center;
+  width:80%;
+  margin: 0 10%;
+  
+}
+
+.commentDiv {
+  width :70%;
+  margin: 10px 15%;
+  border: solid 1px grey;
+}
+
+.buttonsubmitcomment {
+  width: 80%;
+  margin: 0px 10%;
+  background-color: $secondary-color;
+  color:white;
+  padding: 10px;
+  border:none;
+}
 .modal {
   position: fixed; 
   z-index: 1; 
