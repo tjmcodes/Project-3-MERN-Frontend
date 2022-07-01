@@ -10,9 +10,11 @@ const NavBar = () => {
             <Link to='/all-sounds' className="button is-light">
               Discover Sounds
             </Link>
-            <div className="logo">
+              
+              <div className="logo">
               <img src="..src/assets/myFoundSoundsLogo/myfound Sounds.png" alt="my found sound logo"></img>
-            </div>
+              </div>
+          
           </div>
         </div>
       </div>

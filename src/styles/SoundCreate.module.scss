@@ -1,4 +1,3 @@
-
 .section {
   display: flex;
   flex-direction: column;
@@ -11,32 +10,11 @@
   background-color: rgb(250, 250, 250);
 }
 
-.sidebar {
-  flex: 15%;
-  background-color: #ffffff;
-}
-
-.sidebarContent {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin: 30px 5%;
-}
-
-.sidebarContent p {
-  font-size: 25px;
-  margin: 2.5vh 0;
-}
-
-.sidebarContent h3 {
-  font-size: 35px;
-}
 
 
 .gridContainer {
   color: #777;
-  flex: 85%;
+  // flex: 85%;
 }
 
 .grid {

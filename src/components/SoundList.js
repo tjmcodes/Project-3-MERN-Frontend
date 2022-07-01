@@ -55,7 +55,7 @@ const SoundList = () => {
                           <h5>{sound.category}/{sound.subCategory}</h5>
                         </div>
                         <div className={styles.hashtags}>
-                          {sound.hashtag.map((tag, index) => {
+                          {sound.hashtag.slice(0, 3).map((tag, index) => {
                           return <p className={styles.hashtag} key={index}>#{tag}</p>
                           })}
                         </div>
