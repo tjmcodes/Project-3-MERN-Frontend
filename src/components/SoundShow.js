@@ -219,6 +219,8 @@ function toggleModal() {
                             
                           </p>
                         <div className="comment-box">
+
+                          <div className="user-text">
                           <p>{comment.content}</p>
                           
                           <br />  
@@ -227,6 +229,7 @@ function toggleModal() {
                           <br />
                           {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
                           </span>
+                          </div>
                           
                         </div>
                       </div>
@@ -242,7 +245,8 @@ function toggleModal() {
                   {getLoggedInUserId() && <article className="media">
                     <div className="media-content-comment-box">
                       <div className="field">
-                          <textarea
+                          <textarea 
+                            maxLength={110}
                             className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}

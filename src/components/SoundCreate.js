@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
 import Hashtag from '../data/Hashtag.js'
+import styles from '../styles/SoundCreate.module.scss'
 
 
 function SoundCreate() {
@@ -122,7 +123,7 @@ function SoundCreate() {
       <NavBar />
       <h1 className="title">CloudGram</h1>
       {button === true ?
-        <div className="container">
+        <div className={styles.soundPreviewContainer}>
           <button className="button" onClick={() => updateButton(!button)}>Back</button>
           <button className="button" onClick={handleUpload}>Click to upload your sound</button>
           

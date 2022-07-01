@@ -229,6 +229,7 @@ h4.title.is-4 {
 }
 
 .commentTextarea {
+  display: flex;
   height: 100px;
   text-align: center;
   width:80%;
@@ -240,49 +241,53 @@ h4.title.is-4 {
   background-color: $background-color;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width :70%;
+  // align-items: center;
+  // width :70%;
+  // flex: 1, 100px;
   margin: 10px 15%;
   // border: solid 1px rgba(128, 128, 128, 0.409);
   border-radius: 5px;  
-  
-}
 
-.comment-avatar {
-  background-color: rgba(255, 6, 89, 0.434);
-  display: flex; 
-  flex-direction: column-reverse;
-  align-items: center;
-  text-transform: capitalize;
-}
-.username {
-  display: flex;
-  justify-content: center;
   
-}
-
-  .avatar {
+  .comment-avatar {
+    background-color: rgba(255, 6, 89, 0.434);
+    display: flex; 
+    // flex: 1;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-around;
+    text-transform: capitalize;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  .username {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     
   }
-
-  .img-avatar {
-    width: 100px;
-    padding: 10px;
-    border-radius: 100px;
-  }
-
-  // p {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding: 5px 10px;
-  // }  
-
-
-
+  
+    // .avatar {
+    //   display: flex;
+    //   flex-direction: row;
+      
+    // }
+  
+    .img-avatar {
+      max-width: 10vw;
+      padding: 10px;
+      border-radius: 100px;
+    }
+  
+    
+  
+    
+}
 .comment-box {
+  display: flex;
+  flex-direction: row;
+
+}
+.user-text {
   display: flex;
   flex-direction: column;
   // border: solid 1px rgba(128, 128, 128, 0.409);
@@ -305,21 +310,34 @@ h4.title.is-4 {
       font-size: 11px;
     }
   }
+
+  // p {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   padding: 5px 10px;
+  // }  
+
+
+
+
   
-  .last-comment-box {
-    // width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    max-width: 100vw;
-    max-height: 100vh;
-    padding: 10px;
-    
-  }
   
 .textarea {
-    width: 100%;
+    max-width: 100%;
 }
+
+.last-comment-box {
+  // width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 10px;
+  
+}
+
 
 
 .buttondelete {
