@@ -4,7 +4,7 @@ import {  getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
 import NavBar from "./NavBar.js"
 import styles from "../styles/soundShow.module.scss"
-import moment from "moment"
+
 
 function ShowSound() {
   const [sound, setSound] = React.useState(undefined)
@@ -14,16 +14,16 @@ function ShowSound() {
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
-  const [capitalizeFirst, setCapitalizeFirst] = React.useState('')
+  // const [capitalizeFirst, setCapitalizeFirst] = React.useState('')
 
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
     setUser(getuser)
   }, [])
 
-  const capitalize = str => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+  // const capitalize = str => {
+  //   return str.charAt(0).toUpperCase() + str.slice(1);
+  // };
 
   
   // console.log(user)
@@ -105,8 +105,8 @@ function toggleModal() {
                   {/* Need to fix cloudinary avatar image call from their API*/}
                   <div key={sound.user.image} className="avatar">
                     <img src={sound.user.image} alt="avatar"></img>
-                    {/* <p>{sound.user.username}</p> */}
-                    <p>{capitalize(sound.user.username)}</p>
+                    <p>{sound.user.username}</p>
+                    {/* <p>{sound.user.username.charAt(0).toUpperCase() + sound.user.username.slice(1)}</p> */}
                   
                   {console.log(sound.user)}
                   </div>
@@ -120,7 +120,7 @@ function toggleModal() {
 
                 <div className="hashtags">
                 <h4 className="title is-4">
-                </h4> {sound.hashtag.map((tag, index) => {
+                </h4> {sound.hashtag.slice(0, 3).map((tag, index) => {
                   return <article key={index} className="hashtag">
                     <div className="content">
                         <p className="hashtag">
@@ -143,9 +143,11 @@ function toggleModal() {
               <div key={sound} className="sound-title">
                   <h2 className="title is-2">{sound.fileName}</h2>
                   <div key={sound.createdAt} className="date-posted">
-                  
-                  <p>{sound.createdAt}</p>
-                  </div>
+                  <br />  
+                    <span className="dates">
+                      {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
+                    </span>
+                    </div>
                   </div>
                   
                   <div key={sound.category} className="category">
@@ -176,6 +178,7 @@ function toggleModal() {
                         </audio>
                         
                       </h2>
+                      
 
  
 
@@ -205,29 +208,31 @@ function toggleModal() {
                     </div>
                   </div>}
                 </div>
-
-                <hr />
               </div>
             </div>
           
          <div className="commentsContainer">
-                <h4 className="title-comments">Post your comments</h4> 
+                <h4 className="title is-4">Post your comments</h4> 
                 <div key={sound.comments} className="Comments-content">
                 {sound.comments && sound.comments.map((comment, index) => {
                   return <article key={index} className=".commentDiv">
                       <div className="comment-media">
                       <p className="comment-avatar">
-                            {/* {comment.user.username} */}
-                            {capitalize(comment.user.username)}
+                            {comment.user.username}
+                            {/* {sound.user.username.charAt(0).toUpperCase() + sound.user.username.slice(1)} */}
                             <img className="img-avatar" src={comment.user.image} alt='avatar'></img>
                             {/* {console.log(comment.user.username)} */}
                           </p>
                         <div className="comment-box">
-                          <p>
-                            {comment.createdAt}
-                          </p>
-                          
                           <p>{comment.content}</p>
+                          
+                          <br />  
+                          <span className="dates">
+                          {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
+                          <br />
+                          {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
+                          </span>
+                          
                         </div>
                       </div>
                     </article>
@@ -238,9 +243,9 @@ function toggleModal() {
                     //? Little form to POST a comment (again lots of bulma)
                   }
                   {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                  <div key={sound.user._id} className="comment-box">
+                  <div key={sound.user._id} className="last-comment-box">
                   {getLoggedInUserId() && <article className="media">
-                    <div className="media-content">
+                    <div className="media-content-comment-box">
                       <div className="field">
                         <p className="control">
                           <textarea
@@ -252,14 +257,14 @@ function toggleModal() {
                         </p>
                       </div>
                       <div className="field">
-                        <p className="control">
+                        <div className="control">
                           <button
                             className="buttonsubmitcomment" 
                             onClick={handleComment}
                           >
                             Submit
                           </button>
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </article>}

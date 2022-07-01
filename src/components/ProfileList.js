@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SearchBar from './searchBar'
+import styles from '../styles/ProfileList.module.scss'
 
 const ProfileList = () => {
   const [profileData, updateProfileData] = useState([])
@@ -13,7 +14,7 @@ const ProfileList = () => {
       })
   }, [])
 
-  return <section className="section">
+  return <section className={styles.section}>
     <div className="container">
       <div className="columns is-multiline is-mobile">
         {profileData.map((profile, index) => {

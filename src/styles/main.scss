@@ -7,21 +7,26 @@
   margin: 0;
   padding: 0;
   font: $font-stack;
-  color: $text-color
+  color: $text-color;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+}
 
-
-div.card {
-  background-color: $background-color;
+main {
+  padding: 0 250px; // change sie of whole 'card'
 }
 
 .profile {
+  background-color: rgba(255, 0, 123, 0.414);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex: 1 100%;
   order: 1;
+  text-transform: capitalize;
   
 
   .username {
@@ -33,11 +38,13 @@ div.card {
       display: flex;
       flex-direction: row;
       
+      
     }
 
     img {
       width: 100px;
       padding: 10px;
+      border-radius: 100px;
     }
 
       p {
@@ -104,11 +111,11 @@ div.banner {
 
 }
 .categories {
-  title.is-2 {
-    margin-bottom: 5px;
+  h2.title.is-2 {
+    margin-bottom: 0px;
   }
 
-  p {
+  span, p {
     font-size: smaller;
     margin-bottom: 5px;
   }
@@ -124,7 +131,9 @@ audio.media {
   // display: block;
   justify-content: center;
   height: 76px;
+  padding: 10px;
   width: auto;
+  background-color: $primary-color;
 }
 
 
@@ -160,12 +169,14 @@ audio.media {
   filter: grayscale(100%)
 }
 
-#register{
-  border: 1px solid;
-  padding: 50px;
-  margin-top: 100px;
-  background: linear-gradient(30deg,  #000000 50%,  #ff005f 80%);
-}
+// #register{
+//   border: 1px solid;
+//   padding: 50px;
+//   margin-top: 100px;
+//   background: linear-gradient(30deg,  #000000 50%,  #ff005f 80%);
+// }
+
+
 
 //  S E A R C H B A R   C O M P O N A N T
 .SearchBarcomponant {
@@ -202,14 +213,16 @@ audio.media {
   z-index: 1;
 }
 
-.buttondelete {
+.delete-post {
+  margin: 0px 85%; 
  
-  margin: 0px 10%;
-  background-color: $secondary-color;
-  color:white;
-  padding: 10px;
-  border:none;
-  border-radius: 5px;
+    .buttondelete {
+      width: 100px;
+    background-color: $secondary-color;
+    color:white;
+    padding: 10px;
+    border-radius: 5px;
+  }
 
 }
 
@@ -218,53 +231,68 @@ audio.media {
 
 
 .commentsContainer {
+  background-color: rgba(255, 0, 123, 0.414);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: $background-color;
+  
   max-width: 100vw;
-  border: #888;
-
-  h4.title-comments {
-    display: flex;
-    justify-content: flex-start;
-  }
+  border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
+  padding: 0px;
+  border-width: 1px;
 }
+
+h4.title.is-4 {
+  padding: 5px;
+  font-size: large;
+  text-decoration: underline;
+  text-transform: capitalize;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0px;
+}
+
 
 .Comments-content {
   max-width: 100%;
-  background-color: $background-color;
+  background-color: rgba(0, 0, 255, 0.415);
   display: flex;
   flex-direction: column;
   
 }
 
 .commentTextarea {
-  height: 50px;
+  height: 500px;
   text-align: center;
   width:80%;
   margin: 0 10%;
+  
 }
 
 .comment-media {
+  background-color: $background-color;
   display: flex;
   flex-direction: row;
   align-items: center;
   width :70%;
   margin: 10px 15%;
-  // border: solid 1px grey;
-
+  // border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
   
 }
 
 .comment-avatar {
+  background-color: rgba(255, 6, 89, 0.434);
   display: flex; 
   flex-direction: column-reverse;
   align-items: center;
+  text-transform: capitalize;
 }
 .username {
   display: flex;
   justify-content: center;
+  
 }
 
   .avatar {
@@ -276,6 +304,7 @@ audio.media {
   .img-avatar {
     width: 100px;
     padding: 10px;
+    border-radius: 100px;
   }
 
   // p {
@@ -288,22 +317,43 @@ audio.media {
 
 
 .comment-box {
-  // display: flex;
-  // flex-direction: column;
-  border:rgba(0, 0, 0, 0.331);
-  border-style: double;
+  display: flex;
+  flex-direction: column;
+  // border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;  
   margin: 5px;  
   display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 5px 10px;
-
+    align-items: flex-start;
+    padding: 0px 5px;
+    
     p {
-      padding: 10px;
+      padding: 0px;
+      // font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       align-self: flex-start;
+      margin-bottom: 25px;
+      
     }
 
+    span {
+      font-size: 11px;
+    }
+  }
+  
+  .last-comment-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100vw;
+    padding: 10px;
+    
+  }
+  
+.textarea {
+    width: 100%;
 }
+
 
 .buttondelete {
   // width: 80%;
@@ -324,6 +374,7 @@ audio.media {
   color:white;
   padding: 10px;
   border:none;
+  border-radius: 5px;
 }
 
 // Delete Modal styling
@@ -344,4 +395,38 @@ audio.media {
   padding: 20px;
   border: 0.5px solid #888;
   width: 80%;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+
+  .card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+
+    img {
+      // width: 10px;
+      padding: 0px;
+      border-radius: 100px;
+    }
+
+      // p {
+      //   display: flex;
+      //   align-items: center;
+      //   padding: 5px 10px;
+      // }    
+}
+
+.container {
+  width: 100px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
 }
