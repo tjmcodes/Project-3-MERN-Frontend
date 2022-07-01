@@ -1,21 +1,36 @@
 //  S E A R C H B A R   C O M P O N A N T
+@import '_variables';
+
+
 .SearchBarcomponant {
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  background-color: pink;
+  width: 97%;
+  margin-left: 1.5%;
 }
 
 .searchbar {
-  width: 97%;
-  margin: 40px 1.5% 10px 1.5%;
+  width: 100%;
+  margin: 40px 0 0px 0;
   height: 50px;
-  border-radius: 10px;
-  border: solid 1px black;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   font-size: 30px;
-  font-weight: 200;
-  padding-left: 10px;
+  font-weight: $font-weight;
+  padding-left:15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
-.searchbar ::placeholder {
-  color: red;
+
+.resultsContainer {
+  background-color: rgb(255, 255, 255);
+  margin-top: -5px;
+  width: 100%;
+  border-radius: 0px 0px 15px 15px;
+  z-index: 1;
 }
+
+
 .name_container{
   padding: 5px 0px;
   text-align: right;
@@ -30,11 +45,4 @@
   color: black;
   text-decoration: none;
   text-align: left;
-}
-.resultsContainer {
-  background-color: white;
-  width: 90%;
-  margin-left: 5%;
-  position: absolute;
-  z-index: 1;
 }

@@ -12,7 +12,7 @@ const NavBar = () => {
             </Link>
               
               <div className="logo">
-              <img src="..src/assets/myFoundSoundsLogo/myfound Sounds.png" alt="my found sound logo"></img>
+              <img src={require("../assets/myFoundSoundsLogo/logo_myFoundS_darker.png")} alt="my found sound logo"></img>
               </div>
           
           </div>

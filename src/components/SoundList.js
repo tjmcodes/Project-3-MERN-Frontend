@@ -56,7 +56,9 @@ const SoundList = () => {
                         </div>
                         <div className={styles.hashtags}>
                           {sound.hashtag.slice(0, 3).map((tag, index) => {
-                          return <p className={styles.hashtag} key={index}>#{tag}</p>
+                          return <Link to={`/hashtagsearchresults/${tag}`}
+                                  ><p className={styles.hashtag} key={index}>#{tag}</p>
+                                </Link>
                           })}
                         </div>
                       </div>
