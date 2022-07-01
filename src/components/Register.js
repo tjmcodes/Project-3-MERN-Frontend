@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/OneWeb_Logo.png'
 
+
 function Register() {
   // ! Using react router to navigate
   const navigate = useNavigate()

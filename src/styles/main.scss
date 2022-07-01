@@ -6,42 +6,133 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font: $font-stack;
+  color: $text-color
 }
 
-.card {
 
 
+div.card {
+  background-color: $background-color;
 }
 
 .profile {
-  .avatar {
-display: flex;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 100%;
+  order: 1;
+  
+
+  .username {
+    display: flex;
+    justify-content: center;
   }
 
-  .username{
+    .avatar {
+      display: flex;
+      flex-direction: row;
+      
+    }
 
-  }
+    img {
+      width: 100px;
+      padding: 10px;
+    }
 
-  .avatar {
+      p {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+      }    
+}
 
-    
-  }
+.hashtags {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  
+    margin: 0px;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    .hashtag {
+      align-items: flex-end;
+    }
+}
+
+// .card-avatar {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: flex-end;
+//   flex: 1 100%;
+
+//   div.card {
+//     flex: 1 100%;
+//     order: 1;
+
+//   }
+
+      
+// }
+
+
+
+
+div.audio-container {
+  display: flex;
+  flex-direction: column;
 
 }
 
-section {
-  margin: 0;
-  background-color: $primary-color;            
+.content h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 100vw;
 }
+
+
+div.banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.783);
+  padding: 5px;
+
+}
+.categories {
+  title.is-2 {
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: smaller;
+    margin-bottom: 5px;
+  }
+  
+
+}
+
+
+
+
+
+audio.media {
+  // display: block;
+  justify-content: center;
+  height: 76px;
+  width: auto;
+}
+
+
   
 
 
-.container {
-  max-width:110;
-  padding: 0;
-  margin:0;
-}
 
+// R E G I S T E R  P A G E
 
 .my-video {
   width: 100vw;
@@ -56,14 +147,25 @@ section {
   // filter: grayscale(100%)
 }
 
+.register-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  filter: grayscale(100%)
+}
 
 #register{
   border: 1px solid;
   padding: 50px;
   margin-top: 100px;
-  // background: linear-gradient(60deg, rgb(137, 210, 223) 50%, rgb(238, 108, 162) 50%);
+  background: linear-gradient(30deg,  #000000 50%,  #ff005f 80%);
 }
-
 
 //  S E A R C H B A R   C O M P O N A N T
 .SearchBarcomponant {
@@ -100,17 +202,131 @@ section {
   z-index: 1;
 }
 
+.buttondelete {
+ 
+  margin: 0px 10%;
+  background-color: $secondary-color;
+  color:white;
+  padding: 10px;
+  border:none;
+  border-radius: 5px;
+
+}
+
 
 // SoundShow -- Comments Section 
 
+
 .commentsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: $background-color;
+  max-width: 100vw;
+  border: #888;
+
+  h4.title-comments {
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 .Comments-content {
+  max-width: 100%;
   background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  
 }
- 
+
+.commentTextarea {
+  height: 50px;
+  text-align: center;
+  width:80%;
+  margin: 0 10%;
+}
+
+.comment-media {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width :70%;
+  margin: 10px 15%;
+  // border: solid 1px grey;
+
+  
+}
+
+.comment-avatar {
+  display: flex; 
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.username {
+  display: flex;
+  justify-content: center;
+}
+
+  .avatar {
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .img-avatar {
+    width: 100px;
+    padding: 10px;
+  }
+
+  // p {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   padding: 5px 10px;
+  // }  
+
+
+
+.comment-box {
+  // display: flex;
+  // flex-direction: column;
+  border:rgba(0, 0, 0, 0.331);
+  border-style: double;
+  margin: 5px;  
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 10px;
+
+    p {
+      padding: 10px;
+      align-self: flex-start;
+    }
+
+}
+
+.buttondelete {
+  // width: 80%;
+  display: flex;
+  align-content: flex-end;
+  margin: 0px 10%;
+  background-color: $secondary-color;
+  color:white;
+  padding: 10px;
+  border:none;
+}
+
+.buttonsubmitcomment {
+  
+  width: 80%;
+  margin: 0px 10%;
+  background-color: $primary-color;
+  color:white;
+  padding: 10px;
+  border:none;
+}
+
+// Delete Modal styling
 .modal {
   position: fixed; 
   z-index: 1; 
