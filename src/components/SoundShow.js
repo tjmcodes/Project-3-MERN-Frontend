@@ -32,7 +32,7 @@ function ShowSound() {
     fetch(`/api/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
-      // console.log(sound)
+      console.log(sound)
   }, [soundId])
 
   async function handleDelete() {
@@ -168,7 +168,7 @@ function toggleModal() {
              
                 <div key={sound.url} className="audio-container">
                 <h2 className="title is-4">
-                                         
+                    
                       <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img> 
                         {/* <video src={sound.url} controls className="media" type="video">
@@ -238,7 +238,7 @@ function toggleModal() {
                     </article>
                   })}
                   </div> 
-  
+
                   {
                     //? Little form to POST a comment (again lots of bulma)
                   }
@@ -247,14 +247,12 @@ function toggleModal() {
                   {getLoggedInUserId() && <article className="media">
                     <div className="media-content-comment-box">
                       <div className="field">
-                        <p className="control">
                           <textarea
-                            className="textarea"
+                            className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}
                           >
                           </textarea>
-                        </p>
                       </div>
                       <div className="field">
                         <div className="control">
@@ -268,6 +266,19 @@ function toggleModal() {
                       </div>
                     </div>
                   </article>}
+                  </div>
+                <div key={sound.comments} className="Comments-content">
+                {sound.comments && sound.comments.map((comment, index) => {
+                  return <article key={index} className="commentDiv">
+                      <div className="media-content">
+                        <div className="content">
+                          <p className="subtitle">{comment.user.username}</p>
+                          <p>{comment.content}</p>
+                          <p>{comment.createdAt}</p>
+                        </div>
+                      </div>
+                    </article>
+                  })}
                   </div>
                 </div>
               </main>

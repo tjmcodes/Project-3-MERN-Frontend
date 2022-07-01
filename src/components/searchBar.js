@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios'
+import styles from '../styles/searchBar.module.scss'
 function SearchBar() {
   const [hashtagdata, setHashtagData] = React.useState(undefined)
   const [hashtag, setHashtag] = React.useState("")
@@ -23,16 +24,16 @@ function SearchBar() {
 
 })}
 
-  return <div className="SearchBarcomponant">
+  return <div className={styles.SearchBarcomponant}>
   <div >
-    <input type="text" className="searchbar" onChange={getHashtag} placeholder="Search by Hashtag"></input>
+    <input type="text" className={styles.searchbar} onChange={getHashtag} placeholder="Search by Hashtag"></input>
   </div>  
-    <div className="resultsContainer">
+    <div className={styles.resultsContainer}>
       {hashtagdata ? hashtagdata.map((hash, index) => {
         return <div key={index}>
           <Link to={`/hashtagsearchresults/${hash.hashtag}`} state={hashtag.hashtag} style={{ textDecoration: "none" }}>
-            <div className="name_container">
-              <h3 className="name">{`#${hash.hashtag}`}</h3>
+            <div className={styles.name_container}>
+              <h3 className={styles.name}>{`#${hash.hashtag}`}</h3>
             </div>
           </Link>
         </div>
