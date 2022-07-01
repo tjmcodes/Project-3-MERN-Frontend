@@ -119,11 +119,11 @@ function SoundCreate() {
   
 
   return <>
-    <div>
+    <div className={styles.section}>
       <NavBar />
-      <h1 className="title">CloudGram</h1>
+      
       {button === true ?
-        <div className={styles.soundPreviewContainer}>
+        <div className={styles.gridContainer}>
           <button className="button" onClick={() => updateButton(!button)}>Back</button>
           <button className="button" onClick={handleUpload}>Click to upload your sound</button>
           
@@ -165,63 +165,55 @@ function SoundCreate() {
             />
     
           
-          <button className="button" onClick={handleSubmit}>Submit and return</button>
+          <button className={styles.button} onClick={handleSubmit}>Submit and return</button>
         </div>
         :
         <div>
+          <div className={styles.section}>
+
+        {/* <div className={styles.main}></div> */}
           <button className="button" onClick={() => updateButton(!button)}>Click here to post your sound</button>
           {soundDisplay.map(sound => {
-            return <div key={sound._id} className="column is-one-third-desktop is-half-tablet is-half-mobile">
-              <div className="card">
+            return <div key={sound._id} className={styles.gridContainer}>
+              <div className={styles.grid}>
                 
-                  <div className="media">
+                  <div className={styles.gridContainer}>
                   <Link to={`/all-sounds/${sound._id}`}>
-              <div className="card">
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                    <h4 className="title is-4">
-                        <span role="img" aria-label="plate">
-                        </span>{" "}
-                      
-                        <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
-                        </img> 
-                        {/* <video src={sound.url} controls className="media" type="video">
-                        </video> */}
-                        <audio controls className="media">
-                          <source src={sound.url} type="audio/wav"></source>  
-                        </audio>
-                          {console.log(sound.url)}
-                          {console.log(sound.image)}
-
-                      </h4>
-                        
-                      <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
-                      <h5 className="subtitle is-5">Category: {sound.category}</h5>
-                      <h5 className="subtitle is-5">Sub-category: {sound.subCategory}</h5>
-                      <h5 className="subtitle is-5">
-                  <span role="img" aria-label="plate">
-                  </span>{" "}
-                  Hashtags: {/* can we do a similar thing here with the show delete button if OP is true? We base this on if hashtags are present?  */}
-                </h5> {sound.hashtag.map((tag, index) => {
-                  return <article key={index} className="hashtag">
-                    <div className="content">
-                        <p className="subtitle">
-                          #{tag}
-                        </p>
-                    </div>  
-                  </article>
-              })}
+                  <div>
+                  <div>
+                    <div>
+                    <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
+                      <div>
+                          <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img>  
+                        <video src={sound.url} controls className={styles.audiofile}>
+                        </video>
+                        {/* <audio controls className="media">
+                          <source src={sound.url} type="audio"></source>  
+                        </audio> */}
+                      </div>
+                      <div className={styles.CatagoryandHashtags}>
+                        <div>
+                          <h5>{sound.category}/{sound.subCategory}</h5>
+                        </div>
+                        <div className={styles.hashtags}>
+                          {sound.hashtag.slice(0, 3).map((tag, index) => {
+                          return <p className={styles.hashtag} key={index}>#{tag}</p>
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div key={sound.user.image} className="card-image">
-                  <figure className="image is-4by3">
-                    <img src={sound.user.image} alt={sound.user.username} />
-                  </figure>
-                  <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
+                <div className={styles.userdate}>
+                  <div className={styles.userinfo}key={sound.user.image}>
+                    <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
+                    <h5 use>{sound.user.username}</h5>
+                  </div>
+                  <div className={styles.date}>
+                    <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
+                  </div>
                 </div>
-              </div>
             </Link>
                   </div>
                 </div>
@@ -229,6 +221,7 @@ function SoundCreate() {
 
 
           })}
+        </div>
         </div>
       }
     </div>

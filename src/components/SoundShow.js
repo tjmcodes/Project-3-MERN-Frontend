@@ -245,7 +245,7 @@ function toggleModal() {
                     <div className="media-content-comment-box">
                       <div className="field">
                           <textarea 
-                            maxLength={110}
+                            maxLength={280}
                             className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}
