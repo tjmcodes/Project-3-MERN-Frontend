@@ -16,7 +16,7 @@ section {
 }
 
 main {
-  padding: 0 250px; // change sie of whole 'card'
+  padding: 0 100px; // change sie of whole 'card'
 }
 
 .profile {
@@ -180,7 +180,7 @@ audio.media {
 
 
 .delete-post {
-  margin: 0px 85%; 
+  margin: 0px 80%; 
  
     .buttondelete {
       width: 100px;
@@ -229,7 +229,7 @@ h4.title.is-4 {
 }
 
 .commentTextarea {
-  height: 500px;
+  height: 100px;
   text-align: center;
   width:80%;
   margin: 0 10%;
@@ -307,11 +307,12 @@ h4.title.is-4 {
   }
   
   .last-comment-box {
-    width: 100%;
+    // width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     max-width: 100vw;
+    max-height: 100vh;
     padding: 10px;
     
   }
