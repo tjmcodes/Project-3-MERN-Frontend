@@ -1,6 +1,8 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import {Link} from "react-router-dom"
+import styles from '../styles/HashtagSearchResults.module.scss'
+
 function HashtagSearchResult(sethashdata, hashdata) {
  
   const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
@@ -24,38 +26,36 @@ function HashtagSearchResult(sethashdata, hashdata) {
               <div className="card">
                 <div className="card-content">
                   <div className="media">
-                    <div className="media-content">
-                      <h4 className="title is-4">
-                        <span role="img" aria-label="plate">
-                        </span>{" "}
-                        Sound File
-                        <audio key={sound.url} controls className="media">
-                          <source src={sound.url} type="audio/wav"></source>  
-                        </audio>
-                      </h4>
-                      <h5 className="subtitle is-5">Track name: {sound.fileName}</h5>
-                      <h5 className="subtitle is-5">Category: {sound.category}</h5>
-                      <h5 className="subtitle is-5">
-                  <span role="img" aria-label="plate">
-                  </span>{" "}
-                  Hashtags: {/* can we do a similar thing here with the show delete button if OP is true? We base this on if hashtags are present?  */}
-                </h5> {sound.hashtag.map((tag, index) => {
-                  return <article key={index} className="hashtag">
-                    <div className="content">
-                        <p className="subtitle">
-                          #{tag}
-                        </p>
-                    </div>  
-                  </article>
-              })}
+                  <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
+                      <div>
+                          <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                        </img>  
+                        <video src={sound.url} controls className={styles.audiofile}>
+                        </video>
+                        {/* <audio controls className="media">
+                          <source src={sound.url} type="audio"></source>  
+                        </audio> */}
+                      </div>
+                      <div className={styles.CatagoryandHashtags}>
+                        <div>
+                          <h5>{sound.category}/{sound.subCategory}</h5>
+                        </div>
+                        <div className={styles.hashtags}>
+                          {sound.hashtag.slice(0, 3).map((tag, index) => {
+                          return <p className={styles.hashtag} key={index}>#{tag}</p>
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div key={sound.user.image} className="card-image">
-                  <figure className="image is-4by3">
-                    <img src={sound.user.image} alt={sound.user.username} />
-                  </figure>
-                  <h5 className="subtitle is-5">User Posted: {sound.user.username}</h5>
+                <div className={styles.userdate}>
+                  <div className={styles.userinfo}key={sound.user.image}>
+                    <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
+                    <h5 use>{sound.user.username}</h5>
+                  </div>
+                  <div className={styles.date}>
+                    <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
                 </div>
               </div>
             </Link>
