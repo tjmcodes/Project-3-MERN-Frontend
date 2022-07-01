@@ -181,7 +181,7 @@ function toggleModal() {
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                {sound && (user === (sound.user._id)) ? <button className="buttondelete" onClick={toggleModal}>
+                {sound && (user === (sound.user) || (sound.user._id)) ? <button className="buttondelete" onClick={toggleModal}>
                     Delete sound
                     </button> : null}
                   { toggleDeleteConfirmation &&  
