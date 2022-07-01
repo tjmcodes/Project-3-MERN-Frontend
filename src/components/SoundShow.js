@@ -71,6 +71,8 @@ function toggleModal() {
       )
       setSound(data)
       console.log(sound)
+      const textarea = document.getElementById("comment-text")
+      textarea.value = ""
       navigate(`/all-sounds/${data._id}`)
       // navigate(`/all-sounds/${soundId}`)
       console.log(data)
@@ -243,6 +245,7 @@ function toggleModal() {
                     <div className="media-content-comment-box">
                       <div className="field">
                           <textarea
+                            id="comment-text"
                             className="commentTextarea"
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}

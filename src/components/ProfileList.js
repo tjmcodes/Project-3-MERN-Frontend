@@ -19,7 +19,7 @@ const ProfileList = () => {
       <div className="columns is-multiline is-mobile">
         {profileData.map((profile, index) => {
           return <div key={index} className="column is-one-third-desktop is-half-tablet is-half-mobile">
-          <Link to={`/oneUser/${profile._id}`}> 
+          <Link to={`/oneUser/${profile._id}`} state={profile.username}> 
               <div className="card">
                 <div className="card-content">
                   <div className="media">
