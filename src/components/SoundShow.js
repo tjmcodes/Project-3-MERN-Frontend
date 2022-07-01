@@ -1,9 +1,9 @@
-import React from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import {  getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
-import NavBar from "./NavBar.js"
-import styles from "../styles/soundShow.module.scss"
+import NavBar from './NavBar.js'
+import styles from '../styles/soundShow.module.scss'
 
 
 function ShowSound() {
@@ -14,26 +14,19 @@ function ShowSound() {
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
-  // const [capitalizeFirst, setCapitalizeFirst] = React.useState('')
-
+ 
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
     setUser(getuser)
   }, [])
 
-  // const capitalize = str => {
-  //   return str.charAt(0).toUpperCase() + str.slice(1);
-  // };
-
-  
-  // console.log(user)
-  
   React.useEffect(() => {
     fetch(`/api/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
       console.log(sound)
   }, [soundId])
+
 
   async function handleDelete() {
     try {
@@ -71,8 +64,8 @@ function toggleModal() {
       )
       setSound(data)
       console.log(sound)
-      navigate(`/all-sounds/${data._id}`)
-      // navigate(`/all-sounds/${soundId}`)
+      // navigate(`/all-sounds/${data._id}`)
+      window.location.reload()
       console.log(data)
     } catch (err) {
       console.log(err)
@@ -84,91 +77,84 @@ function toggleModal() {
   return (
     <div>
       <NavBar />
-      <section className="section">
+      <section className={styles.section}>
         <div className="container">
           {sound ? (
 
-          //card for showing sound posted:
-          
-            <main key={sound} className="main">
+          // U S E R  C A R D  H E A D E R  F O R  P O S T E D  S O U N D S        
+            <main key={sound} className={styles.main}>
 
-              <div className="profile">
+              <div className={styles.profile}>
                 <div className="avatar-header">
 
-                <div key={sound.user.username} className="username">
+                <div key={sound.user.username} className={styles.profile.username}>
                 <h4 className="title is-4"> </h4>
-                
-                  {/* Need to fix cloudinary avatar image call from their API*/}
-                  <div key={sound.user.image} className="avatar">
-                    <img src={sound.user.image} alt="avatar"></img>
-                    <p>{sound.user.username}</p>
-                    {/* <p>{sound.user.username.charAt(0).toUpperCase() + sound.user.username.slice(1)}</p> */}
+          
+                  <div key={sound.user.image} className={styles.avatar}>
+                    <img className={styles.profile.img} src={sound.user.image} alt="avatar"></img>
+                    <p className={styles.profile.p}>{sound.user.username}</p>
                   
-                  {console.log(sound.user)}
+                  {/* {console.log(sound.user)} */}
                   </div>
                   </div>
                 </div>
                 
-                 
-                
-
-                
-
-                <div className="hashtags">
+                 {/* H A S H T A G S */}
+                <div className={styles.hashtags}>
                 <h4 className="title is-4">
                 </h4> {sound.hashtag.slice(0, 3).map((tag, index) => {
-                  return <article key={index} className="hashtag">
+                  return <article key={index} className={styles.hashtag}>
                     <div className="content">
-                        <p className="hashtag">
+                        <p className={styles.hashtag}>
                           #{tag}
                         </p>
                     </div>  
                   </article>
                 })}
                 </div>
-                <hr /> 
               </div>
 
     
             
-            
-            <div className="banner">
-                              
-              <div className="categories">                
+            {/* D A T E  A N D  T I M E  I N F O*/}
+            <div className={styles.banner}>                 
+              <div className={styles.categories}>                
 
-              <div key={sound} className="sound-title">
-                  <h2 className="title is-2">{sound.fileName}</h2>
-                  <div key={sound.createdAt} className="date-posted">
-                  <br />  
-                    <span className="dates">
-                      {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
-                    </span>
+                <div key={sound} className="sound-title">
+                  <h2 className={styles.tracktitle}>{sound.fileName}</h2>
+                    <div key={sound.createdAt} className="date-posted">
+                    <br />  
+                      <span className={styles.span}>
+                        {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
+                      </span>
                     </div>
-                  </div>
+                </div>
                   
-                  <div key={sound.category} className="category">
-                  <p>
-                    Category: {sound.category}
-                  </p>
-                  </div>
-                  
-                  <div className="sub-category">
-                  <p>
-                    Sub category: {sound.subCategory}
-                  </p>
-                  </div>
+                    <div key={sound.category} className="category">
+                      <p>
+                        Category: {sound.category}
+                      </p>
+                    </div>
+
+                    <div className="sub-category">
+                      <p>
+                        Sub category: {sound.subCategory}
+                      </p>
+                    </div>
+
                 </div>
               </div>
 
               <div className="content">
              
-                <div key={sound.url} className="audio-container">
+             {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
+                <div key={sound.url} className={styles.audiocontainer}>
                 <h2 className="title is-4">
                     
-                      <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
+                      <img className={styles.audioMedia} src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img> 
                        
-                        <audio controls className="media">
+                        <audio controls className={styles.media}>
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                         
@@ -176,12 +162,12 @@ function toggleModal() {
                       
 
  
-
-                <div className="delete-post">
+                {/* D E L E T E  P O S T  B Y  O R I G I N A L  U S E R  */}
+                <div className={styles.deletepost}>
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
-                {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                {sound && (user === (sound.user) || (sound.user._id)) ? <button className="buttondelete" onClick={toggleModal}>
+                {/* We have included the or operator to check sound user once a comment has been posted due to the structure of object that is returned */}
+                {sound && (user === (sound.user) || (sound.user._id)) ? <button className={styles.buttondelete} onClick={toggleModal}>
                     Delete sound
                     </button> : null}
                   { toggleDeleteConfirmation &&  
@@ -206,25 +192,26 @@ function toggleModal() {
               </div>
             </div>
           
-         <div className="commentsContainer">
-                <h4 className="title is-4">Post your comments</h4> 
-                <div key={sound.comments} className="Comments-content">
+          {/* C O M M E N T S  */}
+         <div className={styles.commentsContainer}>
+                <h4 className={styles.h4}>Post your comments</h4> 
+                <div key={sound.comments} className={styles.commentsContent}>
                 {sound.comments && sound.comments.map((comment, index) => {
                   return <article key={index} className=".commentDiv">
-                      <div className="comment-media">
-                      <p className="comment-avatar">
+                      <div className={styles.commentMedia}>
+                      <p className={styles.commentavatar}>
                             {comment.user.username}
                             
-                            <img className="img-avatar" src={comment.user.image} alt='avatar'></img>
+                            <img className={styles.imgavatar} src={comment.user.image} alt='avatar'></img>
                             
                           </p>
-                        <div className="comment-box">
+                        <div className={styles.commentbox}>
 
-                          <div className="user-text">
+                          <div className={styles.usertext.p}>
                           <p>{comment.content}</p>
                           
                           <br />  
-                          <span className="dates">
+                          <span className={styles.usertext.span}>
                           {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
                           <br />
                           {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
@@ -237,17 +224,15 @@ function toggleModal() {
                   })}
                   </div> 
 
-                  {
-                    //? Little form to POST a comment (again lots of bulma)
-                  }
+                  {/*  // P O S T I N G  A  C O M M E N T // }
                   {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                  <div key={sound.user._id} className="last-comment-box">
+                  <div key={sound.user._id} className={styles.lastcommentbox}>
                   {getLoggedInUserId() && <article className="media">
-                    <div className="media-content-comment-box">
+                    <div className={styles.mediaContentCommentbox}>
                       <div className="field">
                           <textarea 
                             maxLength={280}
-                            className="commentTextarea"
+                            className={styles.commentTextarea}
                             placeholder="Make a comment.."
                             onChange={(event) => setCommentContent(event.target.value)}
                           >
@@ -256,7 +241,7 @@ function toggleModal() {
                       <div className="field">
                         <div className="control">
                           <button
-                            className="buttonsubmitcomment" 
+                            className={styles.buttonSubmitComment}
                             onClick={handleComment}
                           >
                             Submit

@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/myFoundSoundsLogo/logo_myFoundS_darker.png'
 import shareVideo from '../assets/share.mp4'
+import styles from '../styles/Register.module.scss'
 
 
 function Register() {
-  // ! Using react router to navigate
+  // Using react router to navigate
   const navigate = useNavigate()
   const [button, updateButton] = useState(false)
-  // ! Put our form fields in state.
+  
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,7 +19,7 @@ function Register() {
     image: "https://i.imgur.com/xnUtYOd.jpg",
     // url: 'https://i.imgur.com/xnUtYOd.jpg'
   })
-  // ! Errors in state
+  //  Errors in state
   const [errors, setErrors] = useState({
     username: "",
     password: "",
@@ -27,11 +28,11 @@ function Register() {
     image: "",
   })
   function handleChange(event) {
-    // ! name: field you've typed in, e.g. the email input
-    // ! value: the text that's in that field
+    // name = field you've typed in, e.g. the email input
+    // value = the text that's in that field
     const { name, value } = event.target
     setFormData({
-      ...formData, // ! This is whatever the form data was before, all it's fields.
+      ...formData, //  This is whatever the form data was before, all it's fields.
       [name]: value, 
     })
     setErrors({
@@ -39,13 +40,12 @@ function Register() {
       [name]: '',
     })
   }
-  // ! Cloudinary upload! This is will also update the formData with the url string for the sound
-  // ! to be uploaded
+  // Cloudinary upload! This is will also update the formData with the url string for the sound to be uploaded
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
-        uploadPreset: 'user_profile_pics', //!this will be your upload presets - this should be in your .env
+        cloudName: 'tjmcodes', 
+        uploadPreset: 'user_profile_pics', 
         folder: 'my_found_sounds_pics',
         cropping: true,
         placeholderImage: true,
@@ -70,11 +70,9 @@ function Register() {
     event.preventDefault()
     try {
       await axios.post('/api/register', formData)
-      // ! Navigate to the /login page. 
       updateButton(!button)
-      navigate('/login')
+      navigate('/')
     } catch (err) {
-      // ! Print out the response from the backend if there's an error
       console.log(err.response.data)
       console.log(formData.username)
       setErrors(err.response.data.errors)
@@ -89,11 +87,11 @@ function Register() {
           controls={false}
           muted
           // autoPlay
-          className="register-background"
+          className={styles.registerBackground}
         />
     </div>
     <div className="column is-half is-offset-one-quarter" id="register">
-      <form onSubmit={handleSubmit} className="hero ip-5 is-rounded">
+      <form onSubmit={handleSubmit} className={styles.hero}>
       <div className=" logo mb-5" >
         <img src={logo} alt="logo" width="230px"  />
       </div>
@@ -104,7 +102,7 @@ function Register() {
             className="input"
             type="text"
             name={'username'} 
-            // ! Adding these 2 fields means your component is 'controlled'. This is good practice!
+            // ! Adding these 2 fields means your component is 'controlled'. 
             value={formData.username}
             onChange={handleChange}
           />
