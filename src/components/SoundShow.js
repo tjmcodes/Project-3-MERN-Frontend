@@ -96,11 +96,7 @@ function toggleModal() {
                 <div className="avatar-header">
 
                 <div key={sound.user.username} className="username">
-                <h4 className="title is-4">
-                  {/* <span role="img" aria-label="plate">
-                  </span>{" "} */}
-                  {/* Posted by: */}
-                </h4>
+                <h4 className="title is-4"> </h4>
                 
                   {/* Need to fix cloudinary avatar image call from their API*/}
                   <div key={sound.user.image} className="avatar">
@@ -171,8 +167,7 @@ function toggleModal() {
                     
                       <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img> 
-                        {/* <video src={sound.url} controls className="media" type="video">
-                        </video> */}
+                       
                         <audio controls className="media">
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
@@ -219,9 +214,9 @@ function toggleModal() {
                       <div className="comment-media">
                       <p className="comment-avatar">
                             {comment.user.username}
-                            {/* {sound.user.username.charAt(0).toUpperCase() + sound.user.username.slice(1)} */}
+                            
                             <img className="img-avatar" src={comment.user.image} alt='avatar'></img>
-                            {/* {console.log(comment.user.username)} */}
+                            
                           </p>
                         <div className="comment-box">
                           <p>{comment.content}</p>
@@ -266,19 +261,6 @@ function toggleModal() {
                       </div>
                     </div>
                   </article>}
-                  </div>
-                <div key={sound.comments} className="Comments-content">
-                {sound.comments && sound.comments.map((comment, index) => {
-                  return <article key={index} className="commentDiv">
-                      <div className="media-content">
-                        <div className="content">
-                          <p className="subtitle">{comment.user.username}</p>
-                          <p>{comment.content}</p>
-                          <p>{comment.createdAt}</p>
-                        </div>
-                      </div>
-                    </article>
-                  })}
                   </div>
                 </div>
               </main>
