@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import logo from '../assets/OneWeb_Logo.png'
+import logo from '../assets/myFoundSoundsLogo/logo_myFoundS_darker.png'
+import shareVideo from '../assets/share.mp4'
+
 
 function Register() {
   // ! Using react router to navigate
@@ -80,13 +82,23 @@ function Register() {
   }
   console.log(formData)
   return <div className="register-page">
+    <div className="column is-centered">
+        <video
+          src={shareVideo}
+          type="video/mp4"
+          controls={false}
+          muted
+          // autoPlay
+          className="register-background"
+        />
+    </div>
     <div className="column is-half is-offset-one-quarter" id="register">
       <form onSubmit={handleSubmit} className="hero ip-5 is-rounded">
-      <div className=" logo mb-4 pb-2" >
-        <img src={logo} alt="logo" width="130px"  />
+      <div className=" logo mb-5" >
+        <img src={logo} alt="logo" width="230px"  />
       </div>
       <div className="field">
-        <label className="label">Username</label>
+        <label className="label has-text-light">Username</label>
         <div className="control">
           <input
             className="input"
@@ -100,7 +112,7 @@ function Register() {
         </div>
       </div>
       <div className="field">
-        <label className="label">Email</label>
+        <label className="label has-text-light">Email</label>
         <div className="control">
           <input
             className="input"
@@ -113,7 +125,7 @@ function Register() {
         </div>
       </div>
       <div className="field">
-        <label className="label">Password</label>
+        <label className="label has-text-light">Password</label>
         <div className="control">
           <input
             className="input"
@@ -126,7 +138,7 @@ function Register() {
         </div>
       </div>
       <div className="field">
-        <label className="label">Confirm password</label>
+        <label className="label has-text-light">Confirm password</label>
         <div className="control">
           <input
             className="input"
@@ -139,13 +151,13 @@ function Register() {
         </div>
       </div>
       <div>
-      <button type="submit" className="button is-danger has-text-weight-bold mt-3 " onClick={handleSubmit}>Submit</button>
+      <button type="submit" className="button is-danger has-text-weight-bold mt-1 " onClick={handleSubmit}>Submit</button>
       </div>
       
       </form>
 
       <div>
-        <button className="button is-info has-text-weight-bold" onClick={handleUpload}>Click to upload profile picture</button>          
+        <button className="button is-info has-text-weight-bold mt-3" onClick={handleUpload}>Click to upload profile picture</button>          
       </div>
       
     </div>

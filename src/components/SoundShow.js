@@ -13,10 +13,17 @@ function ShowSound() {
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
+  const [capitalizeFirst, setCapitalizeFirst] = React.useState('')
+
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
     setUser(getuser)
   }, [])
+
+  const capitalize = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   
   // console.log(user)
   
@@ -24,7 +31,7 @@ function ShowSound() {
     fetch(`/api/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
-      // console.log(sound)
+      console.log(sound)
   }, [soundId])
 
   async function handleDelete() {
@@ -70,6 +77,8 @@ function toggleModal() {
       console.log(err)
       console.log(sound)
     }
+
+    
   }
   return (
     <div>
@@ -80,89 +89,83 @@ function toggleModal() {
 
           //card for showing sound posted:
           
-            <div key={sound} className="profile">
+            <main key={sound} className="main">
 
-                <hr />
+              <div className="profile">
+                <div className="avatar-header">
+
                 <div key={sound.user.username} className="username">
                 <h4 className="title is-4">
                   {/* <span role="img" aria-label="plate">
                   </span>{" "} */}
                   {/* Posted by: */}
                 </h4>
-                <p>{sound.user.username}</p>
-                </div>
-
-                {/* Need to fix cloudinary avatar image call from their API*/}
-                <div key={sound.user.image} className="avatar">
-                <img src={sound.user.image} alt="avatar"></img>
                 
-                {console.log(sound.user)}
+                  {/* Need to fix cloudinary avatar image call from their API*/}
+                  <div key={sound.user.image} className="avatar">
+                    <img src={sound.user.image} alt="avatar"></img>
+                    {/* <p>{sound.user.username}</p> */}
+                    <p>{capitalize(sound.user.username)}</p>
+                  
+                  {console.log(sound.user)}
+                  </div>
+                  </div>
                 </div>
-          
-              <div key={sound} className="card">
-                <hr />
+                
+                 
+                
 
-                <div key={sound} className="sound-title">
-                <h2 className="title is-2">{sound.fileName}</h2>
-                </div>
-
-                <hr />
-
-                <div key={sound.createdAt} className="date-posted">
-                <h4 className="title is-4">
-                  {/* <span role="img" aria-label="plate">
-                  </span>{" "} */}
-                  {/* Date posted: */}
-                </h4>
-                <p>{sound.createdAt}</p>
-                </div>
-
-                <hr />
+                
 
                 <div className="hashtags">
                 <h4 className="title is-4">
-                  <span role="img" aria-label="plate">
-                  </span>{" "}
-                  Hashtag
                 </h4> {sound.hashtag.map((tag, index) => {
                   return <article key={index} className="hashtag">
                     <div className="content">
-                        <p className="subtitle">
+                        <p className="hashtag">
                           #{tag}
                         </p>
                     </div>  
                   </article>
                 })}
                 </div>
-                <hr />
-                <div key={sound.category} className="category">
-                <h4 className="title is-4">
-                  {/* <span role="img" aria-label="plate">
-                  </span>{" "} */}
-                  Category
-                </h4>
-                <p>{sound.category}</p>
-                </div>
-                <hr />
+                <hr /> 
+              </div>
 
-                <div className="sub-category">
-                <h4 className="title is-4">
-                  {/* <span role="img" aria-label="plate">
-                  </span>{" "} */}
-                  Sub Category
-                </h4>
-                <p>{sound.subCategory}</p>
-                </div>
+    
+            
+            
+            <div className="banner">
+                              
+              <div className="categories">                
 
-                
-            <hr />
-            <div className="content">
+              <div key={sound} className="sound-title">
+                  <h2 className="title is-2">{sound.fileName}</h2>
+                  <div key={sound.createdAt} className="date-posted">
+                  
+                  <p>{sound.createdAt}</p>
+                  </div>
+                  </div>
+                  
+                  <div key={sound.category} className="category">
+                  <p>
+                    Category: {sound.category}
+                  </p>
+                  </div>
+                  
+                  <div className="sub-category">
+                  <p>
+                    Sub category: {sound.subCategory}
+                  </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="content">
              
                 <div key={sound.url} className="audio-container">
-                <h4 className="title is-4">
-                        {/* <span role="img" aria-label="plate">
-                        </span>{" "} */}
-                      
+                <h2 className="title is-4">
+                    
                       <img src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img> 
                         {/* <video src={sound.url} controls className="media" type="video">
@@ -171,15 +174,15 @@ function toggleModal() {
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                         
-                      </h4>
+                      </h2>
 
-                <hr />
+ 
 
                 <div className="delete-post">
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* You can do that to show whatever features you want to disable for users who are not the logged in user, you can do it like that. */}
-                {sound && (user === (sound.user._id)) ? <button className="button is-danger" onClick={toggleModal}>
+                {sound && (user === (sound.user._id)) ? <button className="buttondelete" onClick={toggleModal}>
                     Delete sound
                     </button> : null}
                   { toggleDeleteConfirmation &&  
@@ -205,11 +208,35 @@ function toggleModal() {
                 <hr />
               </div>
             </div>
-          </div>
           <div className="commentsContainer">
-                <h4 className="title is-4 has-text-centered">Comments</h4>
-                {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
-                <div key={sound.user._id} className="content">
+                <h4 className="title-comments">Post your comments</h4> 
+                <div key={sound.comments} className="Comments-content">
+                {sound.comments && sound.comments.map((comment, index) => {
+                  return <article key={index} className=".commentDiv">
+                      <div className="comment-media">
+                      <p className="comment-avatar">
+                            {/* {comment.user.username} */}
+                            {capitalize(comment.user.username)}
+                            <img className="img-avatar" src={comment.user.image} alt='avatar'></img>
+                            {/* {console.log(comment.user.username)} */}
+                          </p>
+                        <div className="comment-box">
+                          <p>
+                            {comment.createdAt}
+                          </p>
+                          
+                          <p>{comment.content}</p>
+                        </div>
+                      </div>
+                    </article>
+                  })}
+                  </div> 
+
+                  {
+                    //? Little form to POST a comment (again lots of bulma)
+                  }
+                  {/*We are only going to show article below to post a comment if "getLoggedInUserId" because if they have a logged in user id they're must be logged in */}
+                  <div key={sound.user._id} className="comment-box">
                   {getLoggedInUserId() && <article className="media">
                     <div className="media-content">
                       <div className="field">
@@ -222,7 +249,7 @@ function toggleModal() {
                       </div>
                       <div className="field">
                           <button
-                            className="buttonsubmitcomment"
+                            className="buttonsubmitcomment" 
                             onClick={handleComment}
                           >
                             Submit
@@ -245,7 +272,7 @@ function toggleModal() {
                   })}
                   </div>
                 </div>
-              </div>
+              </main>
           ) : (
             <p>...loading</p>
           )}

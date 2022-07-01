@@ -1,0 +1,40 @@
+//  S E A R C H B A R   C O M P O N A N T
+.SearchBarcomponant {
+  margin-bottom: 10px
+}
+
+.searchbar {
+  width: 97%;
+  margin: 40px 1.5% 10px 1.5%;
+  height: 50px;
+  border-radius: 10px;
+  border: solid 1px black;
+  font-size: 30px;
+  font-weight: 200;
+  padding-left: 10px;
+}
+.searchbar ::placeholder {
+  color: red;
+}
+.name_container{
+  padding: 5px 0px;
+  text-align: right;
+  width: 96%;
+  margin: 5px 2%;
+  padding-top: 15px;
+  border-bottom: rgb(192, 192, 192) 0.5px solid;
+}
+.name {
+  font-weight: 300;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  text-align: left;
+}
+.resultsContainer {
+  background-color: white;
+  width: 90%;
+  margin-left: 5%;
+  position: absolute;
+  z-index: 1;
+}

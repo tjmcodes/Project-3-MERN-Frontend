@@ -6,7 +6,7 @@ import axios from 'axios'
 import shareVideo from '../assets/share.mp4'
 import GoogleLogin from 'react-google-login'
 import { FcGoogle } from 'react-icons/fc'
-import logo from '../assets/OneWeb_Logo.png'
+import logo from '../assets/myFoundSoundsLogo/logo_myFoundS_darker.png'
 
 export default function Login() {
 
@@ -51,15 +51,14 @@ export default function Login() {
         />
       </div>
     
-    {/*             the logo i created            */}
-      <div className=" logo" >
-        <img src={logo} alt="logo" width="130px"  />
+      <div className=" logo mb-5" >
+        <img src={logo} alt="logo" width="230px"  />
       </div>
 
       <div>
         <form onSubmit={handleSubmit} className="form">
           <div className="field">
-            {/* <label className="label has-text-light">Email</label> */}
+            {/* <label className="label">Email</label> */}
             <div className="control">
               <input
                 className="column is-5"
@@ -89,7 +88,7 @@ export default function Login() {
         </form>
       </div>
 
-      {/*                    google code so far                */}
+  
       <div className="my-google mt-2">
         <GoogleLogin 
           clientId = {`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
@@ -103,16 +102,10 @@ export default function Login() {
               <FcGoogle className="google-button mr-2 "/> Sign in with Google
             </button>
             )}
-            // onSuccess={responseGoogle}
-            // onFailure={responseGoogle}
-            // cookiePolicy="single_host_origin"
           />
       </div>
-
-
-      {/*             register here area            */}
       <div className="register mt-2">
-        <h3 className=" has-text-light has-text-weight-bold">New user? <a href="register" className="has-text-weight-bold has-text-success">register here</a></h3>
+        <h3 className=" has-text-light has-text-weight-bold">New user? <a href="register" className="has-text-weight-bold has-text-danger ">register here</a></h3>
       </div>
     </div>
     
