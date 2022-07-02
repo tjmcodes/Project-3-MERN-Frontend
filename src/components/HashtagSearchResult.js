@@ -2,31 +2,75 @@ import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import {Link} from "react-router-dom"
 import styles from '../styles/HashtagSearchResults.module.scss'
+import SearchBar from './searchBar'
+import HashtagNavBar from './HashtagNavBar'
+import { useState } from "react"
+
+
 
 function HashtagSearchResult(sethashdata, hashdata) {
- 
-  const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
+  const [soundData, updateSoundData] = useState([]) // issue with true non boolean 
+  const [filterValue, setFilterValue] = useState('')
+  const [activeClass, setactiveClass] = useState('')
+  const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"] 
+  // const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
   const { hashtag } = useParams()
+  const [button, updateButton] = useState(false)
   
   console.log(hashtag)
+
+  const navigate = useNavigate()
   
   React.useEffect(() => {
   fetch(`/api/all-soundsbyhashtag?hashtag=${hashtag}`)
       .then(resp => resp.json())
-      .then(data => setallMatchingSounds(data))
+      .then(data => updateSoundData(data))
+      
 }, [])
-  return (
-    allMatchingSounds ?
-  <>
-  <p>Posts matching #{hashtag}</p>
-  <div className="columns is-multiline is-mobile">
-        {allMatchingSounds.map((sound, index) => {
-          return <div key={index} className="column is-one-third-desktop is-half-tablet is-half-mobile">
+
+function handleClick(event) {
+  if (event.target.innerHTML === 'All Sounds') {
+    setFilterValue('')
+    setactiveClass(event.target.innerHTML)
+  } else {
+    setFilterValue(event.target.innerHTML)
+    setactiveClass(event.target.innerHTML)
+}
+}
+function categoryFilter() {
+  return soundData.filter((sound) => {
+    return (sound.category === filterValue || filterValue === '')
+  })
+}
+
+
+
+return <>
+    <HashtagNavBar />
+    {/* <button className={styles.button} onClick={updateButton(!button)}>Back</button> */}
+
+  <section className={styles.section}>
+    <div className={styles.main}>
+      <div className={styles.sidebar}>
+        <div className={styles.sidebarContent}>
+          <h3>Categories</h3>
+          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
+          {categories.map((category, index) => {
+          return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
+          })}
+        </div>
+      </div>
+      
+      <div className={styles.gridContainer}>
+        {/* <SearchBar /> */}
+        <div className={styles.grid}>
+        { soundData && categoryFilter().map((sound, index) => {
+          return <div className={styles.soundPreviewContainer} key={index}>
             <Link to={`/all-sounds/${sound._id}`}>
-              <div className="card">
-                <div className="card-content">
-                  <div className="media">
-                  <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
+                <div>
+                  <div>
+                    <div>
+                    <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
                       <div>
                           <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img>  
@@ -42,7 +86,9 @@ function HashtagSearchResult(sethashdata, hashdata) {
                         </div>
                         <div className={styles.hashtags}>
                           {sound.hashtag.slice(0, 3).map((tag, index) => {
-                          return <p className={styles.hashtag} key={index}>#{tag}</p>
+                          return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
+                                  ><p className={styles.hashtag} >#{tag}</p>
+                                </Link></div>
                           })}
                         </div>
                       </div>
@@ -56,14 +102,19 @@ function HashtagSearchResult(sethashdata, hashdata) {
                   </div>
                   <div className={styles.date}>
                     <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        })}
+              </Link>
+            </div> 
+          })} 
+        </div>
       </div>
-  </> : <></>
-  )
+      </div>
+    </section>
+  </>
+
+
+  
 }
 
 export default HashtagSearchResult

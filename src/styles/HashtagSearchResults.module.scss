@@ -1,3 +1,5 @@
+@import 'variables';
+
 .section {
   display: flex;
   flex-direction: column;
@@ -10,7 +12,50 @@
   background-color: rgb(250, 250, 250);
 }
 
+.sidebar {
+  flex: 15%;
+  background-color: #ffffff;
+}
 
+.sidebarContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.category {
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+  color: black;
+  text-transform: capitalize;
+}
+
+.categoryActive {
+  background-color: #ff005f;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+  text-transform: capitalize;
+}
+.category:hover {
+  cursor: pointer;
+  background-color: #ff005f;
+  color: white;
+  
+}
+
+.sidebarContent h3 {
+  font-size: 35px;
+}
 
 
 .gridContainer {
@@ -45,6 +90,7 @@
   text-align: center;
   font-size: 25px;
   margin: 5px;
+  text-transform: capitalize;
 }
 
 .CatagoryandHashtags {
@@ -52,11 +98,13 @@
   display: inline-flex;
   justify-content: space-between;
   margin: 10px 2%;
+  text-transform: capitalize;
 
 }
 
 .hashtags {
   display: inline-flex;
+  text-transform: lowercase;
 }
 
 .hashtag {
@@ -78,6 +126,7 @@
 
 .userinfo {
   display: flex;
+  text-transform: capitalize;
 }
 .userAvatar {
   border-radius: 100px;
@@ -88,4 +137,119 @@
 .wavimg {
   width: 96%;
   margin-left: 2%;
+}
+
+.buttonblue {
+  background-color: #1114e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 2vw;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.button {
+  background-color: #ff005f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 2vw;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.button:hover {
+  background-color: #1114e6;
+  color: white;
+  animation: colourfade 0.5s;
+}
+
+.buttonblue:hover {
+  background-color: #ff005f;
+  color: white;
+  animation: colourfadereverse 0.5s;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: 20px;
+}
+
+
+@keyframes colourfade {
+  0% {
+    background-color: #ff005f;
+  }
+
+  14% {
+    background-color: #de0372;
+  }
+  
+  26% {
+    background-color: #c10582;
+  }
+
+  40% {
+    background-color: #a00895;
+  }
+
+  53% {
+    background-color: #810ba7;
+  }
+
+  64% {
+    background-color: #670db6;
+  }
+
+  75% {
+    background-color: #4d0fc4;
+  }
+
+  87% {
+    background-color: #3011d4;
+  }
+
+  100% {
+    background-color: #1114e6;
+  }
+}
+
+@keyframes colourfadereverse {
+  0% {
+    background-color: #1114e6;
+  }
+
+  14% {
+    background-color: #3011d4
+  }
+  
+  26% {
+    background-color: #4d0fc4;
+  }
+
+  40% {
+    background-color: #670db6
+  }
+
+  53% {
+    background-color: #810ba7;
+  }
+
+  64% {
+    background-color: #a00895;
+  }
+
+  75% {
+    background-color: #c10582
+  }
+
+  87% {
+    background-color: #de0372;
+  }
+
+  100% {
+    background-color: #ff005f;
+  }
 }
