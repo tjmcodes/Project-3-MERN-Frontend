@@ -1,26 +1,50 @@
+@import 'variables';
+
 .section {
   display: flex;
   flex-direction: column;
+  
 }
 
 .main {
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: rgb(250, 250, 250);
 }
 
+article {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  
+  .button {
+    background-color: black;
+  }
+  
+}
 
+div {
+  color: white;
+}
 
 .gridContainer {
-  color: #777;
+  font-weight: $font-weight;
+  color: #ffffff;
+  // max-width: 400px;
+  // max-height: 400px;
+  background-color: rgba(122, 117, 117, 0.713);
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  margin: 10px;
   // flex: 85%;
 }
 
 .grid {
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  background-color: black;
 
 }
 
@@ -44,6 +68,7 @@
   text-align: center;
   font-size: 25px;
   margin: 5px;
+  text-transform: capitalize;
 }
 
 .CatagoryandHashtags {
@@ -51,11 +76,12 @@
   display: inline-flex;
   justify-content: space-between;
   margin: 10px 2%;
-
+  text-transform: capitalize;
 }
 
 .hashtags {
   display: inline-flex;
+  text-transform: lowercase;
 }
 
 .hashtag {
@@ -77,6 +103,7 @@
 
 .userinfo {
   display: flex;
+  text-transform: capitalize;
 }
 .userAvatar {
   border-radius: 100px;
@@ -87,4 +114,76 @@
 .wavimg {
   width: 96%;
   margin-left: 2%;
+}
+
+.backButton {
+  background-color: #e280a4;
+  max-width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  // margin-left: 2vw;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+.button {
+  background-color: #ff005f;
+  padding: 10px;
+  border-radius: 5px;
+  // margin-left: 2vw;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.uploadButton {
+  background-color: black;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  // margin-left: 2vw;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+  align-items: center;
+}
+
+.button:hover, .backButton:hover {
+  background-color: #1114e6;
+  color: white;
+  animation: colourfade 0.5s;
+}
+.uploadButton:hover {
+  background-color: #6869b3;
+  color: white;
+  animation: colourfade 0.5s;
+}
+
+.grid {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: black;
+  align-items: center;
+  flex: 2;
+  align-items: stretch;
+
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  
+
+  font-weight: $font-weight;
+  color: #ffffff;
+  max-width: 40vw;
+  // max-height: 400px;
+  background-color: rgba(122, 117, 117, 0.713);
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  margin: 50px;
+  // flex: 85%;
 }

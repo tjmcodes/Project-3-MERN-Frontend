@@ -10,6 +10,7 @@ import Hashtag from '../data/Hashtag.js'
 import styles from '../styles/SoundCreate.module.scss'
 
 
+
 function SoundCreate() {
 
   const navigate = useNavigate()
@@ -119,19 +120,22 @@ function SoundCreate() {
   
 
   return <>
-    <div className={styles.section}>
+    <div className={styles.grid}>
       <NavBar />
       
       {button === true ?
         <div className={styles.gridContainer}>
-          <button className="button" onClick={() => updateButton(!button)}>Back</button>
-          <button className="button" onClick={handleUpload}>Click to upload your sound</button>
+          <button className={styles.backButton} onClick={() => updateButton(!button)}>Back</button>
+          <button className={styles.uploadButton} onClick={handleUpload}>Click to upload your sound</button>          
+          
+          <br />
           
           <div className="field">
-          <label className="label">Name of the track</label>
+            <label className="label has-text-light"></label>
           <div className="control">
             <input
               className="input"
+              placeholder='Name of your sound'
               type="text"
               name='fileName'
               onChange={handleChange}
@@ -140,7 +144,7 @@ function SoundCreate() {
           </div>
           </div>
 
-          
+                   
           <textarea
             className="textarea"
             placeholder='Describe your sound here...'
@@ -148,16 +152,18 @@ function SoundCreate() {
             onChange={handleChange}
             value={formData.caption}
             />
-            
+
+          <br />  
           <SubCategories 
             selected = {selected} 
             setSelected = {setSelected}
-            onChange={(subCategory) => setFormData({ ...formData, subCategory })}
-            value={formData.subCategory}
+            onChange={(category) => setFormData({ ...formData, category })}
+            value={formData.category}
           />
-          
+          <br />
           <input
               className="input"
+              placeholder="enter #hashtags"
               type="text"
               name='hashtag'
               onChange={handleChange}
@@ -165,14 +171,16 @@ function SoundCreate() {
             />
     
           
-          <button className={styles.button} onClick={handleSubmit}>Submit and return</button>
+    <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
         </div>
         :
         <div>
-          <div className={styles.section}>
+          <article className={styles.article}>
+            <button className={styles.uploadButton} onClick={() => updateButton(!button)}>Click here to post your sound</button>
+          </article>
 
-        {/* <div className={styles.main}></div> */}
-          <button className="button" onClick={() => updateButton(!button)}>Click here to post your sound</button>
+          <div className={styles.grid}>
+
           {soundDisplay.map(sound => {
             return <div key={sound._id} className={styles.gridContainer}>
               <div className={styles.grid}>
