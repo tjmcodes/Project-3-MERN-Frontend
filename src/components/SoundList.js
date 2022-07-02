@@ -8,6 +8,8 @@ import NavBarSoundList from './NavBarSoundList.js'
 
 const SoundList = () => {
   const [soundData, updateSoundData] = useState([]) // issue with true non boolean 
+  const [filterValue, setFilterValue] = useState('')
+  const [activeClass, setactiveClass] = useState('')
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
 
   useEffect(() => {
@@ -18,11 +20,18 @@ const SoundList = () => {
       })
   }, [])
 
-   function categoryFilter(event) {
-    const filterVariable = event.target.innerHTML
-    console.log(filterVariable)
+  function handleClick(event) {
+    if (event.target.innerHTML === 'All Sounds') {
+      setFilterValue('')
+      setactiveClass(event.target.innerHTML)
+    } else {
+      setFilterValue(event.target.innerHTML)
+      setactiveClass(event.target.innerHTML)
+  }
+}
+  function categoryFilter() {
     return soundData.filter((sound) => {
-      return (sound.category ===  filterVariable) && sound.Filename
+      return (sound.category === filterValue || filterValue === '')
     })
   }
 
@@ -33,8 +42,9 @@ const SoundList = () => {
       <div className={styles.sidebar}>
         <div className={styles.sidebarContent}>
           <h3>Categories</h3>
+          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
           {categories.map((category, index) => {
-          return <p key={index} onClick={categoryFilter} >{category}</p>
+          return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
           })}
         </div>
       </div>
@@ -42,7 +52,7 @@ const SoundList = () => {
       <div className={styles.gridContainer}>
         <SearchBar />
         <div className={styles.grid}>
-        {soundData.map((sound, index) => {
+        { soundData && categoryFilter().map((sound, index) => {
           return <div className={styles.soundPreviewContainer} key={index}>
             <Link to={`/all-sounds/${sound._id}`}>
                 <div>
@@ -83,8 +93,8 @@ const SoundList = () => {
                   </div>
                 </div>
               </Link>
-            </div>
-          })}
+            </div> 
+          })} 
         </div>
       </div>
       </div>

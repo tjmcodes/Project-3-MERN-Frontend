@@ -20,12 +20,32 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 30px 5%;
 }
 
-.sidebarContent p {
-  font-size: 25px;
-  margin: 2.5vh 0;
+.category {
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+}
+
+.categoryActive {
+  background-color: #ff005f;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+}
+.category:hover {
+  cursor: pointer;
+  background-color: #ff005f;
+  color: white;
+  
 }
 
 .sidebarContent h3 {
