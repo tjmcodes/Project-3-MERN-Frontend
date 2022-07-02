@@ -211,7 +211,7 @@ function toggleModal() {
                           <p>{comment.content}</p>
                           
                           <br />  
-                          <span className={styles.usertext.span}>
+                          <span className={styles.spanText}>
                           {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
                           <br />
                           {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}

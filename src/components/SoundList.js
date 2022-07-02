@@ -9,6 +9,7 @@ import NavBarSoundList from './NavBarSoundList.js'
 const SoundList = () => {
   const [soundData, updateSoundData] = useState([]) // issue with true non boolean 
   const [filterValue, setFilterValue] = useState('')
+  const [activeClass, setactiveClass] = useState('')
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
 
   useEffect(() => {
@@ -22,8 +23,10 @@ const SoundList = () => {
   function handleClick(event) {
     if (event.target.innerHTML === 'All Sounds') {
       setFilterValue('')
+      setactiveClass(event.target.innerHTML)
     } else {
       setFilterValue(event.target.innerHTML)
+      setactiveClass(event.target.innerHTML)
   }
 }
   function categoryFilter() {
@@ -39,9 +42,9 @@ const SoundList = () => {
       <div className={styles.sidebar}>
         <div className={styles.sidebarContent}>
           <h3>Categories</h3>
-          <p onClick={handleClick}>All Sounds</p>
+          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
           {categories.map((category, index) => {
-          return <p key={index} onClick={handleClick} >{category}</p>
+          return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
           })}
         </div>
       </div>
