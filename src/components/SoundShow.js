@@ -77,60 +77,57 @@ function toggleModal() {
   return (
     <div>
       <NavBar />
-      <section className={styles.section}>
-        <div className="container">
+      
+        {/* <div className={styles.containerBody}> */}
           {sound ? (
 
           // U S E R  C A R D  H E A D E R  F O R  P O S T E D  S O U N D S        
-            <main key={sound} className={styles.main}>
+            <main key={sound} className={styles.containerBody}>
 
               <div className={styles.profile}>
-                <div className="avatar-header">
+               
+                  <div className={styles.avatarHeader}>
 
-                <div key={sound.user.username} className={styles.profile.username}>
-                <h4 className="title is-4"> </h4>
+                    <div key={sound.user.username} className={styles.username}>
+              
           
-                  <div key={sound.user.image} className={styles.avatar}>
-                    <img className={styles.profile.img} src={sound.user.image} alt="avatar"></img>
-                    <p className={styles.profile.p}>{sound.user.username}</p>
+                      <div key={sound.user.image} className={styles.avatarIcon}>
+                        <img className={styles.img} src={sound.user.image} alt="avatar"></img>
+                        <p className={styles.usernameP}>{sound.user.username}</p>
                   
-                  {/* {console.log(sound.user)} */}
+                       
+                        </div>
+                      </div>
+                    </div>
+                
+                    {/* H A S H T A G S */}
+                
+                    <div className={styles.hashtagContainer}>
+                      {sound.hashtag.slice(0, 3).map((tag, index) => {
+                        return <p key={index} className={styles.hashtag}>
+                          #{tag}
+                        </p>
+                      })}
+                    </div>
+            
                   </div>
+
+    
+             {/* D A T E  A N D  T I M E  I N F O*/}
+            <div className={styles.bannerContainer}>
+             <div className={styles.banner}>                 
+              <div className={styles.categories}>                
+                <div key={sound} className="sound-title">
+                  <h2 className={styles.tracktitle}>{sound.fileName}</h2>
+                  <div key={sound.createdAt} className="date-posted">
+                    <br />  
+                    <span className={styles.dateCreated}>
+                    {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
+                    </span>
                   </div>
                 </div>
                 
-                 {/* H A S H T A G S */}
-                <div className={styles.hashtags}>
-                <h4 className="title is-4">
-                </h4> {sound.hashtag.slice(0, 3).map((tag, index) => {
-                  return <article key={index} className={styles.hashtag}>
-                    <div className="content">
-                        <p className={styles.hashtag}>
-                          #{tag}
-                        </p>
-                    </div>  
-                  </article>
-                })}
-                </div>
-              </div>
-
-    
-            
-            {/* D A T E  A N D  T I M E  I N F O*/}
-            <div className={styles.banner}>                 
-              <div className={styles.categories}>                
-
-                <div key={sound} className="sound-title">
-                  <h2 className={styles.tracktitle}>{sound.fileName}</h2>
-                    <div key={sound.createdAt} className="date-posted">
-                    <br />  
-                      <span className={styles.span}>
-                        {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
-                      </span>
-                    </div>
-                </div>
-                  
-                    <div key={sound.category} className="category">
+                <div key={sound.category} className="category">
                       <p>
                         Category: {sound.category}
                       </p>
@@ -143,22 +140,24 @@ function toggleModal() {
                     </div>
 
                 </div>
-              </div>
-
-              <div className="content">
-             
-             {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
+            </div>
+            </div>
                 <div key={sound.url} className={styles.audiocontainer}>
-                <h2 className="title is-4">
+  
                     
                       <img className={styles.audioMedia} src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
                         </img> 
                        
-                        <audio controls className={styles.media}>
+                        <audio controls className={styles.mediaPlayer}>
                           <source src={sound.url} type="audio/wav"></source>  
                         </audio>
                         
-                      </h2>
+            
+
+             {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
+              <div className={styles.audioCard}>
+            
+           
                       
 
  
@@ -197,30 +196,29 @@ function toggleModal() {
                 <h4 className={styles.h4}>Post your comments</h4> 
                 <div key={sound.comments} className={styles.commentsContent}>
                 {sound.comments && sound.comments.map((comment, index) => {
-                  return <article key={index} className=".commentDiv">
-                      <div className={styles.commentMedia}>
-                      <p className={styles.commentavatar}>
+                  return  <div key={index} className={styles.commentMedia}>
+                            <p className={styles.commentavatar}>
                             {comment.user.username}
                             
                             <img className={styles.imgavatar} src={comment.user.image} alt='avatar'></img>
                             
                           </p>
-                        <div className={styles.commentbox}>
+                          <div className={styles.commentbox}>
 
-                          <div className={styles.usertext.p}>
-                          <p>{comment.content}</p>
+                          <div className={styles.usertext}>
+                            <p className={styles.postedCommentText}>{comment.content}</p>
                           
-                          <br />  
-                          <span className={styles.usertext.span}>
-                          {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
-                          <br />
-                          {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
-                          </span>
                           </div>
-                          
-                        </div>
+                          </div>
+                          <div className={styles.dateCreatedContainer}>  
+                          <p className={styles.dateCreated}>
+                          {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
+                          <br/>
+                          {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
+                          </p>
+                          </div>
                       </div>
-                    </article>
+                  
                   })}
                   </div> 
 
@@ -233,7 +231,7 @@ function toggleModal() {
                           <textarea 
                             maxLength={280}
                             className={styles.commentTextarea}
-                            placeholder="Make a comment.."
+                            placeholder="Write out your post here.."
                             onChange={(event) => setCommentContent(event.target.value)}
                           >
                           </textarea>
@@ -251,15 +249,15 @@ function toggleModal() {
                     </div>
                   </article>}
                   </div>
-                </div>
+                  </div>
               </main>
           ) : (
             <p>...loading</p>
           )}
         </div>
   
-      </section>
-    </div>
+      
+    // </div>
   )
 }
 

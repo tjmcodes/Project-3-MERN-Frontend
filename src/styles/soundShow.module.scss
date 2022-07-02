@@ -1,104 +1,88 @@
 @import 'variables';
 
-@import 'variables';
-// @import 'mixins';
-@import 'card';
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font: $font-stack;
-  color: $text-color;
-}
 
 
-
-section {
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  padding: 0 10px; // change size of whole 'card'
+.containerBody {
+  background-color: rgb(0, 0, 0);
+  width: 50%;
+  margin-left: 25%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  
 }
 
 .profile {
-  background-color: rgba(255, 0, 123, 0.414);
   display: flex;
-  justify-content: flex-start;
+  // background-color: blue;
+  justify-content: space-between;
+  padding: 0 30px;
+
+}
+
+.avatarHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+.username{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.avatarIcon {
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  flex: 1 100%;
-  order: 1;
+  width: 100px;
+  
+  
+
+}
+
+.img {
+  width: 100px;
+  border-radius: 100%;
+  padding: 10px
+  
+}
+.usernameP {
   text-transform: capitalize;
-  
-
-  .username {
-    display: flex;
-    justify-content: center;
-  }
-
-    .avatar {
-      display: flex;
-      flex-direction: row;
-      
-      
-    }
-
-    img {
-      width: 100px;
-      padding: 10px;
-      border-radius: 100px;
-    }
-
-      p {
-        display: flex;
-        align-items: center;
-        padding: 5px 10px;
-      }    
+  // background-color: pink;
+  margin: 0px
 }
 
-.hashtags {
+.hashtagContainer {
+  // background-color: orange;
   display: flex;
-  flex: 1;
-  height: 100%;
-  
-    margin: 0px;
-    flex-direction: column;
-    align-items: flex-end;
-
-
-    .hashtag {
-      align-items: flex-end;
-      text-transform: lowercase
-    }
+  flex-direction: column;
+  justify-content: space-evenly;
 }
-
-// .card-avatar {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: flex-end;
-//   flex: 1 100%;
-
-//   div.card {
-//     flex: 1 100%;
-//     order: 1;
-
-//   }
-
-      
-// }
-
-
 
 .banner {
-  width: 83%;
+
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.783);
   padding: 5px;
   
+  z-index: 1;
+  
+}
+
+.banner p {
+  color: black;
+}
+
+.banner h2 {
+  color: black;
 }
 
 .audiocontainer {
@@ -135,12 +119,19 @@ main {
 .audioMedia {
   display: flex;
   flex-direction: row;
-  max-width: 100vw;
+  width: 100vw;
   justify-content: center;
-  max-height: 100vh;
-
+  max-height: 300px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
+.mediaPlayer {
+  margin:10px;
+  width: 80%;
+  margin-left: 10%;
+  
+}
 
 audio.media {
   // display: block;
@@ -148,7 +139,6 @@ audio.media {
   height: 52px;
   padding: 0;
   width: 100%;
-  background-color: #1114e6;
 }
 
 
@@ -159,10 +149,11 @@ audio.media {
  
     .buttondelete {
       width: 100px;
-    background-color: $secondary-color;
-    color:white;
-    padding: 10px;
-    border-radius: 5px;
+      background-color: $secondary-color;
+      color:white;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
   }
 
 }
@@ -172,7 +163,6 @@ audio.media {
 
 
 .commentsContainer {
-  background-color: rgba(255, 0, 123, 0.414);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,7 +187,7 @@ h4 {
 
 .commentsContent {
   max-width: 100%;
-  background-color: rgba(0, 0, 255, 0.415);
+  // background-color: rgba(0, 0, 255, 0.415);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -207,6 +197,7 @@ h4 {
 .commentTextarea {
   // display: flex;
   height: 100px;
+  width:400px;
   text-align: center;
   // width:80%;
   // margin: 0 10%;
@@ -217,24 +208,30 @@ h4 {
   background-color: $background-color;
   display: flex;
   flex-direction: row;
-  // align-items: center;
+  align-items: center;
   // width :70%;
   // flex: 1, 100px;
-  margin: 10px 15%;
+  margin: 15px 15px;
   // border: solid 1px rgba(128, 128, 128, 0.409);
   border-radius: 5px;  
+  align-items: flex-end;
+  
+  padding: 5px;
 
   
   .commentavatar {
-    background-color: rgba(255, 6, 89, 0.434);
+    // background-color: rgba(255, 6, 89, 0.434);
     display: flex; 
     // flex: 1;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     text-transform: capitalize;
     max-width: 100vw;
     max-height: 100vh;
+    border: solid 1px rgba(178, 178, 178, 0.211);
+    border-radius: 5px;
+    color:rgb(0, 0, 0)
   }
   .username {
     display: flex;
@@ -249,7 +246,7 @@ h4 {
     // }
   
   .imgavatar {
-      max-width: 10vw;
+      max-width: 100px;
       padding: 10px;
       border-radius: 100px;
   }
@@ -259,26 +256,30 @@ h4 {
     
 }
 .commentbox {
+  min-width: 60%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
 
 }
 .usertext {
+  min-width: 60%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-start;
+ 
   // border: solid 1px rgba(128, 128, 128, 0.409);
   border-radius: 5px;  
   margin: 5px;  
-  display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+ 
     padding: 0px 5px;
+    
     
     p {
       padding: 0px;
       // font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      align-self: flex-start;
-      margin-bottom: 25px;
+    
+      margin-bottom: 0px;
       
     }
 
@@ -287,12 +288,7 @@ h4 {
     }
   }
 
-  // p {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   padding: 5px 10px;
-  // }  
+
 
 
 
@@ -338,7 +334,18 @@ h4 {
   
 }
 
+.dateCreated { 
+  color: black;
+  font-size: 10px;
+  
+}
 
+.postedCommentText {
+  align-self: flex-start;
+  color: black;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
 
 .buttondelete {
   // width: 80%;
@@ -396,9 +403,9 @@ h4 {
       // }    
 }
 
-.container {
-  width: 100px;
-}
+// .container {
+//   width: 100px;
+// }
 
 .column {
   display: flex;
@@ -427,4 +434,19 @@ h4 {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.usertext {
+  font-size: 20px;
+}
+
+.dateCreatedContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 2;
+  align-items: flex-end;
+
 }
