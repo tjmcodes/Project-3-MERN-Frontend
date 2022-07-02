@@ -7,7 +7,7 @@ import NavBarSoundList from './NavBarSoundList.js'
 
 
 const SoundList = () => {
-  const [soundData, updateSoundData] = useState([])
+  const [soundData, updateSoundData] = useState([]) // issue with true non boolean 
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
 
   useEffect(() => {
@@ -18,6 +18,14 @@ const SoundList = () => {
       })
   }, [])
 
+   function categoryFilter(event) {
+    const filterVariable = event.target.innerHTML
+    console.log(filterVariable)
+    return soundData.filter((sound) => {
+      return (sound.category ===  filterVariable) && sound.Filename
+    })
+  }
+
   return <>
     <NavBarSoundList />
   <section className={styles.section}>
@@ -26,7 +34,7 @@ const SoundList = () => {
         <div className={styles.sidebarContent}>
           <h3>Categories</h3>
           {categories.map((category, index) => {
-          return <p key={index}>{category}</p>
+          return <p key={index} onClick={categoryFilter} >{category}</p>
           })}
         </div>
       </div>
@@ -56,9 +64,9 @@ const SoundList = () => {
                         </div>
                         <div className={styles.hashtags}>
                           {sound.hashtag.slice(0, 3).map((tag, index) => {
-                          return <Link to={`/hashtagsearchresults/${tag}`}
-                                  ><p className={styles.hashtag} key={index}>#{tag}</p>
-                                </Link>
+                          return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
+                                  ><p className={styles.hashtag} >#{tag}</p>
+                                </Link></div>
                           })}
                         </div>
                       </div>
