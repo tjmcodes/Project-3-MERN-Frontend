@@ -65,6 +65,7 @@
   text-align: center;
   font-size: 25px;
   margin: 5px;
+  text-transform: capitalize;
 }
 
 .CatagoryandHashtags {
@@ -72,11 +73,13 @@
   display: inline-flex;
   justify-content: space-between;
   margin: 10px 2%;
+  text-transform: capitalize;
 
 }
 
 .hashtags {
   display: inline-flex;
+  text-transform: lowercase;
 }
 
 .hashtag {
@@ -98,6 +101,7 @@
 
 .userinfo {
   display: flex;
+  text-transform: capitalize;
 }
 .userAvatar {
   border-radius: 100px;

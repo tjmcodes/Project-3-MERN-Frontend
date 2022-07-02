@@ -155,7 +155,7 @@ function Register() {
       </form>
 
       <div>
-        <button className="button is-info has-text-weight-bold mt-3" onClick={handleUpload}>Click to upload profile picture</button>          
+        <button className={"button is-info has-text-weight-bold mt-3"} onClick={handleUpload}>Click to upload profile picture</button>          
       </div>
       
     </div>
