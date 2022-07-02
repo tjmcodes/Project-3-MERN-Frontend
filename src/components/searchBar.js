@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios'
 import styles from '../styles/searchBar.module.scss'
+import { baseUrl } from "../config"
 function SearchBar() {
   const [hashtagdata, setHashtagData] = React.useState(undefined)
   const [hashtag, setHashtag] = React.useState("")
@@ -13,7 +14,7 @@ function SearchBar() {
       const _tag= event.target.value
       setHashtag(_tag);
       console.log(_tag)
-      axios.get(`api/hashtags?hashtag=${_tag}`)
+      axios.get(`${baseUrl}/hashtags?hashtag=${_tag}`)
       .then(axiosResp => {
         setHashtagData(axiosResp.data)
     

@@ -5,9 +5,10 @@ import styles from '../styles/Login.module.scss'
 
 
 import shareVideo from '../assets/share.mp4'
-import GoogleLogin from 'react-google-login'
-import { FcGoogle } from 'react-icons/fc'
+// import GoogleLogin from 'react-google-login'
+// import { FcGoogle } from 'react-icons/fc'
 import logo from '../assets/myFoundSoundsLogo/logo_myFoundS_darker.png'
+import { baseUrl } from '../config'
 
 export default function Login() {
 
@@ -30,7 +31,7 @@ export default function Login() {
     event.preventDefault()
 
     try {
-      const { data } = await axios.post('/api/login', formData)
+      const { data } = await axios.post(`${baseUrl}/login`, formData)
       localStorage.setItem('token', data.token)
       console.log(data.token)
       navigate('/all-sounds')

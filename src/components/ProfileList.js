@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import SearchBar from './searchBar'
 import styles from '../styles/ProfileList.module.scss'
+import { baseUrl } from '../config'
 
 const ProfileList = () => {
   const [profileData, updateProfileData] = useState([])
 
   useEffect(() => {
-    axios.get('/api/all-users/profileList')
+    axios.get(`${baseUrl}/all-users/profileList`)
       .then(axiosResp => {
         updateProfileData(axiosResp.data)
       })

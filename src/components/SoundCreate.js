@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
-import Hashtag from '../data/Hashtag.js'
 import styles from '../styles/SoundCreate.module.scss'
+import { baseUrl } from '../config.js'
 
 
 
@@ -43,7 +43,7 @@ function SoundCreate() {
   // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
-      const { data } = await axios.get('/api/all-sounds')
+      const { data } = await axios.get(`${baseUrl}/all-sounds`)
       // reversing the data so that the newest posts will appear first
       updateSoundDisplay(data.reverse())
     } catch (err) {
@@ -96,14 +96,12 @@ function SoundCreate() {
     // gets all forms first, and then ...selected will overwrite existing
     const newFormData = {
       ...formData,
-      ...selected,
-
-      
+      ...selected, 
     }
   
     console.log(formData)
     try {
-      const { data } = await axios.post('/api/all-sounds', newFormData, {
+      const { data } = await axios.post(`${baseUrl}/all-sounds`, newFormData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       

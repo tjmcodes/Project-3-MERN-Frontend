@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import SearchBar from './searchBar'
 import styles from '../styles/SoundList.module.scss'
 import NavBarSoundList from './NavBarSoundList.js'
+import { baseUrl } from '../config'
 
 
 const SoundList = () => {
@@ -13,12 +14,12 @@ const SoundList = () => {
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
 
   useEffect(() => {
-    axios.get('/api/all-sounds')
+    axios.get(`${baseUrl}/all-sounds`)
       .then(axiosResp => {
         updateSoundData(axiosResp.data)
         console.log(soundData)
       })
-  }, [])
+  }, [soundData])
 
   function handleClick(event) {
     if (event.target.innerHTML === 'All Sounds') {

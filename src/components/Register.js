@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/myFoundSoundsLogo/logo_myFoundS_darker.png'
 import shareVideo from '../assets/share.mp4'
 import styles from '../styles/Register.module.scss'
+import { baseUrl } from '../config'
 
 
 function Register() {
@@ -69,7 +70,7 @@ function Register() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      await axios.post('/api/register', formData)
+      await axios.post(`${baseUrl}/register`, formData)
       updateButton(!button)
       navigate('/')
     } catch (err) {

@@ -2,9 +2,9 @@ import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import {Link} from "react-router-dom"
 import styles from '../styles/HashtagSearchResults.module.scss'
-import SearchBar from './searchBar'
 import HashtagNavBar from './HashtagNavBar'
 import { useState } from "react"
+import { baseUrl } from "../config"
 
 
 
@@ -15,18 +15,18 @@ function HashtagSearchResult(sethashdata, hashdata) {
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"] 
   // const [allMatchingSounds, setallMatchingSounds] = React.useState(undefined)
   const { hashtag } = useParams()
-  const [button, updateButton] = useState(false)
+
   
   console.log(hashtag)
 
-  const navigate = useNavigate()
+
   
   React.useEffect(() => {
-  fetch(`/api/all-soundsbyhashtag?hashtag=${hashtag}`)
+  fetch(`${baseUrl}/all-soundsbyhashtag?hashtag=${hashtag}`)
       .then(resp => resp.json())
       .then(data => updateSoundData(data))
       
-}, [])
+}, [hashtag])
 
 function handleClick(event) {
   if (event.target.innerHTML === 'All Sounds') {

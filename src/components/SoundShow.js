@@ -4,6 +4,7 @@ import {  getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
 import NavBar from './NavBar.js'
 import styles from '../styles/soundShow.module.scss'
+import { baseUrl } from '../config.js'
 
 
 function ShowSound() {
@@ -14,6 +15,7 @@ function ShowSound() {
   const { soundId } = useParams()
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
+  
  
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
@@ -21,16 +23,16 @@ function ShowSound() {
   }, [])
 
   React.useEffect(() => {
-    fetch(`/api/all-sounds/${soundId}`)
+    fetch(`${baseUrl}/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
       console.log(sound)
-  }, [soundId])
+  }, [])
 
 
   async function handleDelete() {
     try {
-      await axios.delete(`/api/all-sounds/${soundId}`, { 
+      await axios.delete(`${baseUrl}/all-sounds/${soundId}`, { 
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 
       })
       setToggleDeleteConfirmation(!toggleDeleteConfirmation)
@@ -56,7 +58,7 @@ function toggleModal() {
     try {
 
       const { data } = await axios.post(
-        `/api/all-sounds/${soundId}/comments`, 
+        `${baseUrl}/all-sounds/${soundId}/comments`, 
         { content: commentContent },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, 

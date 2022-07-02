@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import styles from '../styles/SingleUserId.module.scss'
+import { baseUrl } from '../config'
 
 const ProfileList = (props) => {
   const [profileData, updateProfileData] = useState([])
@@ -13,16 +14,15 @@ const ProfileList = (props) => {
   console.log(stateparams)
 
   useEffect(() => {
-    axios.get(`/api/oneUser/${singleUserId}`)
+    axios.get(`${baseUrl}/oneUser/${singleUserId}`)
       .then(axiosResp => {
         updateProfileData(axiosResp.data)
         console.log(profileData)
       })
-  }, [])
+  }, [singleUserId])
 
   return profileData ? <section>
     <div className={styles.section}>
-    <h1></h1>
       <div className={styles.main}>
 <div className={styles.gridContainer}>
   <div className={styles.grid}>
