@@ -1,5 +1,3 @@
-@import 'variables';
-
 .section {
   display: flex;
   flex-direction: column;
@@ -10,6 +8,11 @@
   flex-direction: row;
   width: 100%;
   background-color: rgb(250, 250, 250);
+  
+}
+
+.catagoryandHashtags h5 {
+  color:black
 }
 
 .sidebar {
@@ -45,6 +48,7 @@
   border-radius: 5px;
   margin: 2vh;
   text-transform: capitalize;
+  
 }
 .category:hover {
   cursor: pointer;
@@ -91,14 +95,16 @@
   font-size: 25px;
   margin: 5px;
   text-transform: capitalize;
+  color:black
 }
 
-.CatagoryandHashtags {
+.catagoryandHashtags {
   width: 96%;
   display: inline-flex;
   justify-content: space-between;
   margin: 10px 2%;
   text-transform: capitalize;
+  color:black
 
 }
 
@@ -115,141 +121,30 @@
   color: #1114e6;
 }
 
-
+.date p {
+  color: black;
+}
 .userdate {
   display: flex;
   justify-content: space-between;
   width: 96%;
   margin: 10px 2%;
-  
+  color:black
 }
 
 .userinfo {
   display: flex;
   text-transform: capitalize;
+  color:black
 }
 .userAvatar {
   border-radius: 100px;
   height: 40px;
   margin-right: 5px;
+  
 }
 
 .wavimg {
   width: 96%;
   margin-left: 2%;
-}
-
-.buttonblue {
-  background-color: #1114e6;
-  padding: 10px;
-  border-radius: 5px;
-  margin-left: 2vw;
-  margin-top: 10px;
-  font-size: 20px;
-  color: white;
-}
-
-.button {
-  background-color: #ff005f;
-  padding: 10px;
-  border-radius: 5px;
-  margin-left: 2vw;
-  margin-top: 10px;
-  font-size: 20px;
-  color: white;
-}
-
-.button:hover {
-  background-color: #1114e6;
-  color: white;
-  animation: colourfade 0.5s;
-}
-
-.buttonblue:hover {
-  background-color: #ff005f;
-  color: white;
-  animation: colourfadereverse 0.5s;
-}
-
-.logo {
-  height: 40px;
-  width: auto;
-  margin-right: 20px;
-}
-
-
-@keyframes colourfade {
-  0% {
-    background-color: #ff005f;
-  }
-
-  14% {
-    background-color: #de0372;
-  }
-  
-  26% {
-    background-color: #c10582;
-  }
-
-  40% {
-    background-color: #a00895;
-  }
-
-  53% {
-    background-color: #810ba7;
-  }
-
-  64% {
-    background-color: #670db6;
-  }
-
-  75% {
-    background-color: #4d0fc4;
-  }
-
-  87% {
-    background-color: #3011d4;
-  }
-
-  100% {
-    background-color: #1114e6;
-  }
-}
-
-@keyframes colourfadereverse {
-  0% {
-    background-color: #1114e6;
-  }
-
-  14% {
-    background-color: #3011d4
-  }
-  
-  26% {
-    background-color: #4d0fc4;
-  }
-
-  40% {
-    background-color: #670db6
-  }
-
-  53% {
-    background-color: #810ba7;
-  }
-
-  64% {
-    background-color: #a00895;
-  }
-
-  75% {
-    background-color: #c10582
-  }
-
-  87% {
-    background-color: #de0372;
-  }
-
-  100% {
-    background-color: #ff005f;
-  }
 }

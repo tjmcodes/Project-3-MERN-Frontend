@@ -8,6 +8,11 @@
   flex-direction: row;
   width: 100%;
   background-color: rgb(250, 250, 250);
+  
+}
+
+.catagoryandHashtags h5 {
+  color:black
 }
 
 .sidebar {
@@ -43,6 +48,7 @@
   border-radius: 5px;
   margin: 2vh;
   text-transform: capitalize;
+  
 }
 .category:hover {
   cursor: pointer;
@@ -89,14 +95,16 @@
   font-size: 25px;
   margin: 5px;
   text-transform: capitalize;
+  color:black
 }
 
-.CatagoryandHashtags {
+.catagoryandHashtags {
   width: 96%;
   display: inline-flex;
   justify-content: space-between;
   margin: 10px 2%;
   text-transform: capitalize;
+  color:black
 
 }
 
@@ -113,23 +121,27 @@
   color: #1114e6;
 }
 
-
+.date p {
+  color: black;
+}
 .userdate {
   display: flex;
   justify-content: space-between;
   width: 96%;
   margin: 10px 2%;
-  
+  color:black
 }
 
 .userinfo {
   display: flex;
   text-transform: capitalize;
+  color:black
 }
 .userAvatar {
   border-radius: 100px;
   height: 40px;
   margin-right: 5px;
+  
 }
 
 .wavimg {

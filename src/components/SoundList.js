@@ -68,9 +68,9 @@ const SoundList = () => {
                           <source src={sound.url} type="audio"></source>  
                         </audio> */}
                       </div>
-                      <div className={styles.CatagoryandHashtags}>
+                      <div className={styles.catagoryandHashtags}>
                         <div>
-                          <h5>{sound.category}/{sound.subCategory}</h5>
+                          <h5>{sound.category}: {sound.subCategory}</h5>
                         </div>
                         <div className={styles.hashtags}>
                           {sound.hashtag.slice(0, 3).map((tag, index) => {
@@ -84,10 +84,12 @@ const SoundList = () => {
                   </div>
                 </div>
                 <div className={styles.userdate}>
-                  <div className={styles.userinfo}key={sound.user.image}>
+                <Link to={`/all-users/profileList${sound.user._id}`}>
+                    <div className={styles.userinfo}key={sound.user.image}>
                     <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
                     <h5 use>{sound.user.username}</h5>
                   </div>
+                </Link>
                   <div className={styles.date}>
                     <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
                   </div>
