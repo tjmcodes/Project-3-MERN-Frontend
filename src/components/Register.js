@@ -62,6 +62,7 @@ function Register() {
           image: result.info.url,
         })
         console.log(result.info.url)
+        console.log(result.info)
       }
       ).open()
     }
@@ -80,22 +81,25 @@ function Register() {
     }
   }
   console.log(formData)
+  
   return <div className="register-page">
     <div className="column is-centered">
-        <video
-          src={shareVideo}
-          type="video/mp4"
-          controls={false}
-          muted
-          // autoPlay
-          className={styles.registerBackground}
+      <video
+        src={shareVideo}
+        type="video/mp4"
+        controls={false}
+        muted
+        // autoPlay
+        className={styles.registerBackground}
         />
     </div>
+    
     <div className="column is-half is-offset-one-quarter" id="register">
       <form onSubmit={handleSubmit} className={styles.hero}>
       <div className=" logo mb-5" >
         <img src={logo} alt="logo" width="230px"  />
       </div>
+     
       <div className="field">
         <label className="label has-text-light">Username</label>
         <div className="control">
@@ -103,13 +107,13 @@ function Register() {
             className="input"
             type="text"
             name={'username'} 
-            // ! Adding these 2 fields means your component is 'controlled'. 
             value={formData.username}
             onChange={handleChange}
           />
           {errors.username && <small className="has-text-danger">{errors.username}</small>}
         </div>
       </div>
+
       <div className="field">
         <label className="label has-text-light">Email</label>
         <div className="control">
@@ -123,6 +127,7 @@ function Register() {
           {errors.email && <small className="has-text-danger">{errors.email}</small>}
         </div>
       </div>
+
       <div className="field">
         <label className="label has-text-light">Password</label>
         <div className="control">
@@ -136,6 +141,7 @@ function Register() {
           {errors.password && <small className="has-text-danger">{errors.password}</small>}
         </div>
       </div>
+
       <div className="field">
         <label className="label has-text-light">Confirm password</label>
         <div className="control">
@@ -149,8 +155,9 @@ function Register() {
           {errors.passwordConfirmation && <small className="has-text-danger">{errors.passwordConfirmation}</small>}
         </div>
       </div>
+
       <div>
-      <button type="submit" className="button is-danger has-text-weight-bold mt-1 " onClick={handleSubmit}>Submit</button>
+        <button type="submit" className="button is-danger has-text-weight-bold mt-1 " onClick={handleSubmit}>Submit</button>
       </div>
       
       </form>

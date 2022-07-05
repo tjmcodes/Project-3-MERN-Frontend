@@ -1,0 +1,19 @@
+.hero {
+  margin-top: 100px;
+}
+
+.registerBackground {
+  width: 100vw;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+/*# sourceMappingURL=Register.module.css.map */

@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAC;EACN,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "../../src/styles/ProfileList.module.scss",
+        "../../src/styles/_variables.scss"
+    ],
+    "names": [],
+    "file": "ProfileList.module.css"
+}

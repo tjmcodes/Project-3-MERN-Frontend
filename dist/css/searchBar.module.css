@@ -1,13 +1,8 @@
-//  S E A R C H B A R   C O M P O N A N T
-@import '_variables';
-
-
 .SearchBarcomponant {
   margin-bottom: 10px;
   width: 97%;
   margin-left: 1.5%;
 }
-
 
 .searchbar {
   width: 100%;
@@ -15,10 +10,11 @@
   height: 50px;
   border-radius: 5px;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, #d1d5db 0px 0px 0px 1px inset;
+          box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, #d1d5db 0px 0px 0px 1px inset;
   font-size: 30px;
-  font-weight: $font-weight;
-  padding-left:15px;
+  font-weight: 200;
+  padding-left: 15px;
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -30,21 +26,21 @@
 }
 
 .resultsContainer {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   width: 82.5%;
   border-radius: 0px 0px 15px 15px;
   z-index: 1;
   position: absolute;
 }
 
-
-.name_container{
+.name_container {
   padding: 5px 0px;
   text-align: right;
   width: 96%;
   margin: 0px 2%;
-  border-bottom: rgb(219, 219, 219) 0.5px solid;
+  border-bottom: #dbdbdb 0.5px solid;
 }
+
 .name {
   font-weight: 300;
   font-size: 20px;
@@ -54,4 +50,4 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+/*# sourceMappingURL=searchBar.module.css.map */

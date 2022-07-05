@@ -1,0 +1,147 @@
+.section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.sidebar {
+  -webkit-box-flex: 15%;
+      -ms-flex: 15%;
+          flex: 15%;
+  background-color: #ffffff;
+}
+
+.sidebarContent {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 30px 5%;
+}
+
+.sidebarContent p {
+  font-size: 25px;
+  margin: 2.5vh 0;
+}
+
+.sidebarContent h3 {
+  font-size: 35px;
+}
+
+.gridContainer {
+  color: #777;
+  -webkit-box-flex: 85%;
+      -ms-flex: 85%;
+          flex: 85%;
+}
+
+.grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.soundPreviewContainer {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 31%;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  margin: 10px;
+}
+
+.audiofile {
+  height: 50px;
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+.h5SoundList {
+  text-align: center;
+  font-size: 25px;
+  margin: 5px;
+}
+
+.CatagoryandHashtags {
+  width: 96%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 2%;
+}
+
+.hashtags {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.hashtag {
+  margin: 0 5px 0 5px;
+}
+
+.hashtag:hover {
+  color: #1114e6;
+}
+
+.userdate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 96%;
+  margin: 10px 2%;
+}
+
+.userinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userAvatar {
+  border-radius: 100px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.wavimg {
+  width: 96%;
+  margin-left: 2%;
+}
+/*# sourceMappingURL=SingleUserId.module.css.map */

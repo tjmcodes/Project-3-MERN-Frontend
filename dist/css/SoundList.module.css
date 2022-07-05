@@ -1,0 +1,214 @@
+@media only screen and (max-width: 375px) {
+  .section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 10px;
+    padding: 10px;
+    min-height: 50px;
+  }
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.182);
+}
+
+.catagoryandHashtags h5 {
+  color: black;
+}
+
+.sidebar {
+  -webkit-box-flex: 15%;
+      -ms-flex: 15%;
+          flex: 15%;
+  background-color: #ffffff;
+}
+
+.sidebarContent {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.category {
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+  color: black;
+  text-transform: capitalize;
+}
+
+.categoryActive {
+  background-color: #ff005f;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  margin: 2vh;
+  text-transform: capitalize;
+}
+
+.category:hover {
+  cursor: pointer;
+  background-color: #ff005f;
+  color: white;
+}
+
+.sidebarContent h3 {
+  font-size: 35px;
+}
+
+.gridContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #777;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.soundPreviewContainer {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  margin: 10px;
+}
+
+.soundPreviewContainer .wavimg {
+  width: 96%;
+  margin-left: 2%;
+}
+
+.soundPreviewContainer .audiofile {
+  height: 50px;
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+.soundPreviewContainer .h5SoundList {
+  text-align: center;
+  font-size: 25px;
+  margin: 5px;
+  text-transform: capitalize;
+  color: black;
+}
+
+.soundPreviewContainer .catagoryandHashtags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 2%;
+  text-transform: capitalize;
+  color: black;
+}
+
+.soundPreviewContainer .hashtags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  text-transform: lowercase;
+}
+
+.soundPreviewContainer .hashtag {
+  font-size: small;
+  margin: 0 5px 0 5px;
+}
+
+.soundPreviewContainer .hashtag:hover {
+  color: #1114e6;
+}
+
+.soundPreviewContainer .date p {
+  color: black;
+  font-size: small;
+}
+
+.soundPreviewContainer .userdate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  width: 96%;
+  margin: 10px 2%;
+  color: black;
+}
+
+.soundPreviewContainer .userinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-transform: capitalize;
+  color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.soundPreviewContainer .userAvatar {
+  border-radius: 100px;
+  height: 40px;
+  margin-right: 5px;
+}
+/*# sourceMappingURL=SoundList.module.css.map */

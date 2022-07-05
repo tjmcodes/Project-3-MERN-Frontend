@@ -5,6 +5,7 @@ import axios from 'axios'
 import NavBar from './NavBar.js'
 import styles from '../styles/soundShow.module.scss'
 import { baseUrl } from '../config.js'
+import moment from 'moment'
 
 
 function ShowSound() {
@@ -26,9 +27,9 @@ function ShowSound() {
     fetch(`${baseUrl}/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
-      console.log(sound)
-  }, [])
-
+    }, [])
+    
+    console.log(sound)
 
   async function handleDelete() {
     try {
@@ -115,15 +116,15 @@ function toggleModal() {
                   </div>
 
     
-             {/* D A T E  A N D  T I M E  I N F O*/}
+             {/* D A T E  A N D  T I M E  I N F O */}
             <div className={styles.bannerContainer}>
              <div className={styles.banner}>                 
               <div className={styles.categories}>                
                 <div key={sound} className="sound-title">
                   <h2 className={styles.tracktitle}>{sound.fileName}</h2>
-                  <div key={sound.createdAt} className="date-posted">
+                  <div key={sound.comments.createdAt} className="date-posted">
                     <br />  
-                    <span className={styles.dateCreated}>
+                    <span className={styles.dateCreated}> 
                     {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}      
                     </span>
                   </div>
@@ -213,10 +214,10 @@ function toggleModal() {
                           </div>
                           </div>
                           <div className={styles.dateCreatedContainer}>  
-                          <p className={styles.dateCreated}>
-                          {sound.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
+                          <p className={styles.dateCreated}>                        
+                          {comment.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
                           <br/>
-                          {sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
+                          {comment.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
                           </p>
                           </div>
                       </div>

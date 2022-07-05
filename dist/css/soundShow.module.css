@@ -1,0 +1,534 @@
+.containerBody {
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px 200px;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* Modal Content/Box */
+}
+
+.containerBody .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 30px;
+}
+
+.containerBody .avatarHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.containerBody .username {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.containerBody .avatarIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
+}
+
+.containerBody .img {
+  width: 100px;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+.containerBody .usernameP {
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.containerBody .hashtagContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.containerBody .banner {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.783);
+  padding: 5px;
+  z-index: 1;
+}
+
+.containerBody .banner p {
+  color: black;
+}
+
+.containerBody .banner h2 {
+  color: black;
+}
+
+.containerBody .audiocontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.containerBody .tracktitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  font-size: xx-large;
+  text-transform: capitalize;
+}
+
+.containerBody .categories h2.title.is-2 {
+  margin-bottom: 0px;
+}
+
+.containerBody .categories span, .containerBody .categories p {
+  font-size: smaller;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.containerBody .audioMedia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-height: 300px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.containerBody .mediaPlayer {
+  margin: 10px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.containerBody audio.media {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 52px;
+  padding: 0;
+  width: 100%;
+}
+
+.containerBody .deletepost {
+  margin: 0px 80%;
+}
+
+.containerBody .deletepost .buttondelete {
+  width: 100px;
+  background-color: #ff005f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.containerBody .commentsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 100vw;
+  border: solid 1px rgba(128, 128, 128, 0.409);
+  border-radius: 5px;
+  padding: 0px;
+  border-width: 1px;
+}
+
+.containerBody h4 {
+  padding: 5px;
+  font-size: large;
+  text-decoration: underline;
+  text-transform: capitalize;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 0px;
+}
+
+.containerBody .commentsContent {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.containerBody .commentTextarea {
+  height: 100px;
+  width: 400px;
+  text-align: center;
+}
+
+.containerBody .commentMedia {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 15px;
+  border-radius: 5px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 5px;
+}
+
+.containerBody .commentMedia .commentavatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-transform: capitalize;
+  max-width: 100vw;
+  max-height: 100vh;
+  border: solid 1px rgba(178, 178, 178, 0.211);
+  border-radius: 5px;
+  color: black;
+}
+
+.containerBody .commentMedia .username {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.containerBody .commentMedia .imgavatar {
+  max-width: 100px;
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.containerBody .commentbox {
+  min-width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.containerBody .usertext {
+  min-width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 0px 5px;
+}
+
+.containerBody .usertext p {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.containerBody .usertext .spanText {
+  font-size: 11px;
+}
+
+.containerBody .mediaContentCommentbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.containerBody .mediaContentCommentbox .buttonSubmitComment {
+  max-width: 100vw;
+  margin: 0px 10%;
+  background-color: #1114e6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.containerBody .lastcommentbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 10px;
+}
+
+.containerBody .lastcommentbox .commentTextarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100vw;
+  border-radius: 5px;
+}
+
+.containerBody .dateCreated {
+  color: black;
+  font-size: 10px;
+}
+
+.containerBody .postedCommentText {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: black;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+.containerBody .buttondelete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  margin: 0px 10%;
+  background-color: #ff005f;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+
+.containerBody .modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.containerBody .modalcontent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 0.5px solid #888;
+  width: 80%;
+  color: black;
+}
+
+.containerBody .profile-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.containerBody .profile-section .card-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.containerBody .profile-section img {
+  padding: 0px;
+  border-radius: 100px;
+}
+
+.containerBody .column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.containerBody .modal {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+.containerBody .modalcontent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+.containerBody .usertext {
+  font-size: 20px;
+}
+
+.containerBody .dateCreatedContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+@media only screen and (max-width: 375px) {
+  .containerBody {
+    font-size: 5px;
+  }
+}
+/*# sourceMappingURL=soundShow.module.css.map */

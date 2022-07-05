@@ -17,9 +17,9 @@ const SoundList = () => {
     axios.get(`${baseUrl}/all-sounds`)
       .then(axiosResp => {
         updateSoundData(axiosResp.data)
-        console.log(soundData)
+        // console.log(soundData)
       })
-  }, [soundData])
+  }, [])
 
   function handleClick(event) {
     if (event.target.innerHTML === 'All Sounds') {
