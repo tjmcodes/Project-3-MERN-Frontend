@@ -5,6 +5,7 @@ import SearchBar from './searchBar'
 import styles from '../styles/SoundList.module.scss'
 import NavBarSoundList from './NavBarSoundList.js'
 import { baseUrl } from '../config'
+import Footer from './Footer.js'
 
 
 const SoundList = () => {
@@ -38,6 +39,7 @@ const SoundList = () => {
 
   return <>
     <NavBarSoundList />
+  
   <section className={styles.section}>
     <div className={styles.main}>
       <div className={styles.sidebar}>
@@ -56,8 +58,8 @@ const SoundList = () => {
           return < div key={index}><div className={styles.soundPreviewContainer} >
             <div>
                   <div>
-                  <Link to={`/all-sounds/${sound._id}`}>
-                    <div>
+                  <Link  to={`/all-sounds/${sound._id}`}>
+                    <div className={styles.ClickToShowDetails}>
                       <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
                         <div>
                           <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
@@ -99,6 +101,7 @@ const SoundList = () => {
       </div>
       </div>
     </section>
+    
   </>
 }
 

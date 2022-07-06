@@ -59,6 +59,14 @@
   text-transform: capitalize;
   
 }
+
+
+.ClickToShowDetails:hover {
+  background-color: #ff005f;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
 .category:hover {
   cursor: pointer;
   background-color: #ff005f;
@@ -167,11 +175,11 @@
     
   }
   
-  
-
-
 
 }
 
+.footertext {
+  padding: 10px;
+}
 
 

@@ -181,7 +181,7 @@ function SoundCreate() {
     <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
         </div>
         :
-        <div>
+        <div className>
           <article className={styles.article}>
             <button className={styles.uploadButton} onClick={() => updateButton(!button)}>Click here to post your sound</button>
           </article>
@@ -189,7 +189,7 @@ function SoundCreate() {
           <div className={styles.grid}>
 
           {soundDisplay.map(sound => {
-            return <div key={sound._id} className={styles.gridContainer}>
+            return <div key={sound._id} className={styles.gridContainershow}>
               <div className={styles.grid}>
                 
                   <div className={styles.gridContainer}>

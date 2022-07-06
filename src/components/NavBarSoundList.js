@@ -17,6 +17,7 @@ const NavBarSoundList = () => {
       </div>
     </div>
   </nav>
+
 }
 
 export default NavBarSoundList

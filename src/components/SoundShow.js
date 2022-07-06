@@ -27,7 +27,7 @@ function ShowSound() {
     fetch(`${baseUrl}/all-sounds/${soundId}`)
       .then(resp => resp.json())
       .then(data => setSound(data))
-    }, [])
+    }, [soundId])
     
     console.log(sound)
 

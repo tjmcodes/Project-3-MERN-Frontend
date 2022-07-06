@@ -183,7 +183,8 @@ div {
   flex-direction: column;
   // flex-grow: 1;
   flex-wrap: wrap;
-  
+  width: 60%;
+  padding: 20px;
 
   font-weight: $font-weight;
   color: #ffffff;
@@ -194,4 +195,48 @@ div {
   border-radius: 5px;
   margin: 10px;
   // flex: 85%;
+}
+
+@media screen and (max-width: 375px) {
+  .gridContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+  } 
+}
+@media screen and (max-width: 375px) {
+  .uploadButton {
+    // width: 100px;
+    font-size: 14px;
+    margin-left: 2vw;
+  } 
+}
+
+@media screen and (max-width: 375px) {
+  .backButton {
+    width: 100px;
+    font-size: 14px;
+    margin-left: 2vw;
+  } 
+}
+@media screen and (max-width: 375px) {
+  .textarea, .input {
+    width: 100px;
+    font-size: 10px;
+    margin-left: 2vw;
+  } 
+}
+
+.gridContainershow {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-weight: $font-weight;
+  color: #ffffff;
+  background-color: rgba(122, 117, 117, 0.713);
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  margin: 10px;
 }
