@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import styles from '../styles/ProfileList.module.scss'
 import { baseUrl } from '../config'
 
 const ProfileList = () => {
   const [profileData, updateProfileData] = useState([])
+  const { userId } = useParams()
 
   useEffect(() => {
-    axios.get(`${baseUrl}/all-users/profileList`)
+    axios.get(`${baseUrl}/oneUser/${userId}`)
       .then(axiosResp => {
         updateProfileData(axiosResp.data)
       })
