@@ -25,8 +25,12 @@
 }
 
 .sidebar {
-  flex: 15%;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .sidebarContent {
@@ -59,6 +63,14 @@
   text-transform: capitalize;
   
 }
+
+
+.ClickToShowDetails:hover {
+  background-color: #ff005f;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
 .category:hover {
   cursor: pointer;
   background-color: #ff005f;
@@ -73,6 +85,7 @@
 
 .gridContainer {
   display: flex;
+  width: 87%;
   color: #777;
   flex-wrap: wrap;
 }
@@ -81,6 +94,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .soundPreviewContainer {

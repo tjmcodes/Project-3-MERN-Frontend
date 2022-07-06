@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import styles from '../styles/ProfileList.module.scss'
 import { baseUrl } from '../config'
 import NavBarSoundList from './NavBarSoundList.js'
@@ -11,9 +11,10 @@ const ProfileList = () => {
   const [filterValue, setFilterValue] = useState('')
   const [activeClass, setactiveClass] = useState('')
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
+  const { userId } = useParams()
 
   useEffect(() => {
-    axios.get(`${baseUrl}/all-sounds`)
+    axios.get(`${baseUrl}/oneUser/${userId}`)
       .then(axiosResp => {
         updateProfileData(axiosResp.data)
       })

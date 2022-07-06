@@ -5,7 +5,7 @@ import axios from 'axios'
 import NavBar from './NavBar.js'
 import styles from '../styles/soundShow.module.scss'
 import { baseUrl } from '../config.js'
-import moment from 'moment'
+//import moment from 'moment'
 
 
 function ShowSound() {

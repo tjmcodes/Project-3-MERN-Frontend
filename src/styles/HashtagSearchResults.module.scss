@@ -25,15 +25,17 @@
 }
 
 .sidebar {
-  flex: 15%;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .sidebarContent {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  
 }
 
 .category {
@@ -59,6 +61,13 @@
   text-transform: capitalize;
   
 }
+
+.ClickToShowDetails:hover {
+  background-color: #ff005f;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
 .category:hover {
   cursor: pointer;
   background-color: #ff005f;
@@ -66,13 +75,31 @@
   
 }
 
-.sidebarContent h3 {
+.sidebarContent.h3 {
+  display: flex;
   font-size: 35px;
+  color: black;
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
 }
+
+h3 {
+  color: black;
+  font-size: 30px;
+}
+// @media only screen and (max-width: 1110px)  {
+//   .sidebarContent h3 {
+//     font-size: 20px;
+//     color: black;
+//   }
+// }
 
 
 .gridContainer {
   display: flex;
+  width: 87%;
   color: #777;
   flex-wrap: wrap;
 }

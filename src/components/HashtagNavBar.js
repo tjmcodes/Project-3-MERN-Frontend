@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from '../styles/NavBarSoundList.module.scss'
+import styles from '../styles/HashtagNavBar.module.scss'
 
 const NavBarSoundList = () => {
   return <nav className={styles.Navbar} role="navigation" aria-label="main navigation">
     <div className={styles.NavbarMain}>
-      <div className={styles.firstElement}>
+      <div className={styles.elementContainer}>
         <Link to='/all-sounds' className={styles.buttonblue}>
               Back to all sounds 
         </Link>

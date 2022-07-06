@@ -1,0 +1,155 @@
+.Navbar {
+  width: 100%;
+  top: 0;
+}
+
+.NavbarMain {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.elementContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonblue {
+  background-color: #1114e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 2vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: white;
+  max-width: auto;
+}
+
+.button {
+  display: flex;
+  background-color: #ff005f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 1vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  max-width: auto;
+}
+
+.button:hover {
+  background-color: #1114e6;
+  color: white;
+  animation: colourfade 0.5s;
+}
+
+.buttonblue:hover {
+  background-color: #ff005f;
+  color: white;
+  animation: colourfadereverse 0.5s;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: 20px;
+}
+
+
+@keyframes colourfade {
+  0% {
+    background-color: #ff005f;
+  }
+
+  14% {
+    background-color: #de0372;
+  }
+  
+  26% {
+    background-color: #c10582;
+  }
+
+  40% {
+    background-color: #a00895;
+  }
+
+  53% {
+    background-color: #810ba7;
+  }
+
+  64% {
+    background-color: #670db6;
+  }
+
+  75% {
+    background-color: #4d0fc4;
+  }
+
+  87% {
+    background-color: #3011d4;
+  }
+
+  100% {
+    background-color: #1114e6;
+  }
+}
+
+@keyframes colourfadereverse {
+  0% {
+    background-color: #1114e6;
+  }
+
+  14% {
+    background-color: #3011d4
+  }
+  
+  26% {
+    background-color: #4d0fc4;
+  }
+
+  40% {
+    background-color: #670db6
+  }
+
+  53% {
+    background-color: #810ba7;
+  }
+
+  64% {
+    background-color: #a00895;
+  }
+
+  75% {
+    background-color: #c10582
+  }
+
+  87% {
+    background-color: #de0372;
+  }
+
+  100% {
+    background-color: #ff005f;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .button {
+    font-size: 10px;
+  }
+
+  .buttonblue {
+    background-color: #1114e6;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 2vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: white;
+    max-width: auto;
+  }
+}
