@@ -5,6 +5,7 @@ import SearchBar from './searchBar'
 import styles from '../styles/SoundList.module.scss'
 import NavBarSoundList from './NavBarSoundList.js'
 import { baseUrl } from '../config'
+import Footer from './Footer.js'
 
 
 const SoundList = () => {
@@ -38,6 +39,7 @@ const SoundList = () => {
 
   return <>
     <NavBarSoundList />
+  
   <section className={styles.section}>
     <div className={styles.main}>
       <div className={styles.sidebar}>
@@ -96,12 +98,14 @@ const SoundList = () => {
                   </div>
                 </div>
               </Link>
+              <Footer />
             </div> 
           })} 
         </div>
       </div>
       </div>
     </section>
+    
   </>
 }
 

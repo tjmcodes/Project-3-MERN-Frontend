@@ -55,6 +55,13 @@
   margin-right: 20px;
 }
 
+@media screen and (max-width:375px) {
+  .logo {
+    height: 25px;
+    width: auto;
+    margin-right: 20px;
+  }
+}
 
 @keyframes colourfade {
   0% {
@@ -132,8 +139,15 @@
   }
 }
 
-@media only screen and (max-width: 375px) {
+// @media only screen and (max-width: 500px) {
+//   .button {
+//     width: 10px;
+//     font-size: 10px;
+//   }
+// }
+@media only screen and (max-width: 500px) {
   .button {
+    width: 100px;
     font-size: 10px;
   }
 }
