@@ -13,9 +13,18 @@
   top: 0;
   bottom: 0;
   z-index: -1;
+  background: linear-gradient(#000000 50%);
   filter: grayscale(100%)
 }
 
+// .errors {
+//   color: #ed4812 !important;
+// }
+small {
+  font-size: 20px;
+  color: #ff0000 !important;
+  background-color: #000000af;
+}
 
 // #register{
 //   border: 1px solid;

@@ -27,13 +27,26 @@
 
 .catagoryandHashtags h5 {
   color: black;
+  height: 50px;
 }
 
 .sidebar {
-  -webkit-box-flex: 15%;
-      -ms-flex: 15%;
-          flex: 15%;
   background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .sidebarContent {
@@ -73,6 +86,12 @@
   text-transform: capitalize;
 }
 
+.ClickToShowDetails:hover {
+  background-color: #ff005f;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
 .category:hover {
   cursor: pointer;
   background-color: #ff005f;
@@ -87,6 +106,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 87%;
   color: #777;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -100,6 +120,7 @@
       justify-content: space-around;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100%;
 }
 
 .soundPreviewContainer {

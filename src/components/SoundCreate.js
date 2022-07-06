@@ -8,6 +8,7 @@ import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
 import styles from '../styles/SoundCreate.module.scss'
 import { baseUrl } from '../config.js'
+import Footer from './Footer.js'
 
 
 
@@ -181,7 +182,7 @@ function SoundCreate() {
     <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
         </div>
         :
-        <div className>
+        <div>
           <article className={styles.article}>
             <button className={styles.uploadButton} onClick={() => updateButton(!button)}>Click here to post your sound</button>
           </article>
@@ -194,7 +195,7 @@ function SoundCreate() {
                 
                   <div className={styles.gridContainer}>
                   <Link to={`/all-sounds/${sound._id}`}>
-                  <div>
+                  <div className={styles.ClickToShowDetails}>
                   <div>
                     <div>
                     <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
@@ -223,7 +224,7 @@ function SoundCreate() {
                 <div className={styles.userdate}>
                   <div className={styles.userinfo}key={sound.user.image}>
                     <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
-                    <h5 use>{sound.user.username}</h5>
+                    <h5>{sound.user.username}</h5>
                   </div>
                   <div className={styles.date}>
                     <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
@@ -233,12 +234,11 @@ function SoundCreate() {
                   </div>
                 </div>
               </div>
-
-
           })}
         </div>
         </div>
       }
+      <Footer />
     </div>
   </>
 }

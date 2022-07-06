@@ -9,16 +9,6 @@ import Footer from './Footer.js'
 
 
 const SoundList = () => {
-
-  import { useLocation } from 'react-router-dom'
-import styles from '../styles/SingleUserId.module.scss'
-
-const ProfileList = () => {
-  const [profileData, updateProfileData] = useState([])
-  const { singleUserId } = useParams()
-  const location = useLocation();
-  const state = location.state;
-  console.log(state)
   const [soundData, updateSoundData] = useState([]) // issue with true non boolean 
   const [filterValue, setFilterValue] = useState('')
   const [activeClass, setactiveClass] = useState('')
@@ -94,7 +84,7 @@ const ProfileList = () => {
                     </div>
                   </div>
                 <div className={styles.userdate}>
-                <Link to={`/oneUser/${sound.user._id}`} state="this is state">
+                <Link to={`/oneUser/${sound.user._id}`} state={sound.user.username}> 
                     <div className={styles.userinfo}key={sound.user.image}>
                     <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
                     <h5>{sound.user.username}</h5>
@@ -116,3 +106,12 @@ const ProfileList = () => {
 }
 
 export default SoundList
+
+
+
+
+
+
+
+
+
