@@ -42,7 +42,6 @@ const SoundList = () => {
     <div className={styles.main}>
       <div className={styles.sidebar}>
         <div className={styles.sidebarContent}>
-          <h3>Categories</h3>
           <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
           {categories.map((category, index) => {
           return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
@@ -53,22 +52,21 @@ const SoundList = () => {
       <div className={styles.gridContainer}>
         <SearchBar />
         <div className={styles.grid}>
-        { soundData && categoryFilter().map((sound, index) => {
-          return <div className={styles.soundPreviewContainer} key={index}>
-            <Link to={`/all-sounds/${sound._id}`}>
-                <div>
+        { soundData === true ? null : categoryFilter().map((sound, index) => {
+          return < div key={index}><div className={styles.soundPreviewContainer} >
+            <div>
                   <div>
+                  <Link to={`/all-sounds/${sound._id}`}>
                     <div>
-                    <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
-                      <div>
+                      <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
+                        <div>
                           <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
-                        </img>  
-                        <video src={sound.url} controls className={styles.audiofile}>
-                        </video>
-                        {/* <audio controls className="media">
-                          <source src={sound.url} type="audio"></source>  
-                        </audio> */}
+                          </img>  
+                          <video src={sound.url} controls className={styles.audiofile}>
+                          </video>
+                        </div>
                       </div>
+                    </Link>
                       <div className={styles.catagoryandHashtags}>
                         <div>
                           <h5>{sound.category}: {sound.subCategory}</h5>
@@ -83,20 +81,19 @@ const SoundList = () => {
                       </div>
                     </div>
                   </div>
-                </div>
                 <div className={styles.userdate}>
                 <Link to={`/all-users/profileList${sound.user._id}`}>
                     <div className={styles.userinfo}key={sound.user.image}>
                     <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
-                    <h5 use>{sound.user.username}</h5>
+                    <h5>{sound.user.username}</h5>
                   </div>
                 </Link>
                   <div className={styles.date}>
                     <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
                   </div>
-                </div>
-              </Link>
-            </div> 
+                  </div>
+          </div>
+          </div>
           })} 
         </div>
       </div>

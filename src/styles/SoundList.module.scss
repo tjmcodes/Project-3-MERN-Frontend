@@ -25,7 +25,7 @@
 }
 
 .sidebar {
-  flex: 15%;
+  width: 13%;
   background-color: #ffffff;
 }
 
@@ -73,6 +73,7 @@
 
 .gridContainer {
   display: flex;
+  width: 87%;
   color: #777;
   flex-wrap: wrap;
 }
@@ -81,6 +82,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .soundPreviewContainer {

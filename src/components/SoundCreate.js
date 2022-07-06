@@ -98,7 +98,16 @@ function SoundCreate() {
       ...formData,
       ...selected, 
     }
-  
+    
+
+
+      const hashArray = formData.hashtag
+      console.log(hashArray)
+      const hashobjects = hashArray.map((tag, index) => ({ hashtag: tag, index: index + 1 }));
+      console.log(hashobjects)
+      const { hashdata } = await axios.post('/api/hashtags', hashobjects)
+      console.log(hashdata)
+
     console.log(formData)
     try {
       const { data } = await axios.post(`${baseUrl}/all-sounds`, newFormData, {
