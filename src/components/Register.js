@@ -110,7 +110,7 @@ function Register() {
             value={formData.username}
             onChange={handleChange}
           />
-          {errors.username && <small className="has-text-danger">{errors.username}</small>}
+          {errors.username && <small className="errors">{errors.username}</small>}
         </div>
       </div>
 
@@ -124,7 +124,7 @@ function Register() {
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <small className="has-text-danger">{errors.email}</small>}
+          {errors.email && <small className="errors">{errors.email}</small>}
         </div>
       </div>
 
@@ -138,7 +138,7 @@ function Register() {
             value={formData.password}
             onChange={handleChange}
           />
-          {errors.password && <small className="has-text-danger">{errors.password}</small>}
+          {errors.password && <small className="errors">{errors.password}</small>}
         </div>
       </div>
 
@@ -152,7 +152,7 @@ function Register() {
             value={formData.passwordConfirmation}
             onChange={handleChange}
           />
-          {errors.passwordConfirmation && <small className="has-text-danger">{errors.passwordConfirmation}</small>}
+          {errors.passwordConfirmation && <small className="errors">{errors.passwordConfirmation}</small>}
         </div>
       </div>
 

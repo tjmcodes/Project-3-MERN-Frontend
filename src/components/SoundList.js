@@ -84,7 +84,7 @@ const SoundList = () => {
                     </div>
                   </div>
                 <div className={styles.userdate}>
-                <Link to={`/oneUser/${sound.user._id}`}>
+                <Link to={`/oneUser/${sound.user._id}`} state={sound.user.username}> 
                     <div className={styles.userinfo}key={sound.user.image}>
                     <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
                     <h5>{sound.user.username}</h5>

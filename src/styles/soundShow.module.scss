@@ -9,7 +9,7 @@
   display: flex;
   // align-items: center;
   flex-direction: column;
-  margin: 50px 200px;
+  margin: 50px 400px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
@@ -286,9 +286,11 @@
   }
   .commentbox {
     // min-width: 60%;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: row;
     align-items: flex-start;
+    height: 100px;
+    width: 100%;
   
   }
   .usertext {
@@ -327,6 +329,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    // width: 100px;
     
     .buttonSubmitComment {
    
@@ -344,7 +347,7 @@
   
   
   .lastcommentbox {
-    // width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -516,10 +519,10 @@
 
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .containerBody  {
     font-size: 20px;
-    margin: 50px 100px;
+    margin: 50px 200px;
     
 
     

@@ -154,6 +154,12 @@ div {
   margin-left: 2%;
 }
 
+.ClickToShowDetails:hover {
+  background-color: #ff005f;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
 .backButton {
   background-color: #e280a4;
   max-width: 100px;

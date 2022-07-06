@@ -11,10 +11,10 @@ const ProfileList = () => {
   const [filterValue, setFilterValue] = useState('')
   const [activeClass, setactiveClass] = useState('')
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
-  const { userId } = useParams()
+  const { singleUserId } = useParams()
 
   useEffect(() => {
-    axios.get(`${baseUrl}/oneUser/${userId}`)
+    axios.get(`${baseUrl}/oneUser/${singleUserId}`)
       .then(axiosResp => {
         updateProfileData(axiosResp.data)
       })
@@ -59,7 +59,7 @@ const ProfileList = () => {
         { profileData && categoryFilter().map((profile, index) => {
           return <div className={styles.soundPreviewContainer} key={index}>
             <Link to={`/all-sounds/${profile._id}`}>
-                <div>
+              <div className={styles.ClickToShowDetails}>
                   <div>
                     <div>
                     <h5 className={styles.h5SoundList}>{profile.fileName}</h5>
@@ -68,10 +68,8 @@ const ProfileList = () => {
                         </img>  
                         <video src={profile.url} controls className={styles.audiofile}>
                         </video>
-                        {/* <audio controls className="media">
-                          <source src={sound.url} type="audio"></source>  
-                        </audio> */}
                       </div>
+                      
                       <div className={styles.catagoryandHashtags}>
                         <div>
                           <h5>{profile.category}: {profile.subCategory}</h5>
@@ -91,7 +89,7 @@ const ProfileList = () => {
                 <Link to={`/oneUser/${profile.user._id}`}>
                     <div className={styles.userinfo}key={profile.user.image}>
                     <img className={styles.userAvatar} src={profile.user.image} alt={profile.user.username}/>
-                    <h5 use>{profile.user.username}</h5>
+                    <h5>{profile.user.username}</h5>
                   </div>
                 </Link>
                   <div className={styles.date}>
