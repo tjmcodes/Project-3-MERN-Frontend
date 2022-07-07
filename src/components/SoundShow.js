@@ -18,10 +18,11 @@ function ShowSound() {
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
   
- 
+  
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
     setUser(getuser)
+    console.log(user)
   }, [])
 
   React.useEffect(() => {
@@ -170,9 +171,9 @@ function toggleModal() {
                 {/* // ? Only show the button if the sound was made by the user. */}
                 {/* Here we're calling it to check if the sound user ID matches the logged in user ID and if it does you showed the button it doesn't you don't show them.*/}
                 {/* We have included the or operator to check sound user once a comment has been posted due to the structure of object that is returned */}
-                {sound && (user === (sound.user) || (sound.user._id)) ? <button className={styles.buttondelete} onClick={toggleModal}>
+                {sound && (user === (sound.user) || user === (sound.user._id)) ? <button className={styles.buttondelete} onClick={toggleModal}>
                     Delete sound
-                    </button> : null}
+                    </button> : <p>you do not have permission</p>}
                   { toggleDeleteConfirmation &&  
                   <div className={styles.modal}>
                     <div className={styles.modalcontent}>
@@ -196,7 +197,7 @@ function toggleModal() {
             </div>
           
           {/* C O M M E N T S  */}
-         <div className={styles.commentsContainer}>
+          <div className={styles.commentsContainer}>
                 <h4 className={styles.h4}>Post your comments</h4> 
                 <div key={sound.comments} className={styles.commentsContent}>
                 {sound.comments && sound.comments.map((comment, index) => {
@@ -215,8 +216,9 @@ function toggleModal() {
                           </div>
                           </div>
                           <div className={styles.dateCreatedContainer}>  
-                          <p className={styles.dateCreated}>                        
-                          {comment.createdAt.split("T")[1].split(":").slice(0, -1).join(":")}
+                          <p className={styles.dateCreated}>    
+                          {moment(comment.createdAt)._d.toString().split("2022")[1].split("GMT")[0].slice(0, -4)}                    
+                          { console.log( new Date(comment.createdAt))}
                           <br/>
                           {comment.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}
                           </p>
