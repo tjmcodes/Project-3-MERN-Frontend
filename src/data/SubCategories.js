@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../styles/SubCategories.module.scss'
 
 const SubCategories = ({ selected, setSelected }) => {
 
@@ -14,8 +15,6 @@ const changeSecondSelectOptionHandler = (event) => {
 	setSelected({ ...selected, subCategory: event.target.value });
 };
 
-console.log(selected.category)
-console.log(selected.subCategory)
 
 /** Different arrays for different dropdowns */
 const nature = [
@@ -82,21 +81,21 @@ let type = null;
 let options = null;
 
 /** Setting Type variable according to dropdown */
-if (selected.category === "Nature") {
+if (selected.category === "nature") {
 	type = nature;
-} else if (selected.category === "Human") {
+} else if (selected.category === "human") {
 	type = human;
-} else if (selected.category === "Machines") {
+} else if (selected.category === "machines") {
 	type = machines;
-} else if (selected.category === "Animals") {
+} else if (selected.category === "animals") {
 	type = animals;
-} else if (selected.category === "Materials") {
+} else if (selected.category === "materials") {
 	type = materials;
-} else if (selected.category === "Ambience") {
+} else if (selected.category === "ambience") {
 	type = ambience;
-} else if (selected.category === "Electric") {
+} else if (selected.category === "electric") {
 	type = electric;
-} else if (selected.category === "Weather") {
+} else if (selected.category === "weather") {
 	type = weather;
 }
 
@@ -106,7 +105,7 @@ if (selected.category === "Nature") {
 if (type) {
 	options = type.map((element) => <option key={element}>{element}</option>);
 }
-console.log(options)
+
 
 return (
 	<div className="container">
@@ -116,16 +115,16 @@ return (
 		* This method will trigger every time different
 		* option is selected.
 		*/}
-		<select className='input' onChange={changeSelectOptionHandler}>
+		<select className={styles.inputText} onChange={changeSelectOptionHandler}>
 			<option>Choose category...</option>
-			<option>Nature</option>
-			<option>Human</option>
-			<option>Machines</option>
-			<option>Animals</option>
-			<option>Materials</option>
-			<option>Ambience</option>
-			<option>Electric</option>
-			<option>Weather</option>
+			<option>nature</option>
+			<option>human</option>
+			<option>machines</option>
+			<option>animals</option>
+			<option>materials</option>
+			<option>ambience</option>
+			<option>electric</option>
+			<option>weather</option>
 		</select>
 		</div>
 		<div>

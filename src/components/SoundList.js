@@ -57,7 +57,7 @@ const SoundList = () => {
         { soundData === true ? null : categoryFilter().map((sound, index) => {
           return < div key={index}><div className={styles.soundPreviewContainer} >
             <div>
-                  <div>
+                <div>
                   <Link  to={`/all-sounds/${sound._id}`}>
                     <div className={styles.ClickToShowDetails}>
                       <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
@@ -101,7 +101,7 @@ const SoundList = () => {
       </div>
       </div>
     </section>
-    
+    <Footer />
   </>
 }
 

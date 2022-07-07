@@ -7,6 +7,7 @@ import styles from '../styles/SingleUserId.module.scss'
 import { baseUrl } from '../config'
 import SearchBar from './searchBar.js'
 import NavBar from './NavBar.js'
+import Footer from './Footer.js'
 
 const SingleUserId = (props) => {
   const [singleProfileData, updateSingleProfileData] = useState([])
@@ -16,22 +17,19 @@ const SingleUserId = (props) => {
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
   const location = useLocation();
   const state = location.state;
-  console.log(state)
   
-  const { stateparams } = useLocation()
-  console.log(stateparams)
+  // const { stateparams } = useLocation()
 
   useEffect(() => {
     axios.get(`${baseUrl}/oneUser/${singleUserId}`)
       .then(axiosResp => {
         updateSingleProfileData(axiosResp.data)
-        console.log(singleProfileData)
       })
   }, [singleUserId])
 
 
   function handleClick(event) {
-    if (event.target.innerHTML === 'All Sounds') {
+    if ((event.target.innerHTML).includes('All')) {
       setFilterValue('')
       setactiveClass(event.target.innerHTML)
     } else {
@@ -114,7 +112,7 @@ const SingleUserId = (props) => {
       </div>
       </div>
     </section>
-    
+    <Footer />
   </>
 } 
 

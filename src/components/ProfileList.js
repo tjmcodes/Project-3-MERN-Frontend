@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import styles from '../styles/ProfileList.module.scss'
 import { baseUrl } from '../config'
-import NavBarSoundList from './NavBarSoundList.js'
+import NavBarProfileList from './NavBarProfileList.js'
 
 import Footer from './Footer'
 
@@ -18,24 +18,28 @@ const ProfileList = () => {
       })
   }, [])
 
+  
   return <>
-    <NavBarSoundList />
+    <NavBarProfileList />
   
   <section className={styles.section}>
         <div className={styles.grid}>
-        { profileData.map((profile, index) => {
-          console.log(profile)
+          
+        { profileData.sort((a, b) => {
+          return a.username.localeCompare(b.username)
+        }) 
+          .map((profile, index) => {
           return <div key={index}>
-          <Link to={`/oneUser/${profile._id}`}>
+          <Link to={`/oneUser/${profile._id}`} state={profile.username}> 
                     <div className={styles.userinfo}key={profile.image}>
                     <img className={styles.userAvatar} src={profile.image} alt={profile.username}/>
-                    <h5>{profile.username}</h5>
+                    <h5 className={styles.h5style}>{profile.username}</h5>
                   </div>
                 </Link></div>
           })} 
         </div>
     </section>
-    <Footer />
+  <Footer />
   </>
 }
 

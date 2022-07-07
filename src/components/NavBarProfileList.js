@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from '../styles/NavBarSoundList.module.scss'
+import styles from '../styles/NavBarProfileList.module.scss'
 
-const NavBarSoundList = () => {
+const NavBar = () => {
   return <nav className={styles.Navbar} role="navigation" aria-label="main navigation">
     <div className={styles.NavbarMain}>
       <div className={styles.firstElement}>
-        <Link to='/all-sounds/new-sounds' className={styles.button}>
-              Upload Your Sound
+        <Link to='/all-sounds' className={styles.button}>
+              Discover Sounds
         </Link>
-        <Link to='/all-users/profileList' className={styles.allUsersbutton}>
-              Click to see all users
+        <Link to='/all-sounds/new-sounds' className={styles.uploadbutton}>
+              Upload Your Sound
         </Link>
       </div>
       <div className={styles.Secondelement}>
@@ -20,7 +20,8 @@ const NavBarSoundList = () => {
       </div>
     </div>
   </nav>
-
 }
 
-export default NavBarSoundList
+
+export default NavBar
+

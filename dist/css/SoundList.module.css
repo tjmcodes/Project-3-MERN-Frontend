@@ -216,7 +216,7 @@
   color: black;
 }
 
-.soundPreviewContainer .userinfo {
+.soundPreviewContainer .userinfo, .soundPreviewContainer h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

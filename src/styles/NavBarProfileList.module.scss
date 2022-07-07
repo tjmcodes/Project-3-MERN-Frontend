@@ -29,20 +29,7 @@
   align-items: flex-start;
   
 }
-.allUsersbutton {
 
-  display: flex;
-  background-color: $primary-color;
-  padding: 10px;
-  border-radius: 5px;
-  margin-left: 1vw;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  text-align: center;
-  color: white;
-  max-width: auto;
-}
 
 .button {
   display: flex;
@@ -58,13 +45,27 @@
   max-width: auto;
 }
 
-.button:hover {
+.uploadbutton {
+  display: flex;
+  background-color: $primary-color;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 1vw;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  max-width: auto;
+}
+
+.button:hover  {
   background-color: #1114e6;
   color: white;
   animation: colourfade 0.5s;
 }
 
-.buttonblue:hover, .allUsersbutton:hover {
+.buttonblue:hover, .uploadbutton:hover  {
   background-color: #ff005f;
   color: white;
   animation: colourfadereverse 0.5s;
@@ -167,7 +168,7 @@
 //   }
 // }
 @media only screen and (max-width: 500px) {
-  .button, .allUsersbutton {
+  .button, .uploadbutton {
     width: 100px;
     font-size: 10px;
   }

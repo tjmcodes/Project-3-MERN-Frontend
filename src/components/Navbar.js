@@ -9,6 +9,9 @@ const NavBar = () => {
         <Link to='/all-sounds' className={styles.button}>
               Discover Sounds
         </Link>
+        <Link to='/all-users/profileList' className={styles.allUsersbutton}>
+              Click to see all users
+        </Link>
       </div>
       <div className={styles.Secondelement}>
         <div className={styles.imageContainer}>

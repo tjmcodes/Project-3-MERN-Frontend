@@ -110,8 +110,9 @@ return <>
         </div>
       </div>
       </div>
+
     </section>
-    
+    <Footer />
   </>
 }
 

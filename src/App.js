@@ -8,6 +8,7 @@ import SoundCreate from './components/SoundCreate.js'
 import HashtagSearchResult from './components/HashtagSearchResult.js'
 import ProfileList from './components/ProfileList.js'
 import SingleUserId from './components/SingleUserId.js'
+import NewSoundsPosted from './components/NewSoundsPosted.js'
 
 
 
@@ -23,7 +24,8 @@ function App() {
         {/*<Route path="/all-sounds" element={<AllSounds /> } />*/}
         <Route path="/all-sounds" element={<SoundList /> } />
         <Route path="/all-sounds/:soundId" element={<SoundShow /> } />
-        <Route path="/all-sounds/new-sounds" element={<SoundCreate /> } />
+        <Route path="/all-sounds/new-sounds" element={<NewSoundsPosted /> } />
+        <Route path="/all-sounds/new-sounds/upload" element={<SoundCreate /> } />
         <Route path="/hashtagsearchresults/:hashtag" element={<HashtagSearchResult /> } />
       </Routes>
     </Router>

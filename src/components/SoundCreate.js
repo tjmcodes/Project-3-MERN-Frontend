@@ -131,25 +131,24 @@ function SoundCreate() {
     <div className={styles.grid}>
       <NavBar />
       
-      {button === true ?
-        <div className={styles.gridContainer}>
-          <button className={styles.backButton} onClick={() => updateButton(!button)}>Back</button>
-          <button className={styles.uploadButton} onClick={handleUpload}>Click to upload your sound</button>          
+      <div className={styles.gridContainer}>
+        <button className={styles.backButton} onClick={() => updateButton(!button)}>Back</button>
+        <button className={styles.uploadButton} onClick={handleUpload}>Click to upload your sound</button>          
           
-          <br />
+        <br />
           
           <div className="field">
             <label className="label has-text-light"></label>
-          <div className="control">
-            <input
-              className="input"
-              placeholder='Name of your sound'
-              type="text"
-              name='fileName'
-              onChange={handleChange}
-              value={formData.fileName}
-            />
-          </div>
+            <div className="control">
+              <input
+                className="input"
+                placeholder='Name of your sound'
+                type="text"
+                name='fileName'
+                onChange={handleChange}
+                value={formData.fileName}
+              />
+            </div>
           </div>
 
                    
@@ -159,87 +158,33 @@ function SoundCreate() {
             name="caption" 
             onChange={handleChange}
             value={formData.caption}
-            />
+          />
 
           <br />  
+          
           <SubCategories 
             selected = {selected} 
             setSelected = {setSelected}
             onChange={(category) => setFormData({ ...formData, category })}
             value={formData.category}
           />
+          
           <br />
+          
           <input
-              className="input"
-              placeholder="enter #hashtags"
-              type="text"
-              name='hashtag'
-              onChange={handleChange}
-              value={formData.hashtag}
-            />
+            className="input"
+            placeholder="enter #hashtags"
+            type="text"
+            name='hashtag'
+            onChange={handleChange}
+            value={formData.hashtag}
+          />
     
           
-    <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
-        </div>
-        :
-        <div>
-          <article className={styles.article}>
-            <button className={styles.uploadButton} onClick={() => updateButton(!button)}>Click here to post your sound</button>
-          </article>
-
-          <div className={styles.grid}>
-
-          {soundDisplay.map(sound => {
-            return <div key={sound._id} className={styles.gridContainershow}>
-              <div className={styles.grid}>
-                
-                  <div className={styles.gridContainer}>
-                  <Link to={`/all-sounds/${sound._id}`}>
-                  <div className={styles.ClickToShowDetails}>
-                  <div>
-                    <div>
-                    <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
-                      <div>
-                          <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
-                        </img>  
-                        <video src={sound.url} controls className={styles.audiofile}>
-                        </video>
-                        {/* <audio controls className="media">
-                          <source src={sound.url} type="audio"></source>  
-                        </audio> */}
-                      </div>
-                      <div className={styles.CatagoryandHashtags}>
-                        <div>
-                          <h5>{sound.category}/{sound.subCategory}</h5>
-                        </div>
-                        <div className={styles.hashtags}>
-                          {sound.hashtag.slice(0, 3).map((tag, index) => {
-                          return <p className={styles.hashtag} key={index}>#{tag}</p>
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.userdate}>
-                  <div className={styles.userinfo}key={sound.user.image}>
-                    <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
-                    <h5>{sound.user.username}</h5>
-                  </div>
-                  <div className={styles.date}>
-                    <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
-                  </div>
-                </div>
-            </Link>
-                  </div>
-                </div>
-              </div>
-          })}
-        </div>
-        </div>
-      }
-      <Footer />
-    </div>
+          <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
+      </div>
+    </div>  
+    <Footer />
   </>
 }
 
