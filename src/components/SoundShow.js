@@ -18,7 +18,7 @@ function ShowSound() {
   const navigate = useNavigate()
   const [user, setUser] = React.useState('')
   
-  
+
   React.useEffect(() => {
     const getuser = getLoggedInUserId()
     setUser(getuser)
@@ -161,11 +161,9 @@ function toggleModal() {
 
              {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
               <div className={styles.audioCard}>
-            
-           
-                      
-
- 
+        
+                
+                
                 {/* D E L E T E  P O S T  B Y  O R I G I N A L  U S E R  */}
                 <div className={styles.deletepost}>
                 {/* // ? Only show the button if the sound was made by the user. */}
