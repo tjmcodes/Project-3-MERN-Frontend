@@ -62,6 +62,4 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-//!this will be your cloud name - this should be in your .env
-
-//!this will be your upload presets - this should be in your .env
+//! moment.js
