@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bulma'
 // import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
 import styles from '../styles/SoundCreate.module.scss'
@@ -20,7 +20,7 @@ function SoundCreate() {
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
 
-  // const hashtag2 = hashtagfy('', { capitalize: false })
+  
   
   const [formData, setFormData] = useState({
     fileName: '',
@@ -48,7 +48,6 @@ function SoundCreate() {
       // reversing the data so that the newest posts will appear first
       updateSoundDisplay(data.reverse())
     } catch (err) {
-      console.log(err)
     }
   }
   
@@ -70,26 +69,30 @@ function SoundCreate() {
   function handleUpload() {
     window.cloudinary.createUploadWidget(
       {
-        cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
-        uploadPreset: 'user_sound_preset', //!this will be your upload presets - this should be in your .env
+        cloudName: 'tjmcodes', 
+        uploadPreset: 'user_sound_preset', 
         folder: 'my_found_sounds',
         clientAllowedFormats: ['mp3', 'ogg', 'wav'],
-        maxFileSize: 1048576, 
+        maxFileSize: 5000000, 
       },
 
       (err, result) => {
         if (result.event !== 'success') {
           return
-        } console.log(result)
+        } 
+        const waveformPath = result.info.path.replace('.mp4', '.jpg')
+        const waveformImage = (`https://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/${waveformPath}`)
+
         setFormData({
           ...formData,
           url: result.info.url,
-          
+          image: waveformImage
         })
       }
-    ).open()
-  }
+      ).open()
+    }
 
+  
   // Submits our formData to our API and redirects users back to page with newly posted sound.
   async function handleSubmit(event) {
     event.preventDefault()
@@ -103,25 +106,25 @@ function SoundCreate() {
 
 
       const hashArray = formData.hashtag
-      console.log(hashArray)
+      
       const hashobjects = hashArray.map((tag, index) => ({ hashtag: tag, index: index + 1 }));
-      console.log(hashobjects)
-      const { hashdata } = await axios.post('/api/hashtags', hashobjects)
+      
+      const { hashdata }  = await axios.post('/api/hashtags', hashobjects)
       console.log(hashdata)
+      
 
-    console.log(formData)
+    
     try {
       const { data } = await axios.post(`${baseUrl}/all-sounds`, newFormData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       
-      console.log(data._id)
       updateButton(!button)
       navigate(`/all-sounds/${data._id}`)
       fetchSound()
       
     } catch (err) {
-      console.log(err.response.data)
+      
     }
   }
   
@@ -136,52 +139,50 @@ function SoundCreate() {
         <button className={styles.uploadButton} onClick={handleUpload}>Click to upload your sound</button>          
           
         <br />
-          
-          <div className="field">
-            <label className="label has-text-light"></label>
-            <div className="control">
-              <input
-                className="input"
-                placeholder='Name of your sound'
-                type="text"
-                name='fileName'
-                onChange={handleChange}
-                value={formData.fileName}
-              />
-            </div>
+        {/* U P L O A D  S O U N D  F O R M */}  
+        <div className="field">
+          <label className="label has-text-light"></label>
+          <div className="control">
+            <input
+              className={styles.input}
+              placeholder='Name of your sound'
+              type="text"
+              name='fileName'
+              onChange={handleChange}
+              value={formData.fileName}
+            />
+                                
+            <textarea
+              className="textarea"
+              placeholder='Describe your sound here...'
+              name="caption" 
+              onChange={handleChange}
+              value={formData.caption}
+            />
+
+            <br />  
+            
+            <SubCategories 
+              selected = {selected} 
+              setSelected = {setSelected}
+              onChange={(category) => setFormData({ ...formData, category })}
+              value={formData.category}
+            />
+            
+            <br />
+            
+            <input
+              className={styles.input}
+              placeholder="enter #hashtags"
+              type="text"
+              name='hashtag'
+              onChange={handleChange}
+              value={formData.hashtag}
+            />
           </div>
+        </div>
 
-                   
-          <textarea
-            className="textarea"
-            placeholder='Describe your sound here...'
-            name="caption" 
-            onChange={handleChange}
-            value={formData.caption}
-          />
-
-          <br />  
-          
-          <SubCategories 
-            selected = {selected} 
-            setSelected = {setSelected}
-            onChange={(category) => setFormData({ ...formData, category })}
-            value={formData.category}
-          />
-          
-          <br />
-          
-          <input
-            className="input"
-            placeholder="enter #hashtags"
-            type="text"
-            name='hashtag'
-            onChange={handleChange}
-            value={formData.hashtag}
-          />
-    
-          
-          <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
+        <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
       </div>
     </div>  
     <Footer />

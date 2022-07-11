@@ -33,10 +33,8 @@ export default function Login() {
     try {
       const { data } = await axios.post(`${baseUrl}/login`, formData)
       localStorage.setItem('token', data.token)
-      console.log(data.token)
       navigate('/all-sounds')
     } catch (err) {
-      console.log(err.response.data)
     }
   }
   return <div className="section is-large">

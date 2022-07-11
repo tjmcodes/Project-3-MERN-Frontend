@@ -31,11 +31,11 @@ const ProfileList = () => {
           .map((profile, index) => {
           return <div key={index}>
           <Link to={`/oneUser/${profile._id}`} state={profile.username}> 
-                    <div className={styles.userinfo}key={profile.image}>
-                    <img className={styles.userAvatar} src={profile.image} alt={profile.username}/>
-                    <h5 className={styles.h5style}>{profile.username}</h5>
-                  </div>
-                </Link></div>
+            <div className={styles.userinfo}key={profile.image}>
+              <img className={styles.userAvatar} src={profile.image} alt={profile.username}/>
+              <h5 className={styles.h5style}>{profile.username}</h5>
+            </div>
+          </Link></div>
           })} 
         </div>
     </section>

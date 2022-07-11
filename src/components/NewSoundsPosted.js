@@ -20,33 +20,12 @@ function SoundCreate() {
   const [soundDisplay, updateSoundDisplay] = useState([])
   const [button, updateButton] = useState(false)
   
-  // const [formData, setFormData] = useState({
-  //   fileName: '',
-  //   caption: '',
-  //   hashtag: [],
-  //   category: '',
-  //   subCategory: '',
-  //   url: '',
-  //   image: '',
-  
-  // })
-
-  
-
-  /** "selected" here is state variable which will hold the
-  * value of currently selected dropdown.
-  */
-  // const [selected, setSelected] = React.useState( 
-  // { subCategory: '', category: '' } );
-  
-  // gets all sounds that have been created / posted
   async function fetchSound() {
     try {
       const { data } = await axios.get(`${baseUrl}/all-sounds`)
       // reversing the data so that the newest posts will appear first
       updateSoundDisplay(data.reverse())
     } catch (err) {
-      console.log(err)
     }
   }
   
@@ -55,184 +34,67 @@ function SoundCreate() {
     fetchSound()
   }, [])
 
-  // // Function which updates the formData with the caption the user wants to upload.
-  // function handleChange(event) {
-  //   setFormData({ 
-  //     ...formData, 
-  //     [event.target.name]: event.target.name === "hashtag" ? event.target.value.replace(" ", "").split(",") : event.target.value
-  //   })
-  // }
-
-  // //any functions that you can get (find option in bucket) --> uploadWidget (check documentation)
-
-  // function handleUpload() {
-  //   window.cloudinary.createUploadWidget(
-  //     {
-  //       cloudName: 'tjmcodes', //!this will be your cloud name - this should be in your .env
-  //       uploadPreset: 'user_sound_preset', //!this will be your upload presets - this should be in your .env
-  //       folder: 'my_found_sounds',
-  //       clientAllowedFormats: ['mp3', 'ogg', 'wav'],
-  //       maxFileSize: 1048576, 
-  //     },
-
-  //     (err, result) => {
-  //       if (result.event !== 'success') {
-  //         return
-  //       } console.log(result)
-  //       setFormData({
-  //         ...formData,
-  //         url: result.info.url,
-          
-  //       })
-  //     }
-  //   ).open()
-  // }
-
-  // // Submits our formData to our API and redirects users back to page with newly posted sound.
-  // async function handleSubmit(event) {
-  //   event.preventDefault()
-  //   const token = localStorage.getItem('token')
-  //   // gets all forms first, and then ...selected will overwrite existing
-  //   const newFormData = {
-  //     ...formData,
-  //     ...selected, 
-  //   }
-    
-
-
-  //     const hashArray = formData.hashtag
-  //     console.log(hashArray)
-  //     const hashobjects = hashArray.map((tag, index) => ({ hashtag: tag, index: index + 1 }));
-  //     console.log(hashobjects)
-  //     const { hashdata } = await axios.post('/api/hashtags', hashobjects)
-  //     console.log(hashdata)
-
-  //   console.log(formData)
-    
-  //   try {
-  //     const { data } = await axios.post(`${baseUrl}/all-sounds`, newFormData, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     })
-      
-  //     console.log(data._id)
-  //     updateButton(!button)
-  //     navigate(`/all-sounds/${data._id}`)
-  //     fetchSound()
-      
-  //   } catch (err) {
-  //     console.log(err.response.data)
-  //   }
-  // }
+  
   
   
 
   return <>
     <div className={styles.grid}>
       <NavBar />
-      
-      {/* {button === true ?
-        <button className={styles.uploadButton} onClick={navigate("/all-sounds/new-sounds/upload")}>Click to upload your sound</button>          
-        <div className={styles.gridContainer}>
-          <button className={styles.backButton} onClick={() => updateButton(!button)}>Back</button>
-          
-          <br />
-          
-          <div className="field">
-            <label className="label has-text-light"></label>
-          <div className="control">
-            <input
-              className="input"
-              placeholder='Name of your sound'
-              type="text"
-              name='fileName'
-              onChange={handleChange}
-              value={formData.fileName}
-            />
-          </div>
-          </div>
-
-                   
-          <textarea
-            className="textarea"
-            placeholder='Describe your sound here...'
-            name="caption" 
-            onChange={handleChange}
-            value={formData.caption}
-            />
-
-          <br />  
-          <SubCategories 
-            selected = {selected} 
-            setSelected = {setSelected}
-            onChange={(category) => setFormData({ ...formData, category })}
-            value={formData.category}
-          />
-          <br />
-          <input
-              className="input"
-              placeholder="enter #hashtags"
-              type="text"
-              name='hashtag'
-              onChange={handleChange}
-              value={formData.hashtag}
-            />
-    
-          
-    <button type="submit" className={styles.button} onClick={handleSubmit}>Submit</button>
-        </div>
-        : */}
-        <div>
-          <article className={styles.article}>
-            <button className={styles.uploadButton} onClick={() => navigate("/all-sounds/new-sounds/upload")}>Click here to post your sound</button>
-          </article>
-
-          <div className={styles.grid}>
-
+      <div>
+        <article className={styles.article}>
+          <button className={styles.uploadButton} onClick={() => navigate("/all-sounds/new-sounds/upload")}>Click here to post your sound</button>
+        </article>
+        <div className={styles.grid}>
           {soundDisplay.map(sound => {
-            return <div key={sound._id} className={styles.gridContainershow}>
-             <div>
+            return (
+              <div key={sound._id} className={styles.gridContainershow}>
+                <div>
                   <div>
-                  <Link  to={`/all-sounds/${sound._id}`}>
-                    <div className={styles.ClickToShowDetails}>
-                      <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
+                    {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
+                    <Link to={`/all-sounds/${sound._id}`}>
+                      <div className={styles.ClickToShowDetails}>
+                        <h5 className={styles.h5SoundList}>{sound.fileName}</h5>
                         <div>
-                          <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
-                          </img>  
-                          <video src={sound.url} controls className={styles.audiofile}>
-                          </video>
+                          <img className={styles.wavimg}src={sound.image} alt="wavfile"></img>    
+                          <video src={sound.url} controls className={styles.audiofile}></video>
                         </div>
                       </div>
                     </Link>
-                      <div className={styles.catagoryandHashtags}>
-                        <div>
-                          <h5>{sound.category}: {sound.subCategory}</h5>
-                        </div>
-                        <div className={styles.hashtags}>
-                          {sound.hashtag.slice(0, 3).map((tag, index) => {
-                          return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
-                                  ><p className={styles.hashtag} >#{tag}</p>
-                                </Link></div>
-                          })}
-                        </div>
+                    {/* C A T E G O R I E S  S I D E  M E N U */}
+                    <div className={styles.catagoryandHashtags}>
+                      <div>
+                        <h5>{sound.category}: {sound.subCategory}</h5>
                       </div>
-                    </div>
+                      <div className={styles.hashtags}>
+                        {sound.hashtag.slice(0, 3).map((tag, index) => {
+                        return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
+                        ><p className={styles.hashtag} >#{tag}</p>
+                         </Link></div>
+                        })}
+                      </div>
+                   </div>
                   </div>
+                </div>
+                      
+                {/*  U S E R  C A R D  H E A D E R */}
                 <div className={styles.userdate}>
-                <Link to={`/oneUser/${sound.user._id}`} state={sound.user.username}> 
+                  <Link to={`/oneUser/${sound.user._id}`} state={sound.user.username}> 
                     <div className={styles.userinfo}key={sound.user.image}>
-                    <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
-                    <h5>{sound.user.username}</h5>
-                  </div>
-                </Link>
+                      <img className={styles.userAvatar} src={sound.user.image} alt={sound.user.username}/>
+                      <h5>{sound.user.username}</h5>
+                    </div>
+                  </Link>
+                  {/* D A T E  A N D  T I M E  I N F O */}
                   <div className={styles.date}>
                     <p>{sound.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
-                  </div>
-                  </div>
+                  </div>   
+                </div>
+                
               </div>
-          })}
-        </div>
-        </div>
-      }
+            )})}
+          </div>
+      </div>
     </div>
     <Footer />
   </>

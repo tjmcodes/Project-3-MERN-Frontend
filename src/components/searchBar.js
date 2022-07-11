@@ -13,15 +13,10 @@ function SearchBar() {
     async function getHashtag(event) {
       const _tag= event.target.value
       setHashtag(_tag);
-      console.log(_tag)
       axios.get(`${baseUrl}/hashtags?hashtag=${_tag}`)
       .then(axiosResp => {
         setHashtagData(axiosResp.data)
-    
-    // const response = await fetch(`api/hashtags?hashtag=${_tag}`)
-    // const data = await response.json()
-    // setHashtagData(data.matches)
-    // console.log(hashtagdata)
+
 
 })}
 

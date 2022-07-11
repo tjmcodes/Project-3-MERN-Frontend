@@ -1,16 +1,12 @@
-// fonctions réutilisable avec MIXINS
+// @mixin flex-center {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+// }
 
-// MIXINS nous permet de créer des fonctions réutilisables 
-
-@mixin flex-center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-}
-
-@mixin border-radius($radius) {
-      -webkit-border-radius: $radius;
-      -moz-border-radius: $radius;
-      border-radius: $radius;
-}
+// @mixin border-radius($radius) {
+//       -webkit-border-radius: $radius;
+//       -moz-border-radius: $radius;
+//       border-radius: $radius;
+// }
 

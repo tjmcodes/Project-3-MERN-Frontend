@@ -19,16 +19,6 @@
   width: 100%;
 }
 
-// article {
-//   display: flex;
-//   justify-content: center;
-//   margin-bottom: 50px;
-  
-//   .button {
-//     background-color: black;
-//   }
-  
-// }
 
 div {
   color: white;
@@ -199,6 +189,23 @@ div {
 //   color: white;
 // }
 
+.input {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  color: #363636;
+  box-shadow: none;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+  margin-bottom: 5px;
+}
+
 .gridContainer {
   display: flex;
   flex-direction: column;
@@ -217,6 +224,7 @@ div {
   margin: 10px;
   // flex: 85%;
 }
+
 
 @media screen and (max-width: 375px) {
   .gridContainer {

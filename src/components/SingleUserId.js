@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Profiler } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
@@ -50,70 +50,70 @@ const SingleUserId = (props) => {
   
     <NavBar />
 
-    <section className={styles.section}>
-      <div className={styles.main}>
-        <div className={styles.sidebar}>
-          <div className={styles.sidebarContent}>
-            <h3>Categories</h3>
-            <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds by {state}</p>
-            {categories.map((category, index) => {
-            return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
-            })}
-          </div>
+  {/* C A T E G O R I E S  S I D E  M E N U */}
+  <section className={styles.section}>
+    <div className={styles.main}>
+      <div className={styles.sidebar}>
+        <div className={styles.sidebarContent}>
+          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
+          {categories.map((category, index) => {
+          return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
+          })}
         </div>
-          
-        <div className={styles.gridContainer}>
-          <SearchBar />
-          <div className={styles.grid}>
-        { singleProfileData === true ? null : categoryFilter().map((profile, index) => {
-          return < div key={index}><div className={styles.soundPreviewContainer} >
-            <div>
+      </div>
+      
+      <div className={styles.gridContainer}>
+        <SearchBar />
+        <div className={styles.grid}>
+          {singleProfileData === true ? null : categoryFilter().map((profile, index) => {
+          return <div key={index} className={styles.soundPreviewContainer}>               
+            {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
+            <Link  to={`/all-sounds/${profile._id}`}>
+              <div className={styles.ClickToShowDetails}>
+                <h5 className={styles.h5SoundList}>{profile.fileName}</h5>
                   <div>
-                  <Link  to={`/all-sounds/${profile._id}`}>
-                    <div className={styles.ClickToShowDetails}>
-                      <h5 className={styles.h5SoundList}>{profile.fileName}</h5>
-                        <div>
-                          <img className={styles.wavimg}src="http://res.cloudinary.com/tjmcodes/video/upload/h_200,w_500,fl_waveform/v1656611932/my_found_sounds/ivtjkcpiijzrqy8upvke.png" alt="wavfile">
-                          </img>  
-                          <video src={profile.url} controls className={styles.audiofile}>
-                          </video>
-                        </div>
-                      </div>
-                    </Link>
-                      <div className={styles.catagoryandHashtags}>
-                        <div>
-                          <h5>{profile.category}: {profile.subCategory}</h5>
-                        </div>
-                        <div className={styles.hashtags}>
-                          {profile.hashtag.slice(0, 3).map((tag, index) => {
-                          return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
-                                  ><p className={styles.hashtag} >#{tag}</p>
-                                </Link></div>
-                          })}
-                        </div>
-                      </div>
-                    </div>
+                    <img className={styles.wavimg}src={profile.image} alt="wavfile"></img>    
+                    <video src={profile.url} controls className={styles.audiofile}></video>
                   </div>
-                <div className={styles.userdate}>
-                <Link to={`/oneUser/${profile.user._id}`}>
-                    <div className={styles.userinfo}key={profile.user.image}>
-                    <img className={styles.userAvatar} src={profile.user.image} alt={profile.user.username}/>
-                    <h5>{profile.user.username}</h5>
-                  </div>
-                </Link>
-                  <div className={styles.date}>
-                    <p>{profile.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
-                  </div>
-                  </div>
+              </div>
+            </Link>
+              {/* H A S H T A G S */}
+              <div className={styles.catagoryandHashtags}>
+                <div>
+                  <h5>{profile.category}: {profile.subCategory}</h5>
+                </div>
+                <div className={styles.hashtags}>
+                  {profile.hashtag.slice(0, 3).map((tag, index) => {
+                  return <div key={index}><Link to={`/hashtagsearchresults/${tag}`}
+                  ><p className={styles.hashtag} >#{tag}</p>
+                  </Link></div>
+                  })}
+                </div>
+              </div>
+            {/*  U S E R  C A R D  H E A D E R */}
+            <div className={styles.userdate}>
+              <Link to={`/oneUser/${profile.user._id}`} state={profile.user.username}> 
+              <div className={styles.userinfo}key={profile.user.image}>
+                <img className={styles.userAvatar} src={profile.user.image} alt={profile.user.username}/>
+                <h5>{profile.user.username}</h5>
+              </div>
+              </Link>
+                  
+            {/* D A T E  A N D  T I M E  I N F O */}
+              <div className={styles.date}>
+                <p>{profile.createdAt.split("T")[0].split("-").slice(0).reverse().join(" ")}</p>
+              </div>
+                      
+           
+            </div>
           </div>
-          </div>
-          })} 
+        })} 
         </div>
       </div>
-      </div>
-    </section>
-    <Footer />
-  </>
-} 
+    </div>
+  </section>
+  <Footer />
+</>
+}
 
 export default SingleUserId

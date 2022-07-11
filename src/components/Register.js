@@ -18,7 +18,7 @@ function Register() {
     passwordConfirmation: "",
     email: "",
     image: "https://res.cloudinary.com/tjmcodes/image/upload/v1656844656/my_found_sounds_pics/r673ncsqnjycl9pztuze.jpg",
-    // url: 'https://i.imgur.com/xnUtYOd.jpg'
+    
   })
   //  Errors in state
   const [errors, setErrors] = useState({
@@ -61,12 +61,9 @@ function Register() {
           ...formData,
           image: result.info.url,
         })
-        console.log(result.info.url)
-        console.log(result.info)
       }
       ).open()
     }
-    console.log(setFormData.url)
     
   async function handleSubmit(event) {
     event.preventDefault()
@@ -74,13 +71,11 @@ function Register() {
       await axios.post(`${baseUrl}/register`, formData)
       updateButton(!button)
       navigate('/')
-    } catch (err) {
-      console.log(err.response.data)
-      console.log(formData.username)
+    } catch (err) {    
       setErrors(err.response.data.errors)
     }
   }
-  console.log(formData)
+
   
   return <div className="register-page">
     <div className="column is-centered">

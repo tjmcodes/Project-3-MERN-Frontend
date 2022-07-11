@@ -19,11 +19,13 @@ const NavBarSoundList = () => {
               Click to see all users
         </Link>
       </div>
+
       <div className={styles.Secondelement}>
         <div className={styles.imageContainer}>
           <img className={styles.logo} src={require ("../assets/myFoundSoundsLogo/logo_myFoundS_darker.png")} alt="my found sound logo"></img>
         </div>
       </div>
+      
     </div>
   </nav>
 }
