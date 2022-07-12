@@ -59,8 +59,8 @@ const SoundList = () => {
               {soundData === true ? null : categoryFilter().map((sound, index) => {
               return (
                 <div key={index} className={styles.soundPreviewContainer} >
-                  <div>
-                    <div>
+                  <div className={styles.wholeCard}>
+                    <div className={styles.innerCard}>
                   
                   {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
                   <Link  to={`/all-sounds/${sound._id}`}>

@@ -1,12 +1,12 @@
 @import 'variables';
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 280px) {
   .section {
     display: flex;
     flex-direction: column;
     font-size: 10px;
-    padding: 10px;
+    padding: 0px;
     min-height: 50px;
   }    
 }
@@ -16,7 +16,8 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.182);
+  background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
   
 }
 
@@ -52,6 +53,7 @@
   text-transform: capitalize;
 }
 
+
 .categoryActive {
   background-color: #ff005f;
   color: white;
@@ -82,106 +84,338 @@
 .sidebarContent h3 {
   font-size: 35px;
 }
-
-
-.gridContainer {
-  display: flex;
-  width: 87%;
-  color: #777;
-  flex-wrap: wrap;
-}
-
-.grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.soundPreviewContainer {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  margin: 10px ;
-
-  .wavimg {
-    width: 96%;
-    margin-left: 2%;
+@media screen and (min-width: 1024px) {
+  .sidebarContent, .category, h3, p {
+    // font-size: 15px;
+    align-items: center;
+    margin-left: 0;
+    
+    p {
+      font-size: 35px;
+    }
   }
 
-  .audiofile {
+  .categoryActive {
+    // font-size: 15px;
+    padding: 5px;
+    width: 80%;
+    margin-left: 1%;
+    
+  }
 
-    height: 50px;
-    width: 95%;
-    margin-left: 2.5%;
+  .sidebar {
+    width: 20%;
+    
   }
   
-  .h5SoundList {
-    text-align: center;
-    font-size: 25px;
-    margin: 5px;
-    text-transform: capitalize;
-    color:black
+  .gridContainer {
+    width: 80%;
+  }
+  .soundPreviewContainer {
+    width: 50vw;
+  }
+  // .wholeCard {
+  //   width: 50vw;
+  //   justify-content: center;
+  
+  // }
+
+
+  .gridContainer {
+  display: flex;
+  width: 100vw;
+  color: rgb(0, 0, 0);
+  flex-wrap: wrap;
+
+  }
+}
+
+@media screen and (min-width: 280px), 
+screen and (max-width: 800px){
+  .sidebarContent, .category, h3, p {
+    font-size: 15px;
+    align-items: center;
+    margin-left: 0;
+    
+  }
+
+  .categoryActive {
+    font-size: 15px;
+    padding: 5px;
+    width: 80%;
+    margin-left: 1%;
+    
+  }
+
+  .sidebar {
+    // width: 20%;
+    
   }
   
-  .catagoryandHashtags {
+  .gridContainer {
+    width: 80%;
+  }
+  .soundPreviewContainer {
+    width: 50vw;
+  }
+  // .wholeCard {
+  //   width: 50vw;
+  //   justify-content: center;
+  
+  // }
+
+
+  .gridContainer {
+  display: flex;
+  width: 100vw;
+  color: rgb(0, 0, 0);
+  flex-wrap: wrap;
+
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin: 10px 2%;
-    text-transform: capitalize;
-    color:black
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
   
-  }
+    width: 100%;
   
-  .hashtags {
+  
+  .soundPreviewContainer {
+    background-color: #c1bfbf;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    text-transform: lowercase;
-  }
-  
-  .hashtag {
-    font-size: small;
-    margin: 0 5px 0 5px;
-  }
-  
-  .hashtag:hover {
-    color: #1114e6;
-  }
-  
-  .date p {
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    margin: 10px ;
+    width: 30vw; // to change the whole card this size should be the same as the .wholeCard below
     
-    color: black;
-    font-size: small;
-  }
-  .userdate {
-    display: flex;
-    justify-content: space-between;
-    display: flex;
-    align-items: baseline;
-    width: 96%;
-    margin: 10px 2%;
-    color:black
-  }
+    .wholeCard {
+      width: 30vw;
+      justify-content: center;
+      
+    }
   
-  .userinfo, h5 {
-    display: flex;
-    text-transform: capitalize;
-    color:black;
-    align-items: center;
-  }
-  .userAvatar {
-    border-radius: 100px;
-    height: 40px;
-    margin-right: 5px;
+    .innerCard {
+      width: 30vw;
+      justify-content: center;
+    
+    }
+    
+    .wavimg {
+      width: 96%;
+      margin-left: 2%;
+    }
+    
+    .audiofile {
+      
+      height: 50px;
+      width: 95%;
+      margin-left: 2.5%;
+    }
+    
+    .h5SoundList {
+      text-align: center;
+      font-size: 25px;
+      margin: 5px;
+      text-transform: capitalize;
+      color:black
+    }
+    
+    .catagoryandHashtags {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin: 10px 2%;
+      text-transform: capitalize;
+      color:black
+      
+    }
+    
+    .hashtags {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-transform: lowercase;
+    }
+    
+    .hashtag {
+      font-size: small;
+      margin: 0 5px 0 5px;
+    }
+    
+    .hashtag:hover {
+      color: #1114e6;
+    }
+    
+    .date p {
+      
+      color: black;
+      font-size: small;
+    }
+    .userdate {
+      display: flex;
+      justify-content: space-between;
+      display: flex;
+      align-items: baseline;
+      width: 96%;
+      margin: 10px 2%;
+      color:black
+    }
+    
+    .userinfo, h5 {
+      display: flex;
+      text-transform: capitalize;
+      color:black;
+      align-items: center;
+    }
+    .userAvatar {
+      border-radius: 100px;
+      height: 40px;
+      margin-right: 5px;
+      
+    }
+    
     
   }
+  }
+}
+
+
+
+@media screen and (min-width: 260px),
+screen and (max-width: 800px)  {
+
+  .grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+    width: 100%;
+  }
+
+  
+  .soundPreviewContainer {
+    background-color: #c1bfbf;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    margin: 10px ;
+    width: 30vw; // to change the whole card this size should be the same as the .wholeCard below
+    
+    .wholeCard {
+      width: 30vw;
+      justify-content: center;
+      
+    }
+  
+    .innerCard {
+      width: 30vw;
+      justify-content: center;
+    
+    }
+    
+    .wavimg {
+      width: 96%;
+      margin-left: 2%;
+    }
+    
+    .audiofile {
+      
+      height: 50px;
+      width: 95%;
+      margin-left: 2.5%;
+    }
+    
+    .h5SoundList {
+      text-align: center;
+      font-size: 25px;
+      margin: 5px;
+      text-transform: capitalize;
+      color:black
+    }
+    
+    .catagoryandHashtags {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin: 10px 2%;
+      text-transform: capitalize;
+      color:black
+      
+    }
+    
+    .hashtags {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-transform: lowercase;
+    }
+    
+    .hashtag {
+      font-size: small;
+      margin: 0 5px 0 5px;
+    }
+    
+    .hashtag:hover {
+      color: #1114e6;
+    }
+    
+    .date p {
+      
+      color: black;
+      font-size: small;
+    }
+    .userdate {
+      display: flex;
+      justify-content: space-between;
+      display: flex;
+      align-items: baseline;
+      width: 96%;
+      margin: 10px 2%;
+      color:black
+    }
+    
+    .userinfo, h5 {
+      display: flex;
+      text-transform: capitalize;
+      color:black;
+      align-items: center;
+    }
+    .userAvatar {
+      border-radius: 100px;
+      height: 40px;
+      margin-right: 5px;
+      
+    }
+    
+    
+  }
+
+  .soundPreviewContainer {
+    width: 50vw;
+    justify-content: center;
+  }
+  .wholeCard {
+    width: 50vw;
+    justify-content: center;
   
 
+    .innerCard {
+      width: 50vw;
+      justify-content: center;
+    
+    }
+  
+  }
+  
 }
+
 
 .footertext {
   padding: 10px;

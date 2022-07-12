@@ -66,13 +66,13 @@ function toggleModal() {
     }    
   }
 
-  return (
-    <div>
-      <NavBar />
-      {sound ? (
-
+  return (<>
+    <NavBar />
+    <main className={styles.mainSection}>
+    {sound ? (
+    
           // U S E R  C A R D  H E A D E R  F O R  P O S T E D  S O U N D S        
-      <main key={sound} className={styles.containerBody}>
+      <div key={sound} className={styles.containerBody}>
         <div className={styles.profile}>
           <div className={styles.avatarHeader}>
             <div key={sound.user.username} className={styles.username}>
@@ -215,12 +215,14 @@ function toggleModal() {
             </article>}
           </div>
         </div>
-      </main>
+      </div>
       ) : (
       <p>...loading</p>
       )}
-    <Footer />
-  </div>  
+    
+  </main> 
+  <Footer />
+  </> 
   )
 }
 
