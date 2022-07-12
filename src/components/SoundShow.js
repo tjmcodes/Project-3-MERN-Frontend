@@ -138,7 +138,7 @@ function toggleModal() {
               {/* We have included the or operator to check sound user once a comment has been posted due to the structure of object that is returned */}
               {sound && (user === (sound.user) || user === (sound.user._id)) ? <button className={styles.buttondelete} onClick={toggleModal}>
                 Delete sound
-              </button> : <p>you do not have permission</p>}
+              </button> : <p></p>}
               { toggleDeleteConfirmation &&  
               <div className={styles.modal}>
                 <div className={styles.modalcontent}>
