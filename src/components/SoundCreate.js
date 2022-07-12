@@ -72,8 +72,8 @@ function SoundCreate() {
         cloudName: 'tjmcodes', 
         uploadPreset: 'user_sound_preset', 
         folder: 'my_found_sounds',
-        clientAllowedFormats: ['mp3', 'ogg', 'wav'],
-        maxFileSize: 5000000, 
+        clientAllowedFormats: ['mp3', 'ogg', 'wav', 'm4a', 'aac', 'AIFF'],
+        maxFileSize: 5242880, 
       },
 
       (err, result) => {

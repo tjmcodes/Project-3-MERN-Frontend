@@ -11,11 +11,13 @@
 //   }    
 // }
 
-// .main {
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-// }
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  
+}
 
 // article {
 //   display: flex;
@@ -57,9 +59,9 @@
 // }
 
 
-
 .gridContainershow, h5 {
   color: white;
+  color: black;
 }
 
 .gridContainer {
@@ -69,6 +71,7 @@
   flex-wrap: wrap;
   width: 60%;
   padding: 20px;
+  
 
   font-weight: $font-weight;
   color: #ffffff;
@@ -87,10 +90,15 @@
   flex-wrap: wrap;
   font-weight: $font-weight;
   color: #ffffff;
-  background-color: rgba(122, 117, 117, 0.335);
+  background-color: rgba(232, 229, 229, 0.978);
   color: rgb(0, 0, 0);
   border-radius: 5px;
   margin: 10px;
+}
+
+
+p {
+  color:black;
 }
 
 @media screen and (max-width: 375px) {
@@ -115,6 +123,7 @@
   font-size: 25px;
   margin: 5px;
   text-transform: capitalize;
+  
 }
 
 
@@ -130,6 +139,7 @@
 .catagoryandHashtags h5 {
   height: 50px;
   text-transform: capitalize;
+  color: black;
 }
 
 .hashtags {
@@ -144,7 +154,7 @@
   margin: 0 5px 0 5px;
 }
 
-.hashtag:hover {
+.hashtag:hover, h5:hover {
   color: #1114e6;
 }
 
@@ -156,21 +166,22 @@
   align-items: baseline;
   width: 96%;
   margin: 10px 2%;  
+  color: black;
+  
 }
 
 .userinfo {
   display: flex;
   text-transform: capitalize;
   align-items: center;
+  
 }
 
-.userinfo p {
-  color:black
-}
 .userAvatar {
   border-radius: 100px;
   height: 40px;
   margin-right: 5px;
+  
 }
 
 .wavimg {
@@ -227,16 +238,50 @@
 }
 
 .grid {
-  padding: 10px;
+  padding: 60px;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;
   justify-content: center;
   background-color: black;
-  align-items: center;
+  align-items: flex-start;
   flex: 2;
   align-items: stretch;
+  // max-height: 100vh;
+  
 
 }
+
+@media screen and (max-width: 375px) {
+  .grid {
+  padding: 10px;
+
+  }
+}
+@media screen and (max-width: 414px) {
+  .grid {
+  padding: 10px;
+  width: 100%;
+
+  }
+}
+
+@media screen and (min-width: 820px),
+      screen and (min-height: 1180px),
+      screen and (min-width: 768px),
+      screen and (min-height: 1024px) {
+  .grid {
+    padding: 10px;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+  }
+}
+
+
+
 @media screen and (max-width: 375px) {
   .uploadButton {
     // width: 100px;

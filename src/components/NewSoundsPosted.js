@@ -39,9 +39,10 @@ function SoundCreate() {
   
 
   return <>
-    <div className={styles.grid}>
-      <NavBar />
-      <div>
+    <NavBar />
+    <main className={styles.mainSection}>
+      <div className={styles.grid}>
+      
         <article className={styles.article}>
           <button className={styles.uploadButton} onClick={() => navigate("/all-sounds/new-sounds/upload")}>Click here to post your sound</button>
         </article>
@@ -95,8 +96,8 @@ function SoundCreate() {
             )})}
           </div>
       </div>
-    </div>
-    <Footer />
+    </main>
+  <Footer />
   </>
 }
 

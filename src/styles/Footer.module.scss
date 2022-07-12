@@ -1,6 +1,7 @@
 .footertext {
-  background-color: white;
-  bottom: 0px
+  background-color: rgb(189, 189, 189);
+  bottom: 5px;
+  // height: 100px;
 }
 
 footer {
@@ -14,4 +15,11 @@ footer {
 .githubname {
   padding: 10px;
 
+}
+
+@media screen and (max-width: 375px){
+  footer {
+    font-size: 10px;
+  }
+  
 }
