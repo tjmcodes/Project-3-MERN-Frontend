@@ -96,8 +96,8 @@ function SoundCreate() {
             )})}
           </div>
       </div>
-    </main>
   <Footer />
+  </main>
   </>
 }
 

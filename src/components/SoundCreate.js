@@ -3,12 +3,13 @@ import axios from 'axios'
 import 'bulma'
 // import hashtagfy from 'hashtagfy2'
 import { useNavigate } from "react-router-dom"
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SubCategories from '../data/SubCategories.js'
 import NavBar from './NavBar.js'
 import styles from '../styles/SoundCreate.module.scss'
 import { baseUrl } from '../config.js'
 import Footer from './Footer.js'
+
 
 
 
@@ -131,11 +132,10 @@ function SoundCreate() {
   
 
   return <>
+   <NavBar />
     <div className={styles.grid}>
-      <NavBar />
-      
       <div className={styles.gridContainer}>
-        <button className={styles.backButton} onClick={() => updateButton(!button)}>Back</button>
+        <Link to="/all-sounds/new-sounds"><button className={styles.backButton}>Back</button></Link>
         <button className={styles.uploadButton} onClick={handleUpload}>Click to upload your sound</button>          
           
         <br />

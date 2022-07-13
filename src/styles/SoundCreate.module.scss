@@ -1,8 +1,6 @@
 @import 'variables';
 
 
-
-
 @media only screen and (max-width: 375px) {
   .section {
     display: flex;
@@ -10,6 +8,7 @@
     font-size: 10px;
     padding: 10px;
     min-height: 50px;
+
   }    
 }
 
@@ -17,6 +16,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  
 }
 
 
@@ -25,10 +26,21 @@ div {
 }
 
 .grid {
+  // display: flex;
+  // justify-content: space-around;
+  // flex-wrap: wrap;
+  // background-color: black;
+  // height: 100vh;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background-color: black;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 50px;
+    
+  
+    
 
 }
 .gridContainer {
@@ -36,97 +48,9 @@ div {
   color: #777;
   flex-wrap: wrap;
   justify-content: center;
+  // margin-top: 10px;
 }
 
-
-// .soundPreviewContainer {
-//   background-color: #ffffff;
-//   display: flex;
-//   flex-direction: column;
-//   border-radius: 5px;
-//   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-//   margin: 10px ;
-// }
-
-// .audiofile {
-
-//   height: 50px;
-//   width: 95%;
-//   margin-left: 2.5%;
-// }
-
-// .h5SoundList {
-//   text-align: center;
-//   font-size: 25px;
-//   margin: 5px;
-//   text-transform: capitalize;
-// }
-
-
-// .CatagoryandHashtags {
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: space-between;
-//   margin: 10px 2%;
-//   text-transform: capitalize;
-//   color:black
-// }
-
-// .catagoryandHashtags h5 {
-//   height: 50px;
-//   text-transform: capitalize;
-// }
-
-// .hashtags {
-//   display: flex;
-//     flex-direction: column;
-//     align-items: flex-end;
-//     text-transform: lowercase;
-// }
-
-// .hashtag {
-//   font-size: small;
-//   margin: 0 5px 0 5px;
-// }
-
-// .hashtag:hover {
-//   color: #1114e6;
-// }
-
-
-// .userdate {
-//   display: flex;
-//   justify-content: space-between;
-//   display: flex;
-//   align-items: baseline;
-//   width: 96%;
-//   margin: 10px 2%;  
-// }
-
-// .userinfo {
-//   display: flex;
-//   text-transform: capitalize;
-//   align-items: center;
-// }
-
-// .userinfo p {
-//   color:black
-// }
-// .userAvatar {
-//   border-radius: 100px;
-//   height: 40px;
-//   margin-right: 5px;
-// }
-
-// .wavimg {
-//   width: 96%;
-//   margin-left: 2%;
-// }
-// .ClickToShowDetails:hover {
-//   background-color: #ff005f;
-//   padding-top: 10px;
-//   border-radius: 5px;
-// }
 
 .backButton {
   background-color: #e280a4;
@@ -173,21 +97,6 @@ div {
   animation: colourfade 0.5s;
 }
 
-// .grid {
-//   padding: 10px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   background-color: black;
-//   align-items: center;
-//   flex: 2;
-//   align-items: stretch;
-
-// }
-
-// .gridContainershow, h5 {
-//   color: white;
-// }
 
 .input {
   width: 100%;
@@ -211,8 +120,9 @@ div {
   flex-direction: column;
   // flex-grow: 1;
   flex-wrap: wrap;
-  width: 60%;
+  width: 50%;
   padding: 20px;
+  
 
   font-weight: $font-weight;
   color: #000000;
@@ -222,6 +132,7 @@ div {
   color: rgb(0, 0, 0);
   border-radius: 5px;
   margin: 10px;
+  
   // flex: 85%;
 }
 
@@ -233,6 +144,31 @@ div {
     align-items: stretch;
     justify-content: center;
     width: 100%;
+  } 
+}
+@media screen and (max-width: 412px) {
+  .grid {
+    height: 100vh;
+  }
+  .gridContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+  } 
+}
+@media screen and (max-width: 1024px) {
+  .grid {
+    height: 100vh;
+  }
+
+  .gridContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    
   } 
 }
 @media screen and (max-width: 375px) {
@@ -258,14 +194,3 @@ div {
   } 
 }
 
-// .gridContainershow {
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: wrap;
-//   font-weight: $font-weight;
-//   color: #ffffff;
-//   background-color: rgb(255, 0, 0);
-//   color: rgb(0, 0, 0);
-//   border-radius: 5px;
-//   margin: 10px;
-// }
