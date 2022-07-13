@@ -7,6 +7,7 @@ import styles from '../styles/soundShow.module.scss'
 import { baseUrl } from '../config.js'
 import moment from 'moment'
 import Footer from './Footer.js'
+import { Link } from 'react-router-dom'
 
 
 function ShowSound() {
@@ -74,14 +75,18 @@ function toggleModal() {
           // U S E R  C A R D  H E A D E R  F O R  P O S T E D  S O U N D S        
       <div key={sound} className={styles.containerBody}>
         <div className={styles.profile}>
+          
           <div className={styles.avatarHeader}>
-            <div key={sound.user.username} className={styles.username}>
-              <div key={sound.user.image} className={styles.avatarIcon}>
-                <img className={styles.img} src={sound.user.image} alt="avatar"></img>
-                <p className={styles.usernameP}>{sound.user.username}</p>
+            <Link to={`/oneUser/${sound.user._id}`} state={sound.user.username}> 
+              <div key={sound.user.username} className={styles.username}>
+                <div key={sound.user.image} className={styles.avatarIcon}>
+                  <img className={styles.img} src={sound.user.image} alt="avatar"></img>
+                  <p className={styles.usernameP}>{sound.user.username}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
+        
           
           {/* H A S H T A G S */}
           <div className={styles.hashtagContainer}>

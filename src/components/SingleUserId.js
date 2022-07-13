@@ -17,6 +17,7 @@ const SingleUserId = (props) => {
   const categories = ["nature", "human", "machines", "animals", "materials", "ambience", "electric", "weather"]
   const location = useLocation();
   const state = location.state;
+  const by = 'by'.toLowerCase()
   
   // const { stateparams } = useLocation()
 
@@ -55,7 +56,7 @@ const SingleUserId = (props) => {
     <div className={styles.main}>
       <div className={styles.sidebar}>
         <div className={styles.sidebarContent}>
-          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds</p>
+          <p onClick={handleClick} className={ (activeClass === "All Sounds") ? styles.categoryActive : styles.category}>All Sounds ({state})</p>
           {categories.map((category, index) => {
           return <p className={(activeClass === category) ? styles.categoryActive : styles.category} key={index} onClick={handleClick} >{category}</p>
           })}

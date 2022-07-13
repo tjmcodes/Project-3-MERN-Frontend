@@ -52,15 +52,15 @@ const SoundList = () => {
           </div>
         </div>
         
-          {/* M A I N  */}
-          <div className={styles.gridContainer}>
-            <SearchBar />
-            <div className={styles.grid}>
-              {soundData === true ? null : categoryFilter().map((sound, index) => {
-              return (
-                <div key={index} className={styles.soundPreviewContainer} >
-                  <div className={styles.wholeCard}>
-                    <div className={styles.innerCard}>
+        {/* M A I N  */}
+        <div className={styles.gridContainer}>
+          <SearchBar />
+          <div className={styles.grid}>
+            {soundData === true ? null : categoryFilter().map((sound, index) => {
+            return (
+            <div key={index} className={styles.soundPreviewContainer} >
+              <div className={styles.wholeCard}>
+                <div className={styles.innerCard}>
                   
                   {/* A U D I O  C O N T R O L S  &  W A V  I M A G E */}
                   <Link  to={`/all-sounds/${sound._id}`}>
@@ -110,10 +110,10 @@ const SoundList = () => {
               )})} 
             </div>
           </div>
-      </div>
-    </section>
+        </div>
+      </section>
     <Footer />
-  </>
+</>
 }
 
 export default SoundList

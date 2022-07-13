@@ -4,34 +4,15 @@
 
 .SearchBarcomponant {
   margin-bottom: 10px;
-  width: 97%;
+  width: 96%;
   margin-left: 1.5%;
+  justify-content: center;
 }
 
-
-.searchbar {
-  width: 100%;
-  margin: 40px 0 0px 0;
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-  font-size: 30px;
-  font-weight: $font-weight;
-  padding-left:15px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-@media only screen and (max-width: 375px) {
-  .searchbar {
-    font-size: 10px;
-  }
-}
 
 .resultsContainer {
   background-color: rgb(255, 255, 255);
-  width: 82.5%;
+  width: 76.8%;
   border-radius: 0px 0px 15px 15px;
   z-index: 1;
   position: absolute;
@@ -53,5 +34,40 @@
   text-align: left;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+
+.searchbar {
+  outline:none;
+  width: 100%;
+  margin: 20px 0 0px 0px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  font-size: 30px;
+  font-weight: $font-weight;
+  padding-left:15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+@media only screen and (max-width: 375px) {
+  
+  .SearchBarcomponant {
+    margin-bottom: 10px;
+    width: 90%;
+    margin-left: 1.5%;
+    justify-content: center;
+  }
+
+  .searchbar {
+    font-size: 10px;
+  }
+
+  .resultsContainer {
+    width: 60%;
+   
+  }
 }
 

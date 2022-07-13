@@ -8,20 +8,36 @@
 .NavbarMain {
   margin-top: 10px;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: center;
+  // align-items: stretch;
+}
+
+.Secondelement {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .elementContainer {
   display: flex;
-  flex-direction: column;
-  // align-items: flex-start
+  flex-direction: row;
+  // justify-content: space-around;
+  align-items: center;
+  
+
 }
 
 
 .buttonblue {
   background-color: #1114e6;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 1vw;
   margin-top: 5px;
@@ -42,12 +58,12 @@
 
   display: flex;
   background-color: #9100BA;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 1vw;
   margin-top: 5px;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
   color: white;
   max-width: auto;
@@ -56,7 +72,7 @@
 .button {
   display: flex;
   background-color: #ff005f;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 1vw;
   margin-top: 5px;
@@ -73,12 +89,17 @@
   animation: colourfade 0.5s;
 }
 
-.buttonblue:hover .allUsersbutton:hover {
+.buttonblue:hover  {
   background-color: #ff005f;
   color: white;
   animation: colourfadereverse 0.5s;
 }
 
+.allUsersbutton:hover {
+  background-color: #ff005f;
+  color: white;
+  animation: colourfadereverse 0.5s;
+}
 .logo {
   height: 80px;
   width: auto;
@@ -86,6 +107,33 @@
 }
 
 @media screen and (max-width:414px) {
+  .NavbarMain {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  
+  .Secondelement {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .elementContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+
   .logo {
     height: 30px;
     width: auto;

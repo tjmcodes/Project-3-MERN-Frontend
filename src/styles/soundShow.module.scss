@@ -25,7 +25,7 @@
     display: flex;
     // background-color: blue;
     justify-content: space-between;
-    // padding: 0 30px;
+    
   
   }
 
@@ -61,7 +61,8 @@
   .usernameP {
     text-transform: capitalize;
     // background-color: pink;
-    margin: 0px
+    margin: 0px;
+    color: white;
   }
   
   .hashtagContainer {
@@ -70,6 +71,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-end;
+    
+    p {
+      color: white;
+    }
   }
   
   
@@ -85,6 +90,7 @@
     flex-direction: row;
     // width: 100vw;
     position: relative;
+    
 
   
   }
@@ -101,6 +107,7 @@
     z-index: 1;
   }
   
+
   .banner p {
     color: black;
   }

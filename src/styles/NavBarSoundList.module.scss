@@ -8,13 +8,22 @@
 .NavbarMain {
   margin-top: 10px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  // align-items: stretch;
+}
+
+.firstElement {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+
+  
 }
 
 .buttonblue {
   background-color: #1114e6;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 2vw;
   margin-top: 10px;
@@ -22,23 +31,16 @@
   color: white;
   max-width: auto;
 }
-
-.firstElement {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  
-}
 .allUsersbutton {
 
   display: flex;
   background-color: $primary-color;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 1vw;
   margin-top: 0px;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   color: white;
   max-width: auto;
@@ -47,7 +49,7 @@
 .button {
   display: flex;
   background-color: #ff005f;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-left: 1vw;
   margin-top: 0px;
@@ -71,14 +73,42 @@
 }
 
 .logo {
-  height: 40px;
+  height: 80px;
   width: auto;
   margin-right: 20px;
 }
 
 @media screen and (max-width:375px) {
+
+  // .NavbarMain {
+  //   margin-top: 10px;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   align-items: stretch;
+  // }
+  
+  .Secondelement {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .elementContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+
   .logo {
-    height: 25px;
+    height: 30px;
     width: auto;
     margin-right: 20px;
   }
@@ -166,15 +196,65 @@
 //     font-size: 10px;
 //   }
 // }
-@media only screen and (max-width: 500px) {
+
+
+
+@media only screen and (max-width: 375px)  {
   .button, .allUsersbutton {
-    width: 100px;
+    width: 70px;
     font-size: 10px;
+    padding: 5px;
+  }
+  
+}
+@media only screen and (max-width: 414px)  {
+
+
+  .button, .allUsersbutton {
+    width: 80px;
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .logo {
+    
+    height: 25px;
+    width: auto;
+    margin-right: 20px;
+    align-items: center;
   }
 }
-@media only screen and (max-width: 500px) {
-  .buttonblue {
+@media only screen and (max-width: 540px)  {
+  .button, .allUsersbutton {
     width: 100px;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .logo {
+    
+    height: 20px;
+    // width: auto;
+    margin-right: 20px;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 280px),
+screen and (max-height: 653px)  {
+
+  
+  .button, .allUsersbutton {
+    width: 70px;
     font-size: 10px;
+    padding: 5px;
+  }
+
+  .logo {
+    
+    height: 20px;
+    width: auto;
+    margin-right: 20px;
+    align-items: center;
   }
 }

@@ -1,15 +1,12 @@
 @import 'variables';
 
-
-@media only screen and (max-width: 280px) {
-  .section {
-    display: flex;
-    flex-direction: column;
-    font-size: 10px;
-    padding: 0px;
-    min-height: 50px;
-  }    
-}
+// section {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh;
+//   align-items: center;
+//   width: 100vw;
+// }
 
 
 .main {
@@ -19,6 +16,7 @@
   background-color: rgb(0, 0, 0);
   overflow-x: hidden;
   
+  
 }
 
 .catagoryandHashtags h5 {
@@ -27,12 +25,14 @@
 }
 
 .sidebar {
-  background-color: #ffffff;
+  background-color: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-start;
+  height: 100vh;
+  // position: relative;
 }
 
 .sidebarContent {
@@ -49,7 +49,7 @@
   margin-left: 10%;
   border-radius: 5px;
   margin: 2vh;
-  color: black;
+  color: white;
   text-transform: capitalize;
 }
 
@@ -84,7 +84,9 @@
 .sidebarContent h3 {
   font-size: 35px;
 }
+
 @media screen and (min-width: 1024px) {
+
   .sidebarContent, .category, h3, p {
     // font-size: 15px;
     align-items: center;
@@ -105,35 +107,68 @@
 
   .sidebar {
     width: 20%;
+    // height: 120vh;
     
   }
   
+
   .gridContainer {
-    width: 80%;
-  }
+
+    .grid {
+      margin: 30px;
+      display: flex;
+      width: 100vw;
+      color: rgb(0, 0, 0);
+      flex-wrap: wrap;
+
+    }
+
+ 
   .soundPreviewContainer {
-    width: 50vw;
+    width: 30vw;
+    justify-content: center;
+    margin: 10px;
   }
-  // .wholeCard {
-  //   width: 50vw;
-  //   justify-content: center;
+  .wholeCard {
+    width: 30vw;
+    justify-content: center;
   
-  // }
 
-
-  .gridContainer {
-  display: flex;
-  width: 100vw;
-  color: rgb(0, 0, 0);
-  flex-wrap: wrap;
-
+    .innerCard {
+      width: 30vw;
+      justify-content: center;
+    
+    }
+  
   }
+
+
 }
 
+
+}
+// .section {
+//   display: flex;
+//   flex-direction: column;
+//   font-size: 10px;
+//   padding: 0px;
+//   min-height: 50px;
+// }   
+
+
 @media screen and (min-width: 280px), 
-screen and (max-width: 800px){
+screen and (max-width: 1024px){
+   .section {
+     display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+    padding: 0px;
+    min-height: 50px;
+    }   
+
   .sidebarContent, .category, h3, p {
-    font-size: 15px;
+    font-size: 18px;
     align-items: center;
     margin-left: 0;
     
@@ -147,10 +182,6 @@ screen and (max-width: 800px){
     
   }
 
-  .sidebar {
-    // width: 20%;
-    
-  }
   
   .gridContainer {
     width: 80%;
@@ -167,120 +198,13 @@ screen and (max-width: 800px){
 
   .gridContainer {
   display: flex;
-  width: 100vw;
+  // width: 100vw;
   color: rgb(0, 0, 0);
   flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-start;
 
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    flex-direction: row;
-  
-    width: 100%;
-  
-  
-  .soundPreviewContainer {
-    background-color: #c1bfbf;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-    margin: 10px ;
-    width: 30vw; // to change the whole card this size should be the same as the .wholeCard below
-    
-    .wholeCard {
-      width: 30vw;
-      justify-content: center;
-      
-    }
-  
-    .innerCard {
-      width: 30vw;
-      justify-content: center;
-    
-    }
-    
-    .wavimg {
-      width: 96%;
-      margin-left: 2%;
-    }
-    
-    .audiofile {
-      
-      height: 50px;
-      width: 95%;
-      margin-left: 2.5%;
-    }
-    
-    .h5SoundList {
-      text-align: center;
-      font-size: 25px;
-      margin: 5px;
-      text-transform: capitalize;
-      color:black
-    }
-    
-    .catagoryandHashtags {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin: 10px 2%;
-      text-transform: capitalize;
-      color:black
-      
-    }
-    
-    .hashtags {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      text-transform: lowercase;
-    }
-    
-    .hashtag {
-      font-size: small;
-      margin: 0 5px 0 5px;
-    }
-    
-    .hashtag:hover {
-      color: #1114e6;
-    }
-    
-    .date p {
-      
-      color: black;
-      font-size: small;
-    }
-    .userdate {
-      display: flex;
-      justify-content: space-between;
-      display: flex;
-      align-items: baseline;
-      width: 96%;
-      margin: 10px 2%;
-      color:black
-    }
-    
-    .userinfo, h5 {
-      display: flex;
-      text-transform: capitalize;
-      color:black;
-      align-items: center;
-    }
-    .userAvatar {
-      border-radius: 100px;
-      height: 40px;
-      margin-right: 5px;
-      
-    }
-    
-    
-  }
   }
 }
 
@@ -288,16 +212,15 @@ screen and (max-width: 800px){
 
 @media screen and (min-width: 260px),
 screen and (max-width: 800px)  {
-
+  
   .grid {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
-    
     width: 100%;
   }
-
+  
   
   .soundPreviewContainer {
     background-color: #c1bfbf;
@@ -305,7 +228,7 @@ screen and (max-width: 800px)  {
     flex-direction: column;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-    margin: 10px ;
+    margin: 34px ;
     width: 30vw; // to change the whole card this size should be the same as the .wholeCard below
     
     .wholeCard {
@@ -313,16 +236,17 @@ screen and (max-width: 800px)  {
       justify-content: center;
       
     }
-  
+    
     .innerCard {
       width: 30vw;
       justify-content: center;
-    
+      
     }
     
     .wavimg {
       width: 96%;
       margin-left: 2%;
+      
     }
     
     .audiofile {
@@ -331,6 +255,8 @@ screen and (max-width: 800px)  {
       width: 95%;
       margin-left: 2.5%;
     }
+    
+    
     
     .h5SoundList {
       text-align: center;
@@ -396,7 +322,7 @@ screen and (max-width: 800px)  {
     
     
   }
-
+  
   .soundPreviewContainer {
     width: 50vw;
     justify-content: center;
@@ -404,14 +330,14 @@ screen and (max-width: 800px)  {
   .wholeCard {
     width: 50vw;
     justify-content: center;
-  
-
+    
+    
     .innerCard {
       width: 50vw;
       justify-content: center;
-    
+      
     }
-  
+    
   }
   
 }
@@ -420,5 +346,4 @@ screen and (max-width: 800px)  {
 .footertext {
   padding: 10px;
 }
-
 
