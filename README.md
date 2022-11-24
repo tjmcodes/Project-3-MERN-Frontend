@@ -450,8 +450,3 @@ Moving forward, I will be implementing the project management tools more and UI 
 
 ---
 
-<!-- Stats -->
-<div align='center'>
- <img height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tjmcodes&theme=vue-dark&custom_title=Languages&layout=compact">
- <img height="150em" src="https://github-readme-stats.vercel.app/api?username=tjmcodes&show_icons&theme=tokyonight">
-</div>
